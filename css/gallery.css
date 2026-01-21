@@ -1,21 +1,33 @@
-.gallery {
-  display:grid;
-  grid-template-columns: repeat(3,1fr);
-  gap:20px;
-  padding:50px;
+.gallery-wrap {
+  padding: 140px 60px 80px;
 }
 
-.gallery img {
-  width:100%;
-  border-radius:12px;
-}
-
-.title {
+.gallery-wrap h1 {
   text-align: center;
-  font-size: 40px;
-  margin: 40px 0;
+  font-size: 42px;
+  margin-bottom: 50px;
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* 팝업 */
 #popup {
   position: fixed;
   inset: 0;
@@ -23,7 +35,6 @@
   display: none;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   z-index: 9999;
 }
 
@@ -31,4 +42,11 @@
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
+}
+
+/* 모바일 */
+@media(max-width:768px){
+  .gallery-wrap {
+    padding: 120px 20px 60px;
+  }
 }
