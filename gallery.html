@@ -2,19 +2,47 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>GALLERY - FRESH-FARM</title>
+<title>Gallery | FRESH-FARM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/gallery.css">
+<link rel="stylesheet" href="css/footer.css">
+
+<script defer src="js/menu.js"></script>
 </head>
 
 <body>
 
-<h1 class="title">농장 갤러리</h1>
+<header class="header">
+  <div class="logo-area">
+    <img src="images/logo.png">
+    <span>FRESH-FARM</span>
+  </div>
 
-<div class="gallery">
-  <img src="images/farm1.jpg" onclick="openImg(this.src)">
-  <img src="images/farm2.jpg" onclick="openImg(this.src)">
-  <img src="images/farm3.jpg" onclick="openImg(this.src)">
-</div>
+  <nav class="nav">
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<main class="gallery-wrap">
+
+  <h1>농장 갤러리</h1>
+
+  <div class="gallery-grid">
+    <img src="images/farm1.jpg" onclick="openImg(this.src)">
+    <img src="images/farm2.jpg" onclick="openImg(this.src)">
+    <img src="images/farm3.jpg" onclick="openImg(this.src)">
+    <img src="images/farm4.jpg" onclick="openImg(this.src)">
+    <img src="images/hero.jpg" onclick="openImg(this.src)">
+    <img src="images/logo.png" onclick="openImg(this.src)">
+  </div>
+
+</main>
 
 <!-- 이미지 확대 팝업 -->
 <div id="popup">
@@ -29,10 +57,16 @@ function openImg(src){
   popupImg.src = src;
 }
 
-document.getElementById("popup").onclick = function(){
-  this.style.display = "none";
-}
+document.getElementById("popup").addEventListener("click",()=>{
+  document.getElementById("popup").style.display = "none";
+});
 </script>
+
+<footer class="footer">
+  <p>📞 010-3945-1394</p>
+  <p>📍 전북 완주군 봉동읍 장기리 1729</p>
+  <p>© 2026 FRESH-FARM</p>
+</footer>
 
 </body>
 </html>
