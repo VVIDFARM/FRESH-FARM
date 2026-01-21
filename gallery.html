@@ -2,19 +2,37 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>GALLERY</title>
+<title>GALLERY - FRESH-FARM</title>
 <link rel="stylesheet" href="css/gallery.css">
 </head>
 
 <body>
 
-<h1>농장 갤러리</h1>
+<h1 class="title">농장 갤러리</h1>
 
 <div class="gallery">
-  <img src="images/farm1.jpg">
-  <img src="images/farm2.jpg">
-  <img src="images/farm3.jpg">
+  <img src="images/farm1.jpg" onclick="openImg(this.src)">
+  <img src="images/farm2.jpg" onclick="openImg(this.src)">
+  <img src="images/farm3.jpg" onclick="openImg(this.src)">
 </div>
+
+<!-- 이미지 확대 팝업 -->
+<div id="popup">
+  <img id="popup-img">
+</div>
+
+<script>
+function openImg(src){
+  const popup = document.getElementById("popup");
+  const popupImg = document.getElementById("popup-img");
+  popup.style.display = "flex";
+  popupImg.src = src;
+}
+
+document.getElementById("popup").onclick = function(){
+  this.style.display = "none";
+}
+</script>
 
 </body>
 </html>
