@@ -88,3 +88,13 @@ body {
   }
 }
 
+#loader {
+  position:fixed;
+  inset:0;
+  background:black;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
