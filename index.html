@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <title>FRESH-FARM</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/main.js"></script>
+<meta charset="UTF-8">
+<title>FRESH-FARM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/footer.css">
+
+<script defer src="js/main.js"></script>
+<script defer src="js/slider.js"></script>
+<script defer src="js/menu.js"></script>
 </head>
+
 <body>
 
-<header class="top-header">
-  <img src="images/logo.png" class="logo">
-  <div>
-    <h1>FRESH-FARM</h1>
-    <p>신선함을 재배합니다</p>
+<header class="header">
+  <div class="logo-area">
+    <img src="images/logo.png">
+    <span>FRESH-FARM</span>
   </div>
+
+  <nav class="nav">
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
 </header>
 
-<nav>
-  <a href="index.html">HOME</a>
-  <a href="about.html">ABOUT</a>
-  <a href="services.html">SERVICE</a>
-  <a href="products.html">PRODUCT</a>
-  <a href="contact.html">CONTACT</a>
-</nav>
-
-<div class="hero">
-  <div class="hero-box">
-    <h1>Premium Smart Strawberry Farm</h1>
-    <p>자연과 기술의 조화</p>
+<section class="hero">
+  <div class="slider">
+    <img src="images/hero.jpg" class="slide active">
+    <img src="images/farm1.jpg" class="slide">
+    <img src="images/farm2.jpg" class="slide">
   </div>
-</div>
-
-<section>
-  <h2 class="section-title">FRESH-FARM 소개</h2>
-  <p class="section-sub">고설 스마트 재배 시스템으로 최고의 품질을 생산합니다.</p>
-  <a href="about.html" class="btn-main">자세히 보기</a>
-</section>
-
-<section>
-  <h2 class="section-title">농장 갤러리</h2>
-  <div class="photos">
-    <img src="images/farm1.jpg">
-    <img src="images/farm2.jpg">
-    <img src="images/farm3.jpg">
+  <div class="hero-text">
+    <h1>프리미엄 생딸기 직영농장</h1>
+    <p>완주 봉동 | 고설재배 | 무농약 관리</p>
   </div>
 </section>
 
-<footer>
-  © 2026 FRESH-FARM. All Rights Reserved.
+<section class="intro">
+  <h2>우리 농장</h2>
+  <p>
+    FRESH-FARM은 고설재배 시스템으로 깨끗하고 안전한 딸기를 생산합니다.
+    철저한 환경관리와 스마트팜 기술을 적용합니다.
+  </p>
+</section>
+
+<section class="cards">
+  <div class="card">🌱 스마트팜</div>
+  <div class="card">🍓 프리미엄 품질</div>
+  <div class="card">🚚 직거래 유통</div>
+</section>
+
+<footer class="footer">
+  <p>📞 010-3945-1394</p>
+  <p>📍 전북 완주군 봉동읍 장기리 1729</p>
+  <p>© 2026 FRESH-FARM</p>
 </footer>
 
 </body>
