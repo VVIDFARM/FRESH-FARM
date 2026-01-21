@@ -9,3 +9,26 @@
   width:100%;
   border-radius:12px;
 }
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  margin: 40px 0;
+}
+
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#popup img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
