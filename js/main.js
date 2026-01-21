@@ -1,1 +1,1 @@
-console.log("FRESH-FARM loaded");
+document.body.classList.add("loaded");
