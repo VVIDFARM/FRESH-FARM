@@ -6,203 +6,169 @@
 <title>생생농장</title>
 
 <style>
-:root{
+:root {
     --green:#2fa36b;
-    --green-soft:#eaf7f1;
+    --green-light:#e8f7f1;
     --red:#e53935;
     --bg:#ffffff;
-    --card:#ffffff;
     --text:#111;
     --muted:#555;
+    --card:#fff;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-
-body{
-    font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    font-family: "Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     background:var(--bg);
     color:var(--text);
 }
 
 /* HEADER */
-header{
-    min-height:90vh;
-    background:
-        radial-gradient(circle at top right, rgba(229,57,53,.15), transparent 45%),
-        linear-gradient(180deg,var(--green-soft),#ffffff);
+header {
+    min-height:80vh;
     display:flex;
-    align-items:center;
+    flex-direction:column;
     justify-content:center;
+    align-items:center;
     text-align:center;
     padding:40px 20px;
+    background:linear-gradient(140deg,var(--green-light),#ffffff);
 }
 
-.hero h1{
-    font-size:clamp(46px,7vw,88px);
-    letter-spacing:4px;
+header h1 {
+    font-size:clamp(44px,7vw,88px);
     color:var(--green);
 }
 
-.hero p{
-    margin-top:18px;
-    font-size:20px;
-    color:#333;
+header p {
+    margin-top:12px;
+    font-size:18px;
+    color:var(--muted);
 }
 
-.hero a{
-    margin-top:36px;
-    display:inline-block;
-    padding:16px 54px;
+header a {
+    margin-top:28px;
+    padding:14px 40px;
     background:var(--red);
     color:#fff;
-    border-radius:60px;
+    border-radius:50px;
     text-decoration:none;
     font-weight:700;
-    transition:.25s;
+    transition:0.3s;
 }
 
-.hero a:hover{
-    transform:translateY(-2px);
-    opacity:.9;
+header a:hover {
+    transform:translateY(-3px);
+    opacity:0.9;
 }
 
 /* NAV */
-nav{
+nav {
     position:sticky;
     top:0;
     background:#ffffffee;
-    backdrop-filter:blur(6px);
     border-bottom:1px solid #eee;
-    z-index:999;
+    z-index:100;
 }
 
-.nav-wrap{
-    max-width:1200px;
+.nav-wrap {
+    max-width:1100px;
     margin:auto;
-    padding:14px 24px;
+    padding:12px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.logo{
-    font-weight:900;
+nav .logo {
     font-size:22px;
+    font-weight:800;
     color:var(--green);
 }
 
-.nav-links a{
-    margin-left:28px;
+nav .nav-links a {
+    margin-left:24px;
     text-decoration:none;
-    color:#222;
+    color:#333;
     font-weight:600;
 }
 
-.nav-links a:hover{
+nav .nav-links a:hover {
     color:var(--red);
 }
 
-/* SECTION */
-section{
-    max-width:1200px;
-    margin:110px auto;
-    padding:0 24px;
+/* SECTIONS */
+section {
+    max-width:1100px;
+    margin:90px auto;
+    padding:0 20px;
 }
 
-.title{
+.title {
     font-size:clamp(30px,4vw,48px);
-    margin-bottom:46px;
-    color:#222;
+    margin-bottom:32px;
+    color:var(--green);
+    font-weight:700;
 }
 
-.grid{
+.grid {
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:28px;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
 }
 
-.card{
+.card {
     background:var(--card);
-    padding:34px 32px;
-    border-radius:20px;
-    border:1px solid #f0f0f0;
-    transition:.25s;
+    padding:32px 28px;
+    border-radius:16px;
+    border:1px solid #f5f5f5;
+    transition:0.25s;
 }
 
-.card:hover{
+.card:hover {
     transform:translateY(-4px);
     border-color:var(--green);
 }
 
-.card h3{
+.card h3 {
     color:var(--green);
-    margin-bottom:12px;
+    margin-bottom:10px;
+    font-weight:700;
 }
 
-.card p{
+.card p {
     color:var(--muted);
     line-height:1.6;
 }
 
-/* IMAGE BOX */
-.illustration{
-    display:flex;
-    justify-content:center;
-    margin-bottom:24px;
-}
-
-svg{
-    max-width:160px;
-}
-
-/* BUTTON */
-.call-btn{
-    display:inline-block;
-    margin-top:12px;
-    padding:14px 26px;
-    background:var(--green);
-    color:#fff;
-    border-radius:40px;
-    text-decoration:none;
-    font-weight:700;
-}
-
 /* FOOTER */
-footer{
-    background:var(--green-soft);
-    color:#333;
-    padding:80px 20px;
+footer {
     text-align:center;
-    margin-top:120px;
+    padding:60px 20px;
+    background:var(--green-light);
+    color:var(--text);
+    margin-top:60px;
 }
 
 /* REVEAL */
-.reveal{
+.reveal {
     opacity:0;
     transform:translateY(20px);
-    transition:.4s ease;
+    transition:0.5s ease;
 }
-.reveal.active{
+.reveal.active {
     opacity:1;
     transform:none;
 }
-
-/* MOBILE */
-@media(max-width:768px){
-    .nav-links{display:none;}
-}
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="hero">
-        <h1>생생농장</h1>
-        <p>완주 봉동 스마트 딸기 농장</p>
-        <a href="#about">농장 둘러보기</a>
-    </div>
+    <h1>생생농장</h1>
+    <p>완주 봉동 | 고설재배 | 무농약 | 스마트팜</p>
+    <a href="#about">자세히 보기</a>
 </header>
 
 <nav>
@@ -217,110 +183,63 @@ footer{
     </div>
 </nav>
 
-<!-- 농장소개 -->
 <section id="about" class="reveal">
     <h2 class="title">농장소개</h2>
     <div class="grid">
         <div class="card">
-            <div class="illustration">
-                <!-- 딸기 SVG -->
-                <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="55" r="32" fill="#e53935"/>
-                    <path d="M20 35 Q50 10 80 35" fill="#2fa36b"/>
-                    <circle cx="40" cy="55" r="3" fill="#fff"/>
-                    <circle cx="55" cy="65" r="3" fill="#fff"/>
-                    <circle cx="60" cy="50" r="3" fill="#fff"/>
-                </svg>
-            </div>
-            <h3>농장 위치</h3>
-            <p>전북 완주군 봉동읍 장기리 1729</p>
+            <h3>프리미엄 생딸기</h3>
+            <p>완주 봉동에서 고설재배와 무농약 수준의 철저한 관리로 생산합니다. :contentReference[oaicite:3]{index=3}</p>
         </div>
-
         <div class="card">
-            <h3>운영 방향</h3>
-            <p>신선 · 안전 · 품질 중심 재배</p>
-        </div>
-
-        <div class="card">
-            <h3>브랜드</h3>
-            <p>생생농장 / 생생딸기</p>
+            <h3>직영 재배</h3>
+            <p>생산부터 유통까지 직영으로 관리하여 신선함과 품질을 지킵니다. :contentReference[oaicite:4]{index=4}</p>
         </div>
     </div>
 </section>
 
-<!-- 재배기술 -->
 <section id="tech" class="reveal">
     <h2 class="title">재배기술</h2>
     <div class="grid">
         <div class="card">
-            <div class="illustration">
-                <!-- 스마트팜 SVG -->
-                <svg viewBox="0 0 120 100">
-                    <rect x="10" y="40" width="100" height="40" rx="8" fill="#2fa36b"/>
-                    <rect x="20" y="30" width="80" height="20" fill="#eaf7f1"/>
-                    <circle cx="35" cy="60" r="6" fill="#fff"/>
-                    <circle cx="60" cy="60" r="6" fill="#fff"/>
-                    <circle cx="85" cy="60" r="6" fill="#fff"/>
-                </svg>
-            </div>
-            <h3>스마트팜 시스템</h3>
-            <p>온도 · 습도 · 양액 자동 제어</p>
+            <h3>고설재배</h3>
+            <p>땅에 직접 닿지 않는 구조로 청결하고 효율적인 작업이 가능합니다. :contentReference[oaicite:5]{index=5}</p>
         </div>
-
         <div class="card">
-            <h3>고설 재배</h3>
-            <p>위생적 환경, 균일한 품질 유지</p>
-        </div>
-
-        <div class="card">
-            <h3>생육 관리</h3>
-            <p>데이터 기반 생육 안정화</p>
+            <h3>스마트팜 관리</h3>
+            <p>온도·습도·환경 자동 제어로 안정적 품질을 유지합니다. :contentReference[oaicite:6]{index=6}</p>
         </div>
     </div>
 </section>
 
-<!-- 제품안내 -->
 <section id="product" class="reveal">
     <h2 class="title">제품안내</h2>
     <div class="grid">
         <div class="card">
             <h3>설향</h3>
-            <p>
-                당도가 높고 향이 진한 대표 품종<br>
-                과즙이 풍부하고 식감이 부드러움
-            </p>
+            <p>당도가 높고 향이 풍부한 대표적인 국내 딸기 품종.</p>
         </div>
-
         <div class="card">
             <h3>킹스베리</h3>
-            <p>
-                크기가 크고 단단한 프리미엄 품종<br>
-                선물용 및 고급 유통에 적합
-            </p>
+            <p>과실이 크고 선물용으로 인기 높은 프리미엄 품종.</p>
         </div>
-
         <div class="card">
             <h3>납품처</h3>
             <p>
-                완주로컬푸드직매장<br>
-                효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산<br><br>
-                농협 하나로마트<br>
-                용진 · 봉동
+                완주로컬푸드직매장: 효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산<br>
+                농협 하나로마트: 용진 · 봉동
             </p>
         </div>
     </div>
 </section>
 
-<!-- 문의 -->
 <section id="contact" class="reveal">
     <h2 class="title">문의</h2>
     <div class="grid">
         <div class="card">
-            <h3>전화 문의</h3>
+            <h3>전화</h3>
             <p>010-3945-1394</p>
-            <a class="call-btn" href="tel:01039451394">전화 바로걸기</a>
+            <a href="tel:01039451394" style="display:inline-block;margin-top:10px;padding:12px 24px;background:var(--green);color:#fff;border-radius:40px;text-decoration:none;">전화걸기</a>
         </div>
-
         <div class="card">
             <h3>주소</h3>
             <p>전북 완주군 봉동읍 장기리 1729</p>
@@ -329,21 +248,14 @@ footer{
 </section>
 
 <footer>
-    <p>생생농장</p>
-    <p>신선한 딸기를 정직하게 재배합니다</p>
+    <p>생생농장 – 신선하고 깨끗한 딸기</p>
 </footer>
 
 <script>
 const reveals = document.querySelectorAll(".reveal");
-
-function reveal(){
-    reveals.forEach(el=>{
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 60){
-            el.classList.add("active");
-        }
-    });
-}
+function reveal(){ reveals.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add("active");
+});}
 window.addEventListener("scroll", reveal);
 reveal();
 </script>
