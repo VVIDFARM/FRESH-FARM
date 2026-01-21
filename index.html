@@ -3,92 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FRESH FARM</title>
+<title>생생딸기</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Pretendard", Arial, sans-serif;
+:root{
+    --bg:#050807;
+    --glass:rgba(255,255,255,0.08);
+    --line:rgba(255,255,255,0.12);
+    --primary:#3cff9b;
+    --accent:#00ffa6;
+    --text:#eafef5;
+    --muted:#9adfc2;
 }
 
-body {
-    background: #f7f7f7;
-    color: #222;
-    line-height: 1.6;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+    font-family:'Pretendard',sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, #0d2f23 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, #06261b 0%, transparent 40%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-header {
-    background: #1f7a4f;
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
+/* ===== HERO ===== */
+header{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
 }
 
-header h1 {
-    font-size: 36px;
+header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent 20%,rgba(60,255,155,.15),transparent 80%);
+    animation:scan 6s linear infinite;
 }
 
-header p {
-    margin-top: 10px;
-    font-size: 18px;
+@keyframes scan{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(100%);}
 }
 
-nav {
-    background: #155c3b;
-    padding: 10px;
-    text-align: center;
+.hero h1{
+    font-family:'Montserrat',sans-serif;
+    font-size:clamp(52px,7vw,110px);
+    letter-spacing:6px;
+    background:linear-gradient(90deg,#3cff9b,#00ffa6,#3cff9b);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 12px;
-    font-weight: bold;
+.hero p{
+    margin-top:24px;
+    font-size:clamp(16px,2vw,22px);
+    color:var(--muted);
 }
 
-section {
-    max-width: 1100px;
-    margin: 50px auto;
-    padding: 0 20px;
+.hero a{
+    margin-top:50px;
+    display:inline-block;
+    padding:18px 56px;
+    border-radius:60px;
+    background:linear-gradient(135deg,#3cff9b,#00ffa6);
+    color:#002016;
+    font-weight:800;
+    letter-spacing:1px;
+    text-decoration:none;
+    transition:.4s;
 }
 
-.section-title {
-    font-size: 28px;
-    margin-bottom: 20px;
-    border-left: 6px solid #1f7a4f;
-    padding-left: 12px;
+.hero a:hover{
+    transform:translateY(-6px) scale(1.03);
+    box-shadow:0 0 40px rgba(60,255,155,.6);
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+/* ===== NAV ===== */
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    backdrop-filter:blur(14px);
+    background:rgba(0,0,0,.55);
+    border-bottom:1px solid var(--line);
 }
 
-.card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+.nav-wrap{
+    max-width:1400px;
+    margin:auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.card h3 {
-    margin-bottom: 10px;
-    color: #1f7a4f;
+.logo{
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--primary);
 }
 
-footer {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 80px;
+.nav-links a{
+    margin-left:32px;
+    text-decoration:none;
+    font-weight:600;
+    color:var(--text);
+    position:relative;
 }
 
-footer p {
-    font-size: 14px;
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ===== SECTION ===== */
+section{
+    max-width:1400px;
+    margin:160px auto;
+    padding:0 28px;
+}
+
+.title{
+    font-family:'Montserrat',sans-serif;
+    font-size:clamp(36px,4vw,64px);
+    margin-bottom:70px;
+    letter-spacing:3px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:40px;
+}
+
+/* ===== GLASS CARD ===== */
+.card{
+    background:var(--glass);
+    backdrop-filter:blur(14px);
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:48px 40px;
+    position:relative;
+    overflow:hidden;
+    transition:.5s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent,rgba(60,255,155,.18),transparent);
+    opacity:0;
+    transition:.5s;
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+.card:hover{
+    transform:translateY(-14px) scale(1.02);
+    box-shadow:0 40px 90px rgba(0,0,0,.6);
+}
+
+.card h3{
+    margin-bottom:16px;
+    color:var(--primary);
+    letter-spacing:1px;
+}
+
+.card p, .card li{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* ===== TAG ===== */
+.tag{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    border:1px solid var(--line);
+    font-size:12px;
+    margin-bottom:16px;
+    color:var(--accent);
+}
+
+/* ===== FOOTER ===== */
+footer{
+    margin-top:200px;
+    padding:120px 28px;
+    border-top:1px solid var(--line);
+    text-align:center;
+    color:var(--muted);
+}
+
+/* ===== ANIMATION ===== */
+.reveal{
+    opacity:0;
+    transform:translateY(80px) scale(.95);
+    transition:1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .nav-links{display:none;}
 }
 </style>
 </head>
@@ -96,115 +239,139 @@ footer p {
 <body>
 
 <header>
-    <h1>FRESH FARM</h1>
-    <p>고설재배 · 스마트팜 기반 프리미엄 딸기 농장</p>
+    <div class="hero">
+        <h1>생생딸기</h1>
+        <p>Wanju Bongdong Smart Strawberry Farm</p>
+        <a href="#about">EXPLORE FARM</a>
+    </div>
 </header>
 
 <nav>
-    <a href="#about">농장소개</a>
-    <a href="#system">재배시스템</a>
-    <a href="#quality">품질관리</a>
-    <a href="#distribution">유통</a>
-    <a href="#contact">연락처</a>
+    <div class="nav-wrap">
+        <div class="logo">SAENGSAENG</div>
+        <div class="nav-links">
+            <a href="#about">농장소개</a>
+            <a href="#tech">재배기술</a>
+            <a href="#product">제품안내</a>
+            <a href="#contact">문의</a>
+        </div>
+    </div>
 </nav>
 
-<section id="about">
-    <h2 class="section-title">농장 소개</h2>
-    <div class="card">
-        <p>
-            FRESH FARM은 전북 완주 봉동에서 고설재배와 스마트팜 기술을 활용하여
-            안정적이고 위생적인 딸기를 생산하는 프리미엄 농장입니다.
-            데이터 기반 환경 제어를 통해 연중 균일한 품질을 유지하고 있습니다.
-        </p>
-    </div>
-</section>
-
-<section id="system">
-    <h2 class="section-title">재배 시스템</h2>
+<section id="about" class="reveal">
+    <h2 class="title">FARM IDENTITY</h2>
     <div class="grid">
         <div class="card">
-            <h3>고설재배</h3>
-            <p>
-                지면과 분리된 구조로 병해를 줄이고 작업 효율을 향상시키며
-                균일한 생육 환경을 유지합니다.
-            </p>
+            <span class="tag">LOCATION</span>
+            <h3>완주 봉동</h3>
+            <p>청정 환경에서 스마트 고설 시스템으로 프리미엄 딸기를 생산합니다.</p>
         </div>
         <div class="card">
-            <h3>스마트 환경제어</h3>
-            <p>
-                온도, 습도, CO₂, 광량을 자동으로 제어하여
-                최적의 생육 조건을 유지합니다.
-            </p>
+            <span class="tag">PHILOSOPHY</span>
+            <h3>품질 중심 운영</h3>
+            <p>데이터 기반 환경 제어로 항상 균일한 품질을 유지합니다.</p>
         </div>
         <div class="card">
-            <h3>데이터 기반 관리</h3>
-            <p>
-                센서 데이터를 기반으로 생육 패턴을 분석하고
-                생산성과 품질을 동시에 관리합니다.
-            </p>
+            <span class="tag">MISSION</span>
+            <h3>신뢰 생산</h3>
+            <p>소비자와 지역 유통 파트너에게 안정적인 공급을 제공합니다.</p>
         </div>
     </div>
 </section>
 
-<section id="quality">
-    <h2 class="section-title">품질 관리</h2>
+<section id="tech" class="reveal">
+    <h2 class="title">SMART TECHNOLOGY</h2>
     <div class="grid">
         <div class="card">
-            <h3>위생 관리</h3>
-            <p>
-                외부 오염을 최소화하고 작업 동선을 분리하여
-                청결한 재배 환경을 유지합니다.
-            </p>
+            <span class="tag">SYSTEM</span>
+            <h3>고설 재배</h3>
+            <p>병해 감소, 작업 효율 극대화, 균일 생육 환경 확보.</p>
         </div>
         <div class="card">
-            <h3>농약 최소화</h3>
-            <p>
-                환경 제어와 예방 중심 관리로
-                화학 농약 사용을 최소화합니다.
-            </p>
+            <span class="tag">CONTROL</span>
+            <h3>자동 환경 제어</h3>
+            <p>온도·습도·광량·양액 자동 최적화.</p>
         </div>
         <div class="card">
-            <h3>당도 관리</h3>
-            <p>
-                수확 시기와 영양 밸런스를 조절하여
-                일정한 당도와 향을 유지합니다.
-            </p>
+            <span class="tag">DATA</span>
+            <h3>생육 데이터 분석</h3>
+            <p>생산성과 품질을 동시에 관리합니다.</p>
         </div>
     </div>
 </section>
 
-<section id="distribution">
-    <h2 class="section-title">유통 및 판매</h2>
+<section id="product" class="reveal">
+    <h2 class="title">PRODUCT & DELIVERY</h2>
     <div class="grid">
         <div class="card">
-            <h3>직거래 중심</h3>
-            <p>
-                중간 유통 단계를 줄여 신선도를 유지하고
-                합리적인 가격을 제공합니다.
-            </p>
+            <span class="tag">FEATURE</span>
+            <h3>제품 특징</h3>
+            <ul>
+                <li>고당도 프리미엄 딸기</li>
+                <li>위생적 재배 환경</li>
+                <li>선별 출하 시스템</li>
+                <li>당일 신선 공급</li>
+            </ul>
         </div>
         <div class="card">
-            <h3>지역 유통</h3>
-            <p>
-                지역 소비자와 직접 연결되는 유통 구조를 통해
-                빠른 공급과 신뢰를 확보합니다.
-            </p>
+            <span class="tag">STORE</span>
+            <h3>납품처</h3>
+            <ul>
+                <li>완주로컬푸드직매장
+                    <br>효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산</li>
+                <li>농협 하나로마트
+                    <br>용진 · 봉동</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="tag">LOGISTICS</span>
+            <h3>유통 시스템</h3>
+            <p>지역 중심 직거래 유통으로 신선도와 가격 경쟁력을 유지합니다.</p>
         </div>
     </div>
 </section>
 
-<section id="contact">
-    <h2 class="section-title">연락처</h2>
-    <div class="card">
-        <p><strong>주소:</strong> 전북 완주군 봉동읍 장기리 1729</p>
-        <p><strong>전화:</strong> 010-3945-1394</p>
-        <p><strong>운영:</strong> 연중 운영 (수확 시즌 변동)</p>
+<section id="contact" class="reveal">
+    <h2 class="title">CONTACT</h2>
+    <div class="grid">
+        <div class="card">
+            <span class="tag">ADDRESS</span>
+            <h3>농장 위치</h3>
+            <p>전북 완주군 봉동읍</p>
+        </div>
+        <div class="card">
+            <span class="tag">BUSINESS</span>
+            <h3>협업 · 납품 문의</h3>
+            <p>도매, 유통, 협업 상담 가능</p>
+        </div>
+        <div class="card">
+            <span class="tag">OPERATION</span>
+            <h3>운영</h3>
+            <p>연중 운영 (수확 시즌 변동)</p>
+        </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 FRESH FARM. All Rights Reserved.</p>
+    <p>SAENGSAENG STRAWBERRY FARM</p>
+    <p>© 2026 All Rights Reserved.</p>
 </footer>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function reveal(){
+    reveals.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 120){
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
+</script>
 
 </body>
 </html>
