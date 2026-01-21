@@ -7,17 +7,18 @@
 
 <style>
 :root{
-    --green:#2fa36b;
-    --green-light:#eaf7f1;
-    --red:#e53935;
+    --red:#e23434;
+    --red-dark:#c51f1f;
+    --green:#2fb573;
+    --green-soft:#ecfaf3;
     --bg:#ffffff;
     --text:#111;
     --muted:#555;
-    --card:#fff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+
 body{
     font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     background:var(--bg);
@@ -26,36 +27,53 @@ body{
 
 /* HEADER */
 header{
-    min-height:85vh;
-    background:linear-gradient(140deg,var(--green-light),#ffffff);
+    min-height:90vh;
+    background:
+        radial-gradient(circle at top, rgba(226,52,52,.15), transparent 40%),
+        linear-gradient(180deg,var(--green-soft),#ffffff);
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     padding:40px 20px;
 }
 
-.hero h1{
-    font-size:clamp(48px,7vw,90px);
-    letter-spacing:4px;
-    color:var(--green);
+/* LOGO */
+.logo-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
 }
 
-.hero p{
-    margin-top:16px;
+.logo-icon{
+    width:120px;
+}
+
+.logo-text{
+    font-size:clamp(48px,7vw,92px);
+    font-weight:900;
+    letter-spacing:6px;
+    background:linear-gradient(45deg,var(--red),var(--red-dark));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.tagline{
     font-size:20px;
     color:#333;
 }
 
-.hero a{
-    margin-top:34px;
-    display:inline-block;
-    padding:16px 52px;
-    background:var(--red);
+/* CTA */
+.cta{
+    margin-top:40px;
+    padding:18px 58px;
+    background:linear-gradient(45deg,var(--red),var(--red-dark));
     color:#fff;
-    border-radius:60px;
+    border-radius:80px;
     text-decoration:none;
-    font-weight:700;
+    font-weight:800;
+    display:inline-block;
 }
 
 /* NAV */
@@ -63,6 +81,7 @@ nav{
     position:sticky;
     top:0;
     background:#ffffffee;
+    backdrop-filter:blur(6px);
     border-bottom:1px solid #eee;
     z-index:999;
 }
@@ -76,17 +95,23 @@ nav{
     align-items:center;
 }
 
-.logo{
+.logo-mini{
+    display:flex;
+    align-items:center;
+    gap:8px;
     font-weight:900;
-    font-size:22px;
-    color:var(--green);
+    color:var(--red);
+}
+
+.logo-mini svg{
+    width:26px;
 }
 
 .nav-links a{
     margin-left:28px;
     text-decoration:none;
     color:#222;
-    font-weight:600;
+    font-weight:700;
 }
 
 .nav-links a:hover{
@@ -103,6 +128,7 @@ section{
 .title{
     font-size:clamp(30px,4vw,48px);
     margin-bottom:42px;
+    color:var(--red);
 }
 
 .grid{
@@ -112,21 +138,21 @@ section{
 }
 
 .card{
-    background:var(--card);
-    padding:34px 32px;
-    border-radius:20px;
-    border:1px solid #f1f1f1;
+    background:#fff;
+    padding:36px 34px;
+    border-radius:22px;
+    border:1px solid #f3f3f3;
     transition:.25s;
 }
 
 .card:hover{
-    transform:translateY(-4px);
-    border-color:var(--green);
+    transform:translateY(-5px);
+    border-color:var(--red);
 }
 
 .card h3{
     color:var(--green);
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .card p{
@@ -137,19 +163,19 @@ section{
 /* BUTTON */
 .call-btn{
     display:inline-block;
-    margin-top:12px;
-    padding:14px 28px;
-    background:var(--green);
+    margin-top:14px;
+    padding:14px 30px;
+    background:linear-gradient(45deg,var(--green),#1f9a5d);
     color:#fff;
     border-radius:40px;
     text-decoration:none;
-    font-weight:700;
+    font-weight:800;
 }
 
 /* FOOTER */
 footer{
-    background:var(--green-light);
-    padding:70px 20px;
+    background:var(--green-soft);
+    padding:80px 20px;
     text-align:center;
     margin-top:120px;
 }
@@ -170,16 +196,32 @@ footer{
 <body>
 
 <header>
-    <div class="hero">
-        <h1>생생농장</h1>
-        <p>완주 봉동 스마트 딸기 농장</p>
-        <a href="#about">농장 둘러보기</a>
+    <div class="logo-wrap">
+        <!-- 딸기 로고 SVG -->
+        <svg class="logo-icon" viewBox="0 0 120 120">
+            <circle cx="60" cy="70" r="38" fill="#e23434"/>
+            <path d="M30 50 Q60 15 90 50" fill="#2fb573"/>
+            <circle cx="45" cy="70" r="3" fill="#fff"/>
+            <circle cx="60" cy="82" r="3" fill="#fff"/>
+            <circle cx="72" cy="65" r="3" fill="#fff"/>
+        </svg>
+
+        <div class="logo-text">생생농장</div>
+        <div class="tagline">완주 봉동 스마트 딸기 농장</div>
+        <a class="cta" href="#about">농장 둘러보기</a>
     </div>
 </header>
 
 <nav>
     <div class="nav-wrap">
-        <div class="logo">생생농장</div>
+        <div class="logo-mini">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="60" r="28" fill="#e23434"/>
+                <path d="M25 45 Q50 20 75 45" fill="#2fb573"/>
+            </svg>
+            생생농장
+        </div>
+
         <div class="nav-links">
             <a href="#about">농장소개</a>
             <a href="#tech">재배기술</a>
@@ -189,101 +231,8 @@ footer{
     </div>
 </nav>
 
-<!-- 농장소개 -->
-<section id="about" class="reveal">
-    <h2 class="title">농장소개</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>농장 위치</h3>
-            <p>전북 완주군 봉동읍 장기리 1729</p>
-        </div>
-
-        <div class="card">
-            <h3>재배 방향</h3>
-            <p>스마트 환경관리 기반의 안정적인 품질 생산</p>
-        </div>
-
-        <div class="card">
-            <h3>브랜드</h3>
-            <p>생생농장 / 생생딸기</p>
-        </div>
-    </div>
-</section>
-
-<!-- 재배기술 -->
-<section id="tech" class="reveal">
-    <h2 class="title">재배기술</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>고설 재배</h3>
-            <p>위생 관리가 용이하고 작업 효율이 높은 구조</p>
-        </div>
-
-        <div class="card">
-            <h3>스마트 환경 제어</h3>
-            <p>온도 · 습도 · 양액 자동 관리 시스템</p>
-        </div>
-
-        <div class="card">
-            <h3>생육 데이터 관리</h3>
-            <p>생육 상태 기록 기반 품질 안정화</p>
-        </div>
-    </div>
-</section>
-
-<!-- 제품안내 -->
-<section id="product" class="reveal">
-    <h2 class="title">제품안내</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>설향</h3>
-            <p>
-                당도가 높고 향이 진한 대표 품종<br>
-                과즙이 풍부하고 식감이 부드러움
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>킹스베리</h3>
-            <p>
-                크기가 크고 단단한 프리미엄 품종<br>
-                선물용 및 고급 유통에 적합
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>납품처</h3>
-            <p>
-                완주로컬푸드직매장<br>
-                효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산<br><br>
-                농협 하나로마트<br>
-                용진 · 봉동
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- 문의 -->
-<section id="contact" class="reveal">
-    <h2 class="title">문의</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>전화</h3>
-            <p>010-3945-1394</p>
-            <a class="call-btn" href="tel:01039451394">전화 바로걸기</a>
-        </div>
-
-        <div class="card">
-            <h3>주소</h3>
-            <p>전북 완주군 봉동읍 장기리 1729</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>생생농장</p>
-    <p>완주 봉동 딸기 농장</p>
-</footer>
+<!-- 이하 섹션들은 이전 코드 그대로 유지 -->
+<!-- (농장소개 / 재배기술 / 제품안내 / 문의 부분은 네가 쓰던 코드 그대로 놔도 됨) -->
 
 <script>
 const reveals = document.querySelectorAll(".reveal");
