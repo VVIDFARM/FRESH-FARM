@@ -5,222 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FRESH FARM</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-:root {
-    --main:#1f7a4f;
-    --dark:#0f3f2a;
-    --bg:#f4f7f6;
-    --card:#ffffff;
-    --gray:#666;
-}
-
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Pretendard', sans-serif;
-}
-
-html {
-    scroll-behavior:smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Pretendard", Arial, sans-serif;
 }
 
 body {
-    background:var(--bg);
-    color:#111;
+    background: #f7f7f7;
+    color: #222;
+    line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
 header {
-    min-height:100vh;
-    background:linear-gradient(135deg, #1f7a4f, #145c3c);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:#fff;
-    padding:40px 20px;
+    background: #1f7a4f;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
 }
 
-.hero h1 {
-    font-size:clamp(40px, 6vw, 72px);
-    letter-spacing:3px;
+header h1 {
+    font-size: 36px;
 }
 
-.hero p {
-    margin-top:20px;
-    font-size:clamp(16px, 2vw, 22px);
-    opacity:0.9;
+header p {
+    margin-top: 10px;
+    font-size: 18px;
 }
 
-.hero .cta {
-    margin-top:40px;
-    display:inline-block;
-    padding:16px 42px;
-    border-radius:50px;
-    background:#fff;
-    color:var(--main);
-    font-weight:700;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.hero .cta:hover {
-    transform:translateY(-3px);
-    box-shadow:0 12px 25px rgba(0,0,0,.3);
-}
-
-/* ===== NAV ===== */
 nav {
-    position:sticky;
-    top:0;
-    background:rgba(255,255,255,.92);
-    backdrop-filter: blur(10px);
-    z-index:999;
-    border-bottom:1px solid #eee;
+    background: #155c3b;
+    padding: 10px;
+    text-align: center;
 }
 
-.nav-wrap {
-    max-width:1280px;
-    margin:auto;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
 }
 
-.logo {
-    font-weight:800;
-    color:var(--main);
-    font-size:22px;
-}
-
-.nav-links a {
-    margin-left:24px;
-    text-decoration:none;
-    color:#222;
-    font-weight:600;
-}
-
-.nav-links a:hover {
-    color:var(--main);
-}
-
-/* ===== COMMON ===== */
 section {
-    max-width:1280px;
-    margin:120px auto;
-    padding:0 24px;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
 }
 
-.title {
-    font-size:clamp(28px,4vw,44px);
-    margin-bottom:40px;
+.section-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-left: 6px solid #1f7a4f;
+    padding-left: 12px;
 }
 
 .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-    gap:32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
 }
 
 .card {
-    background:var(--card);
-    padding:40px 32px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,.06);
-    transition:.4s;
-}
-
-.card:hover {
-    transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,.12);
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .card h3 {
-    margin-bottom:14px;
-    color:var(--main);
+    margin-bottom: 10px;
+    color: #1f7a4f;
 }
 
-.card p {
-    color:var(--gray);
-    line-height:1.7;
-}
-
-/* ===== STAT ===== */
-.stats {
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:40px;
-    text-align:center;
-}
-
-.stat h2 {
-    font-size:48px;
-    color:var(--main);
-}
-
-.stat span {
-    color:#444;
-}
-
-/* ===== TIMELINE ===== */
-.timeline {
-    border-left:4px solid var(--main);
-    padding-left:40px;
-}
-
-.step {
-    margin-bottom:50px;
-}
-
-.step h4 {
-    color:var(--main);
-    margin-bottom:8px;
-}
-
-/* ===== FOOTER ===== */
 footer {
-    background:#0c2e20;
-    color:#fff;
-    padding:80px 20px;
-}
-
-.footer-wrap {
-    max-width:1280px;
-    margin:auto;
-    display:grid;
-    gap:40px;
-}
-
-footer h3 {
-    margin-bottom:12px;
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 80px;
 }
 
 footer p {
-    opacity:.8;
-}
-
-/* ===== ANIMATION ===== */
-.reveal {
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
-}
-
-.reveal.active {
-    opacity:1;
-    transform:none;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-    .nav-links {
-        display:none;
-    }
+    font-size: 14px;
 }
 </style>
 </head>
@@ -228,126 +96,115 @@ footer p {
 <body>
 
 <header>
-    <div class="hero">
-        <h1>FRESH FARM</h1>
-        <p>스마트팜 기반 프리미엄 딸기 생산 시스템</p>
-        <a href="#about" class="cta">농장 소개 보기</a>
-    </div>
+    <h1>FRESH FARM</h1>
+    <p>고설재배 · 스마트팜 기반 프리미엄 딸기 농장</p>
 </header>
 
 <nav>
-    <div class="nav-wrap">
-        <div class="logo">FRESH FARM</div>
-        <div class="nav-links">
-            <a href="#about">소개</a>
-            <a href="#system">시스템</a>
-            <a href="#quality">품질</a>
-            <a href="#process">프로세스</a>
-            <a href="#contact">문의</a>
-        </div>
-    </div>
+    <a href="#about">농장소개</a>
+    <a href="#system">재배시스템</a>
+    <a href="#quality">품질관리</a>
+    <a href="#distribution">유통</a>
+    <a href="#contact">연락처</a>
 </nav>
 
-<section id="about" class="reveal">
-    <h2 class="title">농장 개요</h2>
+<section id="about">
+    <h2 class="section-title">농장 소개</h2>
+    <div class="card">
+        <p>
+            FRESH FARM은 전북 완주 봉동에서 고설재배와 스마트팜 기술을 활용하여
+            안정적이고 위생적인 딸기를 생산하는 프리미엄 농장입니다.
+            데이터 기반 환경 제어를 통해 연중 균일한 품질을 유지하고 있습니다.
+        </p>
+    </div>
+</section>
+
+<section id="system">
+    <h2 class="section-title">재배 시스템</h2>
     <div class="grid">
         <div class="card">
-            <h3>운영 철학</h3>
-            <p>데이터 중심 농업으로 생산 안정성과 품질 일관성을 확보합니다.</p>
+            <h3>고설재배</h3>
+            <p>
+                지면과 분리된 구조로 병해를 줄이고 작업 효율을 향상시키며
+                균일한 생육 환경을 유지합니다.
+            </p>
         </div>
         <div class="card">
-            <h3>재배 환경</h3>
-            <p>고설 구조와 자동 환경제어로 위생성과 효율을 극대화합니다.</p>
+            <h3>스마트 환경제어</h3>
+            <p>
+                온도, 습도, CO₂, 광량을 자동으로 제어하여
+                최적의 생육 조건을 유지합니다.
+            </p>
         </div>
         <div class="card">
-            <h3>유통 전략</h3>
-            <p>직거래 중심 구조로 신선도와 가격 경쟁력을 동시에 확보합니다.</p>
+            <h3>데이터 기반 관리</h3>
+            <p>
+                센서 데이터를 기반으로 생육 패턴을 분석하고
+                생산성과 품질을 동시에 관리합니다.
+            </p>
         </div>
     </div>
 </section>
 
-<section class="reveal">
-    <div class="stats">
-        <div class="stat"><h2>22,000+</h2><span>재배 개체</span></div>
-        <div class="stat"><h2>365일</h2><span>환경 모니터링</span></div>
-        <div class="stat"><h2>99%</h2><span>품질 안정률</span></div>
-        <div class="stat"><h2>0단계</h2><span>중간 유통</span></div>
-    </div>
-</section>
-
-<section id="system" class="reveal">
-    <h2 class="title">재배 시스템</h2>
-    <div class="grid">
-        <div class="card"><h3>고설재배</h3><p>토양 분리 구조로 병해 감소 및 작업 효율 향상.</p></div>
-        <div class="card"><h3>환경 자동제어</h3><p>온습도, CO₂, 광량 자동 제어.</p></div>
-        <div class="card"><h3>데이터 분석</h3><p>생육 데이터 기반 생산 최적화.</p></div>
-    </div>
-</section>
-
-<section id="quality" class="reveal">
-    <h2 class="title">품질 관리</h2>
-    <div class="grid">
-        <div class="card"><h3>위생 관리</h3><p>청결 구역 분리 운영.</p></div>
-        <div class="card"><h3>농약 최소화</h3><p>예방 중심 관리.</p></div>
-        <div class="card"><h3>당도 관리</h3><p>영양 밸런스 자동 제어.</p></div>
-    </div>
-</section>
-
-<section id="process" class="reveal">
-    <h2 class="title">운영 프로세스</h2>
-    <div class="timeline">
-        <div class="step"><h4>01 환경 분석</h4><p>센서 데이터 수집</p></div>
-        <div class="step"><h4>02 생육 제어</h4><p>자동 환경 최적화</p></div>
-        <div class="step"><h4>03 품질 검증</h4><p>수확 전 당도 체크</p></div>
-        <div class="step"><h4>04 직배송</h4><p>신선 출하</p></div>
-    </div>
-</section>
-
-<section id="contact" class="reveal">
-    <h2 class="title">문의</h2>
+<section id="quality">
+    <h2 class="section-title">품질 관리</h2>
     <div class="grid">
         <div class="card">
-            <h3>주소</h3>
-            <p>전북 완주군 봉동읍 장기리 1729</p>
+            <h3>위생 관리</h3>
+            <p>
+                외부 오염을 최소화하고 작업 동선을 분리하여
+                청결한 재배 환경을 유지합니다.
+            </p>
         </div>
         <div class="card">
-            <h3>연락처</h3>
-            <p>010-3945-1394</p>
+            <h3>농약 최소화</h3>
+            <p>
+                환경 제어와 예방 중심 관리로
+                화학 농약 사용을 최소화합니다.
+            </p>
         </div>
         <div class="card">
-            <h3>운영 시간</h3>
-            <p>연중 운영</p>
+            <h3>당도 관리</h3>
+            <p>
+                수확 시기와 영양 밸런스를 조절하여
+                일정한 당도와 향을 유지합니다.
+            </p>
         </div>
+    </div>
+</section>
+
+<section id="distribution">
+    <h2 class="section-title">유통 및 판매</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>직거래 중심</h3>
+            <p>
+                중간 유통 단계를 줄여 신선도를 유지하고
+                합리적인 가격을 제공합니다.
+            </p>
+        </div>
+        <div class="card">
+            <h3>지역 유통</h3>
+            <p>
+                지역 소비자와 직접 연결되는 유통 구조를 통해
+                빠른 공급과 신뢰를 확보합니다.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">연락처</h2>
+    <div class="card">
+        <p><strong>주소:</strong> 전북 완주군 봉동읍 장기리 1729</p>
+        <p><strong>전화:</strong> 010-3945-1394</p>
+        <p><strong>운영:</strong> 연중 운영 (수확 시즌 변동)</p>
     </div>
 </section>
 
 <footer>
-    <div class="footer-wrap">
-        <div>
-            <h3>FRESH FARM</h3>
-            <p>스마트 농업 기반 프리미엄 생산</p>
-        </div>
-        <div>
-            <p>© 2026 FRESH FARM. All Rights Reserved.</p>
-        </div>
-    </div>
+    <p>© 2026 FRESH FARM. All Rights Reserved.</p>
 </footer>
-
-<script>
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll(){
-    reveals.forEach(el=>{
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            el.classList.add("active");
-        }
-    });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-</script>
 
 </body>
 </html>
