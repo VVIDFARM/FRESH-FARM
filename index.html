@@ -5,14 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>생생농장</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
-    --green:#1f7a4f;
-    --green-dark:#0f4f34;
-    --red:#d62828;
-    --bg:#f4f6f5;
+    --green:#2fa36b;
+    --green-soft:#eaf7f1;
+    --red:#e53935;
+    --bg:#ffffff;
     --card:#ffffff;
     --text:#111;
     --muted:#555;
@@ -22,18 +20,17 @@
 html{scroll-behavior:smooth;}
 
 body{
-    font-family:'Pretendard',sans-serif;
-    background:linear-gradient(120deg,#eef7f2,#ffffff);
+    font-family: "Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    background:var(--bg);
     color:var(--text);
 }
 
 /* HEADER */
 header{
-    min-height:100vh;
+    min-height:90vh;
     background:
-        radial-gradient(circle at top right, rgba(214,40,40,.15), transparent 40%),
-        linear-gradient(135deg,var(--green),var(--green-dark));
-    color:#fff;
+        radial-gradient(circle at top right, rgba(229,57,53,.15), transparent 45%),
+        linear-gradient(180deg,var(--green-soft),#ffffff);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -42,37 +39,40 @@ header{
 }
 
 .hero h1{
-    font-size:clamp(44px,6vw,84px);
+    font-size:clamp(46px,7vw,88px);
     letter-spacing:4px;
+    color:var(--green);
 }
 
 .hero p{
-    margin-top:16px;
-    font-size:18px;
-    opacity:.9;
+    margin-top:18px;
+    font-size:20px;
+    color:#333;
 }
 
 .hero a{
-    margin-top:40px;
+    margin-top:46px;
     display:inline-block;
-    padding:16px 50px;
+    padding:16px 54px;
     background:var(--red);
     color:#fff;
-    border-radius:50px;
+    border-radius:60px;
     text-decoration:none;
     font-weight:700;
-    transition:.3s;
+    transition:.25s;
 }
 
 .hero a:hover{
-    background:#b51f1f;
+    transform:translateY(-2px);
+    opacity:.9;
 }
 
 /* NAV */
 nav{
     position:sticky;
     top:0;
-    background:#fff;
+    background:#ffffffee;
+    backdrop-filter:blur(6px);
     border-bottom:1px solid #eee;
     z-index:999;
 }
@@ -87,13 +87,13 @@ nav{
 }
 
 .logo{
-    font-weight:800;
-    font-size:20px;
+    font-weight:900;
+    font-size:22px;
     color:var(--green);
 }
 
 .nav-links a{
-    margin-left:26px;
+    margin-left:28px;
     text-decoration:none;
     color:#222;
     font-weight:600;
@@ -106,14 +106,14 @@ nav{
 /* SECTION */
 section{
     max-width:1200px;
-    margin:120px auto;
+    margin:110px auto;
     padding:0 24px;
 }
 
 .title{
-    font-size:clamp(28px,4vw,48px);
-    margin-bottom:40px;
-    color:var(--green-dark);
+    font-size:clamp(30px,4vw,48px);
+    margin-bottom:46px;
+    color:#222;
 }
 
 .grid{
@@ -124,30 +124,31 @@ section{
 
 .card{
     background:var(--card);
-    padding:36px 32px;
-    border-radius:18px;
-    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    padding:38px 34px;
+    border-radius:20px;
+    border:1px solid #f0f0f0;
     transition:.25s;
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-4px);
+    border-color:var(--green);
 }
 
 .card h3{
     color:var(--green);
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.card p, .card li{
+.card p{
     color:var(--muted);
     line-height:1.6;
 }
 
 /* FOOTER */
 footer{
-    background:var(--green-dark);
-    color:#fff;
+    background:var(--green-soft);
+    color:#333;
     padding:80px 20px;
     text-align:center;
     margin-top:120px;
@@ -156,8 +157,8 @@ footer{
 /* REVEAL */
 .reveal{
     opacity:0;
-    transform:translateY(30px);
-    transition:.5s ease;
+    transform:translateY(20px);
+    transition:.4s ease;
 }
 .reveal.active{
     opacity:1;
@@ -177,7 +178,7 @@ footer{
     <div class="hero">
         <h1>생생농장</h1>
         <p>완주 봉동 스마트 딸기 농장</p>
-        <a href="#about">농장 보기</a>
+        <a href="#about">농장 소개 보기</a>
     </div>
 </header>
 
@@ -197,16 +198,16 @@ footer{
     <h2 class="title">농장소개</h2>
     <div class="grid">
         <div class="card">
-            <h3>위치</h3>
+            <h3>농장 위치</h3>
             <p>전북 완주군 봉동읍</p>
         </div>
         <div class="card">
-            <h3>재배방식</h3>
-            <p>고설 스마트팜 재배</p>
+            <h3>재배 환경</h3>
+            <p>고설 스마트팜 시스템</p>
         </div>
         <div class="card">
-            <h3>운영방향</h3>
-            <p>신선 · 안전 · 품질 중심</p>
+            <h3>운영 철학</h3>
+            <p>신선함과 안전을 최우선</p>
         </div>
     </div>
 </section>
@@ -214,9 +215,9 @@ footer{
 <section id="tech" class="reveal">
     <h2 class="title">재배기술</h2>
     <div class="grid">
-        <div class="card"><h3>고설재배</h3><p>위생적 재배 구조</p></div>
-        <div class="card"><h3>환경제어</h3><p>온습도 · 광량 · 양액 자동관리</p></div>
-        <div class="card"><h3>데이터관리</h3><p>생육 상태 기록 관리</p></div>
+        <div class="card"><h3>고설재배</h3><p>청결하고 효율적인 구조</p></div>
+        <div class="card"><h3>자동 환경제어</h3><p>온도 · 습도 · 양액 관리</p></div>
+        <div class="card"><h3>생육 데이터 관리</h3><p>품질 안정화 시스템</p></div>
     </div>
 </section>
 
@@ -237,7 +238,7 @@ footer{
             </p>
         </div>
         <div class="card">
-            <h3>출하 방식</h3>
+            <h3>출하 관리</h3>
             <p>당일 선별 · 신선 출하</p>
         </div>
     </div>
@@ -246,14 +247,20 @@ footer{
 <section id="contact" class="reveal">
     <h2 class="title">문의</h2>
     <div class="grid">
-        <div class="card"><h3>지역</h3><p>완주 봉동</p></div>
-        <div class="card"><h3>상담</h3><p>납품 · 협업 문의 가능</p></div>
+        <div class="card">
+            <h3>상담 안내</h3>
+            <p>납품 및 협업 문의 가능</p>
+        </div>
+        <div class="card">
+            <h3>운영 지역</h3>
+            <p>완주 봉동</p>
+        </div>
     </div>
 </section>
 
 <footer>
     <p>생생농장</p>
-    <p>완주 봉동 딸기 농장</p>
+    <p>신선한 딸기를 정직하게 재배합니다</p>
 </footer>
 
 <script>
@@ -262,7 +269,7 @@ const reveals = document.querySelectorAll(".reveal");
 function reveal(){
     reveals.forEach(el=>{
         const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 80){
+        if(top < window.innerHeight - 60){
             el.classList.add("active");
         }
     });
