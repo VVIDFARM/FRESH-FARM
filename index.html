@@ -5,204 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>생생농장</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Pretendard:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --bg:#050807;
-    --glass:rgba(255,255,255,.08);
-    --line:rgba(255,255,255,.12);
-    --primary:#3cff9b;
-    --accent:#00ffa6;
-    --text:#eafff6;
-    --muted:#9adfc2;
+    --green:#1f7a4f;
+    --green-dark:#0f4f34;
+    --red:#d62828;
+    --bg:#f4f6f5;
+    --card:#ffffff;
+    --text:#111;
+    --muted:#555;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+
 body{
     font-family:'Pretendard',sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, #0d2f23 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, #06261b 0%, transparent 40%),
-        var(--bg);
+    background:linear-gradient(120deg,#eef7f2,#ffffff);
     color:var(--text);
 }
 
-/* ===== HERO ===== */
+/* HEADER */
 header{
     min-height:100vh;
+    background:
+        radial-gradient(circle at top right, rgba(214,40,40,.15), transparent 40%),
+        linear-gradient(135deg,var(--green),var(--green-dark));
+    color:#fff;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    gap:40px;
+    padding:40px 20px;
 }
-
-/* Strawberry Drawing */
-.strawberry{
-    width:160px;
-    height:180px;
-    background:linear-gradient(145deg,#ff4d6d,#d90429);
-    border-radius:50% 50% 60% 60%;
-    position:relative;
-    box-shadow:0 0 40px rgba(255,80,120,.5);
-}
-.strawberry::before{
-    content:"";
-    position:absolute;
-    top:-45px;
-    left:50%;
-    transform:translateX(-50%);
-    width:120px;
-    height:60px;
-    background:#2ecc71;
-    border-radius:0 0 100px 100px;
-}
-.seed{
-    position:absolute;
-    width:6px;
-    height:10px;
-    background:#ffe066;
-    border-radius:50%;
-}
-.seed:nth-child(1){top:40px;left:40px;}
-.seed:nth-child(2){top:70px;left:80px;}
-.seed:nth-child(3){top:100px;left:50px;}
-.seed:nth-child(4){top:120px;left:90px;}
-.seed:nth-child(5){top:60px;left:110px;}
-.seed:nth-child(6){top:90px;left:30px;}
 
 .hero h1{
-    font-family:'Montserrat',sans-serif;
-    font-size:clamp(48px,7vw,100px);
-    letter-spacing:6px;
-    background:linear-gradient(90deg,#3cff9b,#00ffa6);
-    -webkit-background-clip:text;
-    color:transparent;
+    font-size:clamp(44px,6vw,84px);
+    letter-spacing:4px;
 }
 
 .hero p{
-    color:var(--muted);
-    letter-spacing:2px;
+    margin-top:16px;
+    font-size:18px;
+    opacity:.9;
 }
 
 .hero a{
-    padding:16px 52px;
-    border-radius:60px;
-    background:linear-gradient(135deg,#3cff9b,#00ffa6);
-    color:#002016;
-    font-weight:800;
+    margin-top:40px;
+    display:inline-block;
+    padding:16px 50px;
+    background:var(--red);
+    color:#fff;
+    border-radius:50px;
     text-decoration:none;
+    font-weight:700;
     transition:.3s;
 }
+
 .hero a:hover{
-    transform:translateY(-4px);
-    box-shadow:0 0 30px rgba(60,255,155,.6);
+    background:#b51f1f;
 }
 
-/* ===== NAV ===== */
+/* NAV */
 nav{
     position:sticky;
     top:0;
-    backdrop-filter:blur(12px);
-    background:rgba(0,0,0,.6);
-    border-bottom:1px solid var(--line);
+    background:#fff;
+    border-bottom:1px solid #eee;
     z-index:999;
 }
+
 .nav-wrap{
     max-width:1200px;
     margin:auto;
-    padding:16px 28px;
+    padding:14px 24px;
     display:flex;
     justify-content:space-between;
+    align-items:center;
 }
+
 .logo{
     font-weight:800;
-    color:var(--primary);
-    letter-spacing:2px;
+    font-size:20px;
+    color:var(--green);
 }
-.nav-links a{
-    margin-left:28px;
-    color:var(--text);
-    text-decoration:none;
-    font-weight:600;
-    position:relative;
-}
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:2px;
-    background:var(--accent);
-    transition:.3s;
-}
-.nav-links a:hover::after{width:100%;}
 
-/* ===== SECTION ===== */
+.nav-links a{
+    margin-left:26px;
+    text-decoration:none;
+    color:#222;
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:var(--red);
+}
+
+/* SECTION */
 section{
     max-width:1200px;
-    margin:160px auto;
-    padding:0 28px;
+    margin:120px auto;
+    padding:0 24px;
 }
+
 .title{
-    font-family:'Montserrat',sans-serif;
-    font-size:clamp(32px,4vw,56px);
-    margin-bottom:60px;
-    letter-spacing:3px;
+    font-size:clamp(28px,4vw,48px);
+    margin-bottom:40px;
+    color:var(--green-dark);
 }
+
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:36px;
+    gap:28px;
 }
+
 .card{
-    background:var(--glass);
-    backdrop-filter:blur(14px);
-    border:1px solid var(--line);
-    border-radius:26px;
-    padding:46px 38px;
-    text-align:center;
-    transition:.4s;
+    background:var(--card);
+    padding:36px 32px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    transition:.25s;
 }
+
 .card:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
+    transform:translateY(-6px);
 }
+
 .card h3{
-    color:var(--primary);
-    margin-bottom:12px;
-    letter-spacing:1px;
+    color:var(--green);
+    margin-bottom:10px;
 }
+
 .card p, .card li{
     color:var(--muted);
-    font-size:15px;
     line-height:1.6;
 }
 
 /* FOOTER */
 footer{
-    border-top:1px solid var(--line);
-    padding:100px 20px;
+    background:var(--green-dark);
+    color:#fff;
+    padding:80px 20px;
     text-align:center;
-    color:var(--muted);
+    margin-top:120px;
 }
 
 /* REVEAL */
 .reveal{
     opacity:0;
-    transform:translateY(60px) scale(.95);
-    transition:1s cubic-bezier(.2,.8,.2,1);
+    transform:translateY(30px);
+    transition:.5s ease;
 }
 .reveal.active{
     opacity:1;
     transform:none;
 }
 
-@media(max-width:900px){
+/* MOBILE */
+@media(max-width:768px){
     .nav-links{display:none;}
 }
 </style>
@@ -211,87 +174,86 @@ footer{
 <body>
 
 <header>
-    <div class="strawberry">
-        <div class="seed"></div><div class="seed"></div><div class="seed"></div>
-        <div class="seed"></div><div class="seed"></div><div class="seed"></div>
-    </div>
-
     <div class="hero">
         <h1>생생농장</h1>
-        <p>WANJU · BONGDONG · STRAWBERRY FARM</p>
-        <a href="#about">ENTER</a>
+        <p>완주 봉동 스마트 딸기 농장</p>
+        <a href="#about">농장 보기</a>
     </div>
 </header>
 
 <nav>
     <div class="nav-wrap">
-        <div class="logo">SAENGSAENG</div>
+        <div class="logo">생생농장</div>
         <div class="nav-links">
-            <a href="#about">농장</a>
-            <a href="#tech">기술</a>
-            <a href="#product">제품</a>
+            <a href="#about">농장소개</a>
+            <a href="#tech">재배기술</a>
+            <a href="#product">제품안내</a>
             <a href="#contact">문의</a>
         </div>
     </div>
 </nav>
 
 <section id="about" class="reveal">
-    <h2 class="title">FARM</h2>
+    <h2 class="title">농장소개</h2>
     <div class="grid">
         <div class="card">
             <h3>위치</h3>
-            <p>전북 완주 봉동</p>
+            <p>전북 완주군 봉동읍</p>
         </div>
         <div class="card">
-            <h3>방식</h3>
-            <p>스마트 고설 재배</p>
+            <h3>재배방식</h3>
+            <p>고설 스마트팜 재배</p>
         </div>
         <div class="card">
-            <h3>철학</h3>
-            <p>품질 · 신뢰 · 지속성</p>
+            <h3>운영방향</h3>
+            <p>신선 · 안전 · 품질 중심</p>
         </div>
     </div>
 </section>
 
 <section id="tech" class="reveal">
-    <h2 class="title">TECH</h2>
+    <h2 class="title">재배기술</h2>
     <div class="grid">
-        <div class="card"><h3>고설 시스템</h3><p>위생 · 효율</p></div>
-        <div class="card"><h3>환경 제어</h3><p>온습도 · 광량 · 양액</p></div>
-        <div class="card"><h3>데이터 관리</h3><p>품질 안정화</p></div>
+        <div class="card"><h3>고설재배</h3><p>위생적 재배 구조</p></div>
+        <div class="card"><h3>환경제어</h3><p>온습도 · 광량 · 양액 자동관리</p></div>
+        <div class="card"><h3>데이터관리</h3><p>생육 상태 기록 관리</p></div>
     </div>
 </section>
 
 <section id="product" class="reveal">
-    <h2 class="title">PRODUCT</h2>
+    <h2 class="title">제품안내</h2>
     <div class="grid">
+        <div class="card">
+            <h3>판매 품종</h3>
+            <p>설향 · 킹스베리</p>
+        </div>
         <div class="card">
             <h3>납품처</h3>
             <p>
-                완주로컬푸드<br>
+                완주로컬푸드직매장<br>
                 효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산<br><br>
-                하나로마트<br>
+                농협 하나로마트<br>
                 용진 · 봉동
             </p>
         </div>
         <div class="card">
-            <h3>특징</h3>
-            <p>고당도 · 신선 · 당일 출하</p>
+            <h3>출하 방식</h3>
+            <p>당일 선별 · 신선 출하</p>
         </div>
     </div>
 </section>
 
 <section id="contact" class="reveal">
-    <h2 class="title">CONTACT</h2>
+    <h2 class="title">문의</h2>
     <div class="grid">
         <div class="card"><h3>지역</h3><p>완주 봉동</p></div>
-        <div class="card"><h3>문의</h3><p>납품 · 협업 상담</p></div>
+        <div class="card"><h3>상담</h3><p>납품 · 협업 문의 가능</p></div>
     </div>
 </section>
 
 <footer>
-    <p>SAENGSAENG FARM</p>
-    <p>© 2026 All Rights Reserved</p>
+    <p>생생농장</p>
+    <p>완주 봉동 딸기 농장</p>
 </footer>
 
 <script>
@@ -300,7 +262,7 @@ const reveals = document.querySelectorAll(".reveal");
 function reveal(){
     reveals.forEach(el=>{
         const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 120){
+        if(top < window.innerHeight - 80){
             el.classList.add("active");
         }
     });
