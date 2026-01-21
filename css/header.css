@@ -1,21 +1,23 @@
 .header {
-  position: fixed;
-  width: 100%;
-  padding: 25px 80px;
-  display: flex;
-  justify-content: space-between;
-  backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
+  position:fixed;
+  width:100%;
+  padding:25px 80px;
+  display:flex;
+  justify-content:space-between;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(12px);
+  z-index:1000;
 }
 
 .logo {
-  font-weight: 900;
-  letter-spacing: 3px;
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
 .nav a {
-  margin-left: 40px;
-  color: white;
-  text-decoration: none;
+  margin-left:35px;
+  color:white;
+  text-decoration:none;
+  font-weight:500;
 }
