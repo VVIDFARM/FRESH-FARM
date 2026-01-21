@@ -20,7 +20,7 @@
 html{scroll-behavior:smooth;}
 
 body{
-    font-family: "Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     background:var(--bg);
     color:var(--text);
 }
@@ -51,7 +51,7 @@ header{
 }
 
 .hero a{
-    margin-top:46px;
+    margin-top:36px;
     display:inline-block;
     padding:16px 54px;
     background:var(--red);
@@ -124,7 +124,7 @@ section{
 
 .card{
     background:var(--card);
-    padding:38px 34px;
+    padding:34px 32px;
     border-radius:20px;
     border:1px solid #f0f0f0;
     transition:.25s;
@@ -143,6 +143,29 @@ section{
 .card p{
     color:var(--muted);
     line-height:1.6;
+}
+
+/* IMAGE BOX */
+.illustration{
+    display:flex;
+    justify-content:center;
+    margin-bottom:24px;
+}
+
+svg{
+    max-width:160px;
+}
+
+/* BUTTON */
+.call-btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:14px 26px;
+    background:var(--green);
+    color:#fff;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:700;
 }
 
 /* FOOTER */
@@ -178,7 +201,7 @@ footer{
     <div class="hero">
         <h1>생생농장</h1>
         <p>완주 봉동 스마트 딸기 농장</p>
-        <a href="#about">농장 소개 보기</a>
+        <a href="#about">농장 둘러보기</a>
     </div>
 </header>
 
@@ -194,40 +217,88 @@ footer{
     </div>
 </nav>
 
+<!-- 농장소개 -->
 <section id="about" class="reveal">
     <h2 class="title">농장소개</h2>
     <div class="grid">
         <div class="card">
+            <div class="illustration">
+                <!-- 딸기 SVG -->
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="55" r="32" fill="#e53935"/>
+                    <path d="M20 35 Q50 10 80 35" fill="#2fa36b"/>
+                    <circle cx="40" cy="55" r="3" fill="#fff"/>
+                    <circle cx="55" cy="65" r="3" fill="#fff"/>
+                    <circle cx="60" cy="50" r="3" fill="#fff"/>
+                </svg>
+            </div>
             <h3>농장 위치</h3>
-            <p>전북 완주군 봉동읍</p>
+            <p>전북 완주군 봉동읍 장기리 1729</p>
         </div>
+
         <div class="card">
-            <h3>재배 환경</h3>
-            <p>고설 스마트팜 시스템</p>
+            <h3>운영 방향</h3>
+            <p>신선 · 안전 · 품질 중심 재배</p>
         </div>
+
         <div class="card">
-            <h3>운영 철학</h3>
-            <p>신선함과 안전을 최우선</p>
+            <h3>브랜드</h3>
+            <p>생생농장 / 생생딸기</p>
         </div>
     </div>
 </section>
 
+<!-- 재배기술 -->
 <section id="tech" class="reveal">
     <h2 class="title">재배기술</h2>
     <div class="grid">
-        <div class="card"><h3>고설재배</h3><p>청결하고 효율적인 구조</p></div>
-        <div class="card"><h3>자동 환경제어</h3><p>온도 · 습도 · 양액 관리</p></div>
-        <div class="card"><h3>생육 데이터 관리</h3><p>품질 안정화 시스템</p></div>
+        <div class="card">
+            <div class="illustration">
+                <!-- 스마트팜 SVG -->
+                <svg viewBox="0 0 120 100">
+                    <rect x="10" y="40" width="100" height="40" rx="8" fill="#2fa36b"/>
+                    <rect x="20" y="30" width="80" height="20" fill="#eaf7f1"/>
+                    <circle cx="35" cy="60" r="6" fill="#fff"/>
+                    <circle cx="60" cy="60" r="6" fill="#fff"/>
+                    <circle cx="85" cy="60" r="6" fill="#fff"/>
+                </svg>
+            </div>
+            <h3>스마트팜 시스템</h3>
+            <p>온도 · 습도 · 양액 자동 제어</p>
+        </div>
+
+        <div class="card">
+            <h3>고설 재배</h3>
+            <p>위생적 환경, 균일한 품질 유지</p>
+        </div>
+
+        <div class="card">
+            <h3>생육 관리</h3>
+            <p>데이터 기반 생육 안정화</p>
+        </div>
     </div>
 </section>
 
+<!-- 제품안내 -->
 <section id="product" class="reveal">
     <h2 class="title">제품안내</h2>
     <div class="grid">
         <div class="card">
-            <h3>판매 품종</h3>
-            <p>설향 · 킹스베리</p>
+            <h3>설향</h3>
+            <p>
+                당도가 높고 향이 진한 대표 품종<br>
+                과즙이 풍부하고 식감이 부드러움
+            </p>
         </div>
+
+        <div class="card">
+            <h3>킹스베리</h3>
+            <p>
+                크기가 크고 단단한 프리미엄 품종<br>
+                선물용 및 고급 유통에 적합
+            </p>
+        </div>
+
         <div class="card">
             <h3>납품처</h3>
             <p>
@@ -237,23 +308,22 @@ footer{
                 용진 · 봉동
             </p>
         </div>
-        <div class="card">
-            <h3>출하 관리</h3>
-            <p>당일 선별 · 신선 출하</p>
-        </div>
     </div>
 </section>
 
+<!-- 문의 -->
 <section id="contact" class="reveal">
     <h2 class="title">문의</h2>
     <div class="grid">
         <div class="card">
-            <h3>상담 안내</h3>
-            <p>납품 및 협업 문의 가능</p>
+            <h3>전화 문의</h3>
+            <p>010-3945-1394</p>
+            <a class="call-btn" href="tel:01039451394">전화 바로걸기</a>
         </div>
+
         <div class="card">
-            <h3>운영 지역</h3>
-            <p>완주 봉동</p>
+            <h3>주소</h3>
+            <p>전북 완주군 봉동읍 장기리 1729</p>
         </div>
     </div>
 </section>
@@ -274,7 +344,6 @@ function reveal(){
         }
     });
 }
-
 window.addEventListener("scroll", reveal);
 reveal();
 </script>
