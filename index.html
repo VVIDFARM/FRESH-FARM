@@ -3,25 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생딸기</title>
+<title>생생농장</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Pretendard:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
     --bg:#050807;
-    --glass:rgba(255,255,255,0.08);
-    --line:rgba(255,255,255,0.12);
+    --glass:rgba(255,255,255,.08);
+    --line:rgba(255,255,255,.12);
     --primary:#3cff9b;
     --accent:#00ffa6;
-    --text:#eafef5;
+    --text:#eafff6;
     --muted:#9adfc2;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
-
 body{
     font-family:'Pretendard',sans-serif;
     background:
@@ -29,98 +27,109 @@ body{
         radial-gradient(circle at 80% 80%, #06261b 0%, transparent 40%),
         var(--bg);
     color:var(--text);
-    overflow-x:hidden;
 }
 
 /* ===== HERO ===== */
 header{
     min-height:100vh;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    position:relative;
+    gap:40px;
 }
 
-header::after{
+/* Strawberry Drawing */
+.strawberry{
+    width:160px;
+    height:180px;
+    background:linear-gradient(145deg,#ff4d6d,#d90429);
+    border-radius:50% 50% 60% 60%;
+    position:relative;
+    box-shadow:0 0 40px rgba(255,80,120,.5);
+}
+.strawberry::before{
     content:"";
     position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent 20%,rgba(60,255,155,.15),transparent 80%);
-    animation:scan 6s linear infinite;
+    top:-45px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:60px;
+    background:#2ecc71;
+    border-radius:0 0 100px 100px;
 }
-
-@keyframes scan{
-    from{transform:translateX(-100%);}
-    to{transform:translateX(100%);}
+.seed{
+    position:absolute;
+    width:6px;
+    height:10px;
+    background:#ffe066;
+    border-radius:50%;
 }
+.seed:nth-child(1){top:40px;left:40px;}
+.seed:nth-child(2){top:70px;left:80px;}
+.seed:nth-child(3){top:100px;left:50px;}
+.seed:nth-child(4){top:120px;left:90px;}
+.seed:nth-child(5){top:60px;left:110px;}
+.seed:nth-child(6){top:90px;left:30px;}
 
 .hero h1{
     font-family:'Montserrat',sans-serif;
-    font-size:clamp(52px,7vw,110px);
+    font-size:clamp(48px,7vw,100px);
     letter-spacing:6px;
-    background:linear-gradient(90deg,#3cff9b,#00ffa6,#3cff9b);
+    background:linear-gradient(90deg,#3cff9b,#00ffa6);
     -webkit-background-clip:text;
     color:transparent;
 }
 
 .hero p{
-    margin-top:24px;
-    font-size:clamp(16px,2vw,22px);
     color:var(--muted);
+    letter-spacing:2px;
 }
 
 .hero a{
-    margin-top:50px;
-    display:inline-block;
-    padding:18px 56px;
+    padding:16px 52px;
     border-radius:60px;
     background:linear-gradient(135deg,#3cff9b,#00ffa6);
     color:#002016;
     font-weight:800;
-    letter-spacing:1px;
     text-decoration:none;
-    transition:.4s;
+    transition:.3s;
 }
-
 .hero a:hover{
-    transform:translateY(-6px) scale(1.03);
-    box-shadow:0 0 40px rgba(60,255,155,.6);
+    transform:translateY(-4px);
+    box-shadow:0 0 30px rgba(60,255,155,.6);
 }
 
 /* ===== NAV ===== */
 nav{
     position:sticky;
     top:0;
-    z-index:999;
-    backdrop-filter:blur(14px);
-    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,.6);
     border-bottom:1px solid var(--line);
+    z-index:999;
 }
-
 .nav-wrap{
-    max-width:1400px;
+    max-width:1200px;
     margin:auto;
-    padding:18px 28px;
+    padding:16px 28px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
 }
-
 .logo{
     font-weight:800;
-    letter-spacing:2px;
     color:var(--primary);
+    letter-spacing:2px;
 }
-
 .nav-links a{
-    margin-left:32px;
+    margin-left:28px;
+    color:var(--text);
     text-decoration:none;
     font-weight:600;
-    color:var(--text);
     position:relative;
 }
-
 .nav-links a::after{
     content:"";
     position:absolute;
@@ -131,105 +140,68 @@ nav{
     background:var(--accent);
     transition:.3s;
 }
-
-.nav-links a:hover::after{
-    width:100%;
-}
+.nav-links a:hover::after{width:100%;}
 
 /* ===== SECTION ===== */
 section{
-    max-width:1400px;
+    max-width:1200px;
     margin:160px auto;
     padding:0 28px;
 }
-
 .title{
     font-family:'Montserrat',sans-serif;
-    font-size:clamp(36px,4vw,64px);
-    margin-bottom:70px;
+    font-size:clamp(32px,4vw,56px);
+    margin-bottom:60px;
     letter-spacing:3px;
 }
-
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:40px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:36px;
 }
-
-/* ===== GLASS CARD ===== */
 .card{
     background:var(--glass);
     backdrop-filter:blur(14px);
     border:1px solid var(--line);
-    border-radius:28px;
-    padding:48px 40px;
-    position:relative;
-    overflow:hidden;
-    transition:.5s;
+    border-radius:26px;
+    padding:46px 38px;
+    text-align:center;
+    transition:.4s;
 }
-
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent,rgba(60,255,155,.18),transparent);
-    opacity:0;
-    transition:.5s;
-}
-
-.card:hover::before{
-    opacity:1;
-}
-
 .card:hover{
-    transform:translateY(-14px) scale(1.02);
-    box-shadow:0 40px 90px rgba(0,0,0,.6);
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
-
 .card h3{
-    margin-bottom:16px;
     color:var(--primary);
+    margin-bottom:12px;
     letter-spacing:1px;
 }
-
 .card p, .card li{
     color:var(--muted);
-    line-height:1.8;
+    font-size:15px;
+    line-height:1.6;
 }
 
-/* ===== TAG ===== */
-.tag{
-    display:inline-block;
-    padding:6px 14px;
-    border-radius:20px;
-    border:1px solid var(--line);
-    font-size:12px;
-    margin-bottom:16px;
-    color:var(--accent);
-}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
-    margin-top:200px;
-    padding:120px 28px;
     border-top:1px solid var(--line);
+    padding:100px 20px;
     text-align:center;
     color:var(--muted);
 }
 
-/* ===== ANIMATION ===== */
+/* REVEAL */
 .reveal{
     opacity:0;
-    transform:translateY(80px) scale(.95);
-    transition:1.2s cubic-bezier(.2,.8,.2,1);
+    transform:translateY(60px) scale(.95);
+    transition:1s cubic-bezier(.2,.8,.2,1);
 }
-
 .reveal.active{
     opacity:1;
     transform:none;
 }
 
-/* MOBILE */
 @media(max-width:900px){
     .nav-links{display:none;}
 }
@@ -239,10 +211,15 @@ footer{
 <body>
 
 <header>
+    <div class="strawberry">
+        <div class="seed"></div><div class="seed"></div><div class="seed"></div>
+        <div class="seed"></div><div class="seed"></div><div class="seed"></div>
+    </div>
+
     <div class="hero">
-        <h1>생생딸기</h1>
-        <p>Wanju Bongdong Smart Strawberry Farm</p>
-        <a href="#about">EXPLORE FARM</a>
+        <h1>생생농장</h1>
+        <p>WANJU · BONGDONG · STRAWBERRY FARM</p>
+        <a href="#about">ENTER</a>
     </div>
 </header>
 
@@ -250,83 +227,56 @@ footer{
     <div class="nav-wrap">
         <div class="logo">SAENGSAENG</div>
         <div class="nav-links">
-            <a href="#about">농장소개</a>
-            <a href="#tech">재배기술</a>
-            <a href="#product">제품안내</a>
+            <a href="#about">농장</a>
+            <a href="#tech">기술</a>
+            <a href="#product">제품</a>
             <a href="#contact">문의</a>
         </div>
     </div>
 </nav>
 
 <section id="about" class="reveal">
-    <h2 class="title">FARM IDENTITY</h2>
+    <h2 class="title">FARM</h2>
     <div class="grid">
         <div class="card">
-            <span class="tag">LOCATION</span>
-            <h3>완주 봉동</h3>
-            <p>청정 환경에서 스마트 고설 시스템으로 프리미엄 딸기를 생산합니다.</p>
+            <h3>위치</h3>
+            <p>전북 완주 봉동</p>
         </div>
         <div class="card">
-            <span class="tag">PHILOSOPHY</span>
-            <h3>품질 중심 운영</h3>
-            <p>데이터 기반 환경 제어로 항상 균일한 품질을 유지합니다.</p>
+            <h3>방식</h3>
+            <p>스마트 고설 재배</p>
         </div>
         <div class="card">
-            <span class="tag">MISSION</span>
-            <h3>신뢰 생산</h3>
-            <p>소비자와 지역 유통 파트너에게 안정적인 공급을 제공합니다.</p>
+            <h3>철학</h3>
+            <p>품질 · 신뢰 · 지속성</p>
         </div>
     </div>
 </section>
 
 <section id="tech" class="reveal">
-    <h2 class="title">SMART TECHNOLOGY</h2>
+    <h2 class="title">TECH</h2>
     <div class="grid">
-        <div class="card">
-            <span class="tag">SYSTEM</span>
-            <h3>고설 재배</h3>
-            <p>병해 감소, 작업 효율 극대화, 균일 생육 환경 확보.</p>
-        </div>
-        <div class="card">
-            <span class="tag">CONTROL</span>
-            <h3>자동 환경 제어</h3>
-            <p>온도·습도·광량·양액 자동 최적화.</p>
-        </div>
-        <div class="card">
-            <span class="tag">DATA</span>
-            <h3>생육 데이터 분석</h3>
-            <p>생산성과 품질을 동시에 관리합니다.</p>
-        </div>
+        <div class="card"><h3>고설 시스템</h3><p>위생 · 효율</p></div>
+        <div class="card"><h3>환경 제어</h3><p>온습도 · 광량 · 양액</p></div>
+        <div class="card"><h3>데이터 관리</h3><p>품질 안정화</p></div>
     </div>
 </section>
 
 <section id="product" class="reveal">
-    <h2 class="title">PRODUCT & DELIVERY</h2>
+    <h2 class="title">PRODUCT</h2>
     <div class="grid">
         <div class="card">
-            <span class="tag">FEATURE</span>
-            <h3>제품 특징</h3>
-            <ul>
-                <li>고당도 프리미엄 딸기</li>
-                <li>위생적 재배 환경</li>
-                <li>선별 출하 시스템</li>
-                <li>당일 신선 공급</li>
-            </ul>
-        </div>
-        <div class="card">
-            <span class="tag">STORE</span>
             <h3>납품처</h3>
-            <ul>
-                <li>완주로컬푸드직매장
-                    <br>효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산</li>
-                <li>농협 하나로마트
-                    <br>용진 · 봉동</li>
-            </ul>
+            <p>
+                완주로컬푸드<br>
+                효자 · 삼천 · 모악 · 하가 · 혁신 · 둔산<br><br>
+                하나로마트<br>
+                용진 · 봉동
+            </p>
         </div>
         <div class="card">
-            <span class="tag">LOGISTICS</span>
-            <h3>유통 시스템</h3>
-            <p>지역 중심 직거래 유통으로 신선도와 가격 경쟁력을 유지합니다.</p>
+            <h3>특징</h3>
+            <p>고당도 · 신선 · 당일 출하</p>
         </div>
     </div>
 </section>
@@ -334,27 +284,14 @@ footer{
 <section id="contact" class="reveal">
     <h2 class="title">CONTACT</h2>
     <div class="grid">
-        <div class="card">
-            <span class="tag">ADDRESS</span>
-            <h3>농장 위치</h3>
-            <p>전북 완주군 봉동읍</p>
-        </div>
-        <div class="card">
-            <span class="tag">BUSINESS</span>
-            <h3>협업 · 납품 문의</h3>
-            <p>도매, 유통, 협업 상담 가능</p>
-        </div>
-        <div class="card">
-            <span class="tag">OPERATION</span>
-            <h3>운영</h3>
-            <p>연중 운영 (수확 시즌 변동)</p>
-        </div>
+        <div class="card"><h3>지역</h3><p>완주 봉동</p></div>
+        <div class="card"><h3>문의</h3><p>납품 · 협업 상담</p></div>
     </div>
 </section>
 
 <footer>
-    <p>SAENGSAENG STRAWBERRY FARM</p>
-    <p>© 2026 All Rights Reserved.</p>
+    <p>SAENGSAENG FARM</p>
+    <p>© 2026 All Rights Reserved</p>
 </footer>
 
 <script>
