@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 - 킹스베리와 신선채소</title>
+<title>생생농장 | 킹스베리 & 스마트팜 채소</title>
 
 <style>
 :root{
-    --red:#ff4d4d;
-    --green:#40c057;
-    --yellow:#fcc419;
-    --leaf:#82c91e;
-    --bg:#f8fff9;
-    --text:#2d3436;
+    --red:#e83333;
+    --green:#2fb573;
+    --dark-green:#1e7d4c;
+    --yellow:#ffbf00;
+    --bg:#ffffff;
+    --soft-bg:#f4f9f6;
+    --text:#222;
+    --muted:#666;
 }
 
 /* RESET */
@@ -21,222 +23,228 @@ body{
     font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     background:var(--bg);
     color:var(--text);
-    word-break:keep-all;
+    line-height:1.6;
 }
 
-/* ================= HEADER (귀요미 SVG 로고) ================= */
+/* ================= HEADER ================= */
 header{
-    min-height:90vh;
+    min-height:75vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:40px 20px;
-    background:radial-gradient(circle at center, #ffffff 0%, #e8f7ed 100%);
+    background: linear-gradient(180deg, var(--soft-bg) 0%, #fff 100%);
 }
 
-.main-visual { width:280px; margin-bottom:20px; animation: bounce 2s infinite ease-in-out; }
+.main-logo-svg { width:240px; margin-bottom:30px; }
 
 .logo-text{
-    font-size:clamp(50px,10vw,80px);
+    font-size:clamp(40px, 8vw, 72px);
     font-weight:900;
-    color:var(--green);
-    letter-spacing:-2px;
-    text-shadow: 3px 3px 0 #fff, 6px 6px 0 rgba(0,0,0,0.05);
+    color:var(--text);
+    letter-spacing:-1.5px;
+    margin-bottom:10px;
 }
+.logo-text span { color:var(--green); }
 
 .tagline{
-    font-size:20px;
-    font-weight:700;
-    background:var(--yellow);
-    display:inline-block;
-    padding:5px 15px;
-    border-radius:10px;
-    margin-top:10px;
+    font-size:18px;
+    font-weight:500;
+    color:var(--muted);
+    letter-spacing:2px;
 }
 
 /* ================= NAV ================= */
 nav{
     position:sticky;
     top:0;
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,0.95);
     backdrop-filter:blur(10px);
-    border-bottom:3px solid var(--green);
+    border-bottom:1px solid #eee;
     z-index:999;
-    padding:15px;
 }
 .nav-wrap{
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
+    padding:15px 20px;
     display:flex;
-    justify-content:space-around;
-    font-weight:900;
+    justify-content:space-between;
+    align-items:center;
 }
-.nav-wrap a{text-decoration:none; color:var(--text);}
+.nav-links a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:700;
+    margin-left:25px;
+    font-size:15px;
+}
 
 /* ================= SECTION ================= */
 section{
-    max-width:1000px;
-    margin:80px auto;
-    padding:0 20px;
+    max-width:1100px;
+    margin:100px auto;
+    padding:0 24px;
 }
 
 .title{
-    text-align:center;
     font-size:32px;
-    margin-bottom:40px;
-    position:relative;
+    margin-bottom:50px;
+    font-weight:800;
+    text-align:center;
 }
-.title span{ color:var(--red); }
+.title b { color:var(--green); font-weight:800; }
 
 /* PRODUCT GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:25px;
 }
 
 .card{
     background:#fff;
-    padding:30px 20px;
-    border-radius:30px;
-    text-align:center;
-    border:4px solid transparent;
-    transition:0.3s;
-    box-shadow: 0 10px 0 rgba(0,0,0,0.02);
+    padding:40px 30px;
+    border-radius:20px;
+    border:1px solid #eee;
+    transition: 0.3s ease;
 }
-.card:hover{ transform:translateY(-10px); border-color:var(--green); }
+.card:hover { border-color:var(--green); transform:translateY(-5px); }
 
 /* 주력상품 킹스베리 강조 */
 .card.main-product{
-    border:4px solid var(--red);
-    background:#fff5f5;
-    position:relative;
+    background:var(--soft-bg);
+    border:2px solid var(--red);
 }
-.card.main-product::after{
-    content:"👑 주력상품";
-    position:absolute;
-    top:-15px; left:50%;
-    transform:translateX(-50%);
-    background:var(--red);
-    color:#fff;
-    padding:5px 15px;
-    border-radius:20px;
-    font-weight:900;
-    font-size:14px;
+.card.main-product h3 { color:var(--red); }
+.badge {
+    display:inline-block;
+    padding:4px 12px;
+    border-radius:4px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:15px;
 }
+.badge.red { background:var(--red); color:#fff; }
+.badge.green { background:var(--green); color:#fff; }
 
-/* 납품 매장 */
-.store-list{
-    background:#fff;
-    padding:40px;
-    border-radius:40px;
-    border:3px dashed var(--green);
+/* 납품처 스타일 */
+.store-section {
+    background: var(--soft-bg);
+    padding: 80px 24px;
+    border-radius: 40px;
 }
-.store-group{ margin-bottom:25px; }
-.store-group h4{ color:var(--green); margin-bottom:15px; font-size:20px; }
-.store-tags{ display:flex; flex-wrap:wrap; gap:10px; }
-.store-tags span{
-    background:#eefaf1;
-    padding:8px 16px;
-    border-radius:50px;
-    font-weight:700;
-    font-size:15px;
-    border:1.5px solid #d1eedb;
+.store-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.store-list h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.store-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.store-tags span {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 /* FOOTER */
-footer{ text-align:center; padding:60px 20px; background:#eee; margin-top:100px; }
-
-/* ANIMATION */
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+footer{
+    padding:60px 20px;
+    text-align:center;
+    border-top:1px solid #eee;
+    color:var(--muted);
+    font-size:14px;
 }
 
 .reveal{opacity:0;transform:translateY(30px);transition:.8s;}
 .reveal.active{opacity:1;transform:none;}
 
-.call-float{
-    position:fixed; bottom:20px; right:20px;
-    background:var(--red); color:#fff;
-    padding:15px 25px; border-radius:50px;
-    text-decoration:none; font-weight:900;
-    box-shadow:0 10px 20px rgba(255,77,77,0.3);
+@media (max-width: 768px) {
+    .store-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
 <header>
-    <svg class="main-visual" viewBox="0 0 200 120">
-        <circle cx="50" cy="70" r="25" fill="#ff4d4d"/>
-        <path d="M35 55 Q50 35 65 55" fill="#40c057"/>
-        <circle cx="45" cy="65" r="2" fill="white" opacity="0.6"/>
-        <circle cx="55" cy="75" r="2" fill="white" opacity="0.6"/>
-        
-        <rect x="85" y="40" width="15" height="50" rx="7" fill="#2b8a3e" transform="rotate(-15 92 65)"/>
-        
-        <rect x="115" y="55" width="45" height="18" rx="9" fill="#fcc419"/>
-        
-        <path d="M170 40 Q190 60 170 85 Q150 60 170 40" fill="#82c91e"/>
-        <path d="M170 40 L170 85" stroke="white" stroke-width="1" opacity="0.5"/>
-        
-        <g stroke="#2d3436" stroke-width="2" fill="none" stroke-linecap="round">
-            <path d="M45 70 Q50 75 55 70"/> <path d="M130 63 Q135 68 140 63"/> </g>
+    <svg class="main-logo-svg" viewBox="0 0 200 100">
+        <path d="M40 40 Q55 35 70 40 Q75 65 55 80 Q35 65 40 40" fill="#e83333"/>
+        <path d="M45 42 Q55 30 65 42" fill="#2fb573" stroke="#fff" stroke-width="1"/>
+        <rect x="85" y="35" width="12" height="45" rx="6" fill="#1e7d4c" transform="rotate(-10 91 57)"/>
+        <rect x="110" y="55" width="45" height="16" rx="8" fill="#ffbf00"/>
+        <path d="M165 45 Q185 60 165 85 Q145 60 165 45" fill="#2fb573"/>
+        <path d="M165 45 L165 85" stroke="#fff" stroke-width="0.5" opacity="0.5"/>
     </svg>
 
-    <div class="logo-text">생생농장</div>
-    <div class="tagline">와글와글 신선한 스마트팜</div>
+    <div class="logo-text">생생<span>농장</span></div>
+    <div class="tagline">PREMIUM SMART FARM</div>
 </header>
 
 <nav>
     <div class="nav-wrap">
-        <a href="#products">신선품목</a>
-        <a href="#stores">판매처</a>
-        <a href="#contact">문의하기</a>
+        <div style="font-weight:900; color:var(--green);">SS FARM</div>
+        <div class="nav-links">
+            <a href="#products">생산품목</a>
+            <a href="#stores">납품처</a>
+            <a href="#contact">문의</a>
+        </div>
     </div>
 </nav>
 
 <section id="products" class="reveal">
-    <h2 class="title">우리농장 <span>싱싱친구들</span></h2>
+    <h2 class="title">생산 <b>품목</b></h2>
     <div class="grid">
         <div class="card main-product">
-            <div style="font-size:40px; margin-bottom:10px;">🍓</div>
+            <span class="badge red">주력 상품</span>
             <h3>킹스베리 · 설향</h3>
-            <p>한 입 베어물면 입안 가득<br>달콤한 과즙이 팡팡!</p>
+            <p>고설 재배 방식으로 생산한 최고급 딸기입니다. 압도적인 크기와 당도를 자랑합니다.</p>
         </div>
         <div class="card">
-            <div style="font-size:40px; margin-bottom:10px;">🥒</div>
+            <span class="badge green">신선 채소</span>
             <h3>취청오이</h3>
-            <p>아삭아삭 청량함 끝판왕!<br>수분 가득 신선한 오이</p>
+            <p>수분 함량이 높고 육질이 단단하여 아삭한 식감이 오래 유지됩니다.</p>
         </div>
         <div class="card">
-            <div style="font-size:40px; margin-bottom:10px;">🌭</div>
+            <span class="badge green">신선 채소</span>
             <h3>인큐 애호박</h3>
-            <p>매일 아침 수확하여<br>단단하고 달큰한 맛</p>
+            <p>균일한 크기와 깨끗한 외관, 달큰한 풍미가 특징인 고품질 애호박입니다.</p>
         </div>
         <div class="card">
-            <div style="font-size:40px; margin-bottom:10px;">🍃</div>
-            <h3>생생 깻잎</h3>
-            <p>향긋한 내음이 일품인<br>보랏빛 신선 깻잎</p>
+            <span class="badge green">신선 채소</span>
+            <h3>깻잎</h3>
+            <p>향이 짙고 뒷면의 자줏빛이 선명한 최상품 깻잎만을 엄선합니다.</p>
         </div>
     </div>
 </section>
 
-<section id="stores" class="reveal">
-    <h2 class="title">여기서 <span>만나요!</span></h2>
-    <div class="store-list">
-        <div class="store-group">
-            <h4>📍 완주로컬푸드 직매장</h4>
+<section id="stores" class="store-section reveal">
+    <h2 class="title">납품 <b>매장</b></h2>
+    <div class="store-grid">
+        <div class="store-list">
+            <h4>🟢 완주로컬푸드 직매장</h4>
             <div class="store-tags">
                 <span>하가점</span> <span>효자점</span> <span>둔산점</span> 
                 <span>모악점</span> <span>혁신점</span> <span>삼천점</span>
             </div>
         </div>
-        <div class="store-group" style="margin-bottom:0;">
-            <h4>📍 농협 하나로마트</h4>
+        <div class="store-list">
+            <h4>🟡 농협 하나로마트</h4>
             <div class="store-tags">
                 <span>봉동농협</span> <span>용진농협</span>
             </div>
@@ -244,25 +252,22 @@ footer{ text-align:center; padding:60px 20px; background:#eee; margin-top:100px;
     </div>
 </section>
 
-<section id="contact" class="reveal">
-    <div class="card" style="background:var(--green); color:#fff; border:none;">
-        <h2 style="margin-bottom:10px;">산지 직송 문의</h2>
-        <p style="font-size:24px; font-weight:900;">010-3945-1394</p>
-        <p style="margin-top:10px; opacity:0.9;">전북 완주군 봉동읍 장기리 1729</p>
-    </div>
+<section id="contact" class="reveal" style="text-align:center;">
+    <h2 class="title">문의 및 <b>찾아오시는 길</b></h2>
+    <p style="font-size:24px; font-weight:800; margin-bottom:10px;">010-3945-1394</p>
+    <p style="color:var(--muted);">전북 완주군 봉동읍 장기리 1729</p>
+    <a href="tel:01039451394" style="display:inline-block; margin-top:30px; padding:15px 40px; background:var(--text); color:#fff; text-decoration:none; border-radius:8px; font-weight:700;">전화 문의하기</a>
 </section>
 
 <footer>
-    <p>© 생생농장. 건강한 채소를 키웁니다.</p>
+    <p>© 생생농장. All Rights Reserved.</p>
 </footer>
-
-<a class="call-float" href="tel:01039451394">📞 전화하기</a>
 
 <script>
     const reveals = document.querySelectorAll(".reveal");
     function reveal(){
         reveals.forEach(el=>{
-            if(el.getBoundingClientRect().top < window.innerHeight - 50){
+            if(el.getBoundingClientRect().top < window.innerHeight - 80){
                 el.classList.add("active");
             }
         });
