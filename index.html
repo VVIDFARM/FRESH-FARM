@@ -3,140 +3,393 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 | 신선함을 그대로</title>
+<title>생생농장 | 시설채소 전문 재배</title>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
 <style>
-/* =====================
-   DESIGN SYSTEM
-===================== */
-:root {
-  --primary: #2D5A27;    /* 깊은 숲색 (신뢰) */
-  --accent: #8BC34A;     /* 연두색 (신선함) */
-  --point: #FF5722;      /* 오렌지색 (활력) */
-  --bg-light: #F9FBF9;
-  --text-main: #1A1C19;
-  --text-sub: #5F6368;
-  --white: #ffffff;
-  --shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+/* =========================================================
+   ROOT DESIGN TOKENS
+========================================================= */
+:root{
+  /* Core Brand */
+  --green-deep:#2D5A27;
+  --green-main:#3E7A34;
+  --green-light:#8BC34A;
+  --green-soft:#C5E1A5;
+
+  --red-point:#FF3B30;
+  --orange-point:#FF5722;
+  --yellow-accent:#FFC107;
+
+  /* Neutral */
+  --white:#ffffff;
+  --black:#0e100f;
+  --gray-100:#f9fbf9;
+  --gray-200:#eef2ee;
+  --gray-300:#d9ded9;
+  --gray-500:#5f6368;
+
+  /* Text */
+  --text-main:#1a1c19;
+  --text-sub:#5f6368;
+
+  /* UI */
+  --radius-xs:6px;
+  --radius-sm:12px;
+  --radius-md:20px;
+  --radius-lg:32px;
+
+  --shadow-soft:0 6px 20px rgba(0,0,0,.06);
+  --shadow-medium:0 12px 40px rgba(0,0,0,.08);
+  --shadow-strong:0 20px 60px rgba(0,0,0,.12);
+
+  --transition-fast:.2s ease;
+  --transition-base:.35s cubic-bezier(.4,0,.2,1);
 }
 
-/* =====================
-   RESET & BASE
-===================== */
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: Pretendard, sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-main);
-  line-height: 1.6;
-  word-break: keep-all;
+/* =========================================================
+   RESET
+========================================================= */
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }
 
-/* =====================
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:var(--gray-100);
+  color:var(--text-main);
+  line-height:1.6;
+  letter-spacing:-.2px;
+}
+
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* =========================================================
    LAYOUT
-===================== */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+========================================================= */
+.container{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 20px;
+}
 
-/* NAV */
-nav {
-  position: sticky; top: 0; background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #eee;
+section{
+  position:relative;
+  padding:120px 0;
 }
-.nav-inner {
-  height: 70px; display: flex; justify-content: space-between; align-items: center;
-}
-.logo { font-size: 22px; font-weight: 800; color: var(--primary); }
-.nav-links a { margin-left: 25px; font-size: 15px; font-weight: 500; color: var(--text-sub); }
-.nav-links a:hover { color: var(--primary); }
 
-/* HERO */
-.hero {
-  padding: 120px 0 80px; text-align: center;
-  background: linear-gradient(to bottom, #E8F5E9, var(--bg-light));
+/* =========================================================
+   NAVIGATION
+========================================================= */
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--gray-200);
 }
-.hero-tag {
-  display: inline-block; padding: 6px 16px; background: var(--white);
-  border-radius: 50px; color: var(--primary); font-weight: 700;
-  font-size: 14px; margin-bottom: 20px; box-shadow: var(--shadow);
-}
-.hero h1 { font-size: 56px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; }
-.hero h1 span { color: var(--accent); }
-.hero p { font-size: 20px; color: var(--text-sub); margin-bottom: 40px; }
 
-.cta-group { display: flex; justify-content: center; gap: 12px; }
-.btn {
-  padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 16px;
+.nav-inner{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-.btn-primary { background: var(--primary); color: var(--white); }
-.btn-primary:hover { background: #1e3d1a; transform: translateY(-3px); }
-.btn-outline { border: 2px solid var(--primary); color: var(--primary); }
 
-/* SECTION COMMON */
-section { padding: 100px 0; }
-.section-title { margin-bottom: 50px; }
-.section-title h2 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
-.section-title p { color: var(--text-sub); }
+.logo{
+  font-size:22px;
+  font-weight:900;
+  color:var(--green-deep);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
 
-/* PRODUCTS GRID */
-.grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+.nav-links{
+  display:flex;
+  gap:28px;
 }
-.item-card {
-  background: var(--white); padding: 30px; border-radius: 20px;
-  box-shadow: var(--shadow); transition: 0.3s; position: relative; overflow: hidden;
-}
-.item-card:hover { transform: translateY(-10px); }
-.item-card::before {
-  content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent);
-}
-.item-tag { font-size: 13px; color: var(--accent); font-weight: 700; }
-.item-card h3 { font-size: 22px; margin: 8px 0; }
-.item-card p { color: var(--text-sub); font-size: 15px; }
 
-/* STORES & INFO */
-.info-box {
-  background: var(--primary); color: var(--white);
-  padding: 50px; border-radius: 30px; display: flex; flex-wrap: wrap; gap: 40px;
+.nav-links a{
+  font-size:15px;
+  font-weight:600;
+  color:var(--text-sub);
+  position:relative;
+  padding:6px 0;
 }
-.info-item { flex: 1; min-width: 250px; }
-.info-item h3 { font-size: 18px; margin-bottom: 15px; opacity: 0.8; }
-.info-item p { font-size: 17px; line-height: 1.8; }
 
-/* FOOTER */
-footer { padding: 50px 0; border-top: 1px solid #eee; text-align: center; color: var(--text-sub); font-size: 14px; }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 38px; }
-  .nav-links { display: none; }
-  .info-box { padding: 30px; }
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--green-light);
+  transition:var(--transition-base);
 }
+
+.nav-links a:hover{
+  color:var(--green-deep);
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  padding:140px 0 120px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 20% 20%, #e8f5e9 0%, transparent 40%),
+    linear-gradient(to bottom, #e8f5e9, var(--gray-100));
+  overflow:hidden;
+}
+
+.hero-tag{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+  background:var(--white);
+  color:var(--green-deep);
+  font-weight:800;
+  font-size:14px;
+  box-shadow:var(--shadow-soft);
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-size:58px;
+  font-weight:900;
+  line-height:1.15;
+  margin-bottom:24px;
+}
+
+.hero h1 span{
+  color:var(--green-light);
+}
+
+.hero p{
+  font-size:20px;
+  color:var(--text-sub);
+  margin-bottom:46px;
+}
+
+/* =========================================================
+   BUTTON SYSTEM
+========================================================= */
+.btn-group{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  position:relative;
+  padding:16px 36px;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:var(--transition-base);
+  overflow:hidden;
+}
+
+.btn-primary{
+  background:var(--green-deep);
+  color:var(--white);
+  box-shadow:var(--shadow-medium);
+}
+
+.btn-primary:hover{
+  background:#1f3f1b;
+  transform:translateY(-3px);
+}
+
+.btn-outline{
+  border:2px solid var(--green-deep);
+  color:var(--green-deep);
+  background:transparent;
+}
+
+.btn-outline:hover{
+  background:var(--green-deep);
+  color:var(--white);
+}
+
+/* ripple effect */
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle, rgba(255,255,255,.35) 10%, transparent 10%);
+  background-size:0 0;
+  transition:background-size .5s;
+}
+
+.btn:active::after{
+  background-size:150% 150%;
+}
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+.section-title{
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:36px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.section-title p{
+  font-size:17px;
+  color:var(--text-sub);
+}
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:26px;
+}
+
+.item-card{
+  position:relative;
+  background:var(--white);
+  padding:36px 34px 40px;
+  border-radius:var(--radius-md);
+  box-shadow:var(--shadow-soft);
+  transition:var(--transition-base);
+  overflow:hidden;
+}
+
+.item-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
+  height:100%;
+  background:linear-gradient(to bottom, var(--green-light), var(--green-main));
+}
+
+.item-card:hover{
+  transform:translateY(-12px);
+  box-shadow:var(--shadow-strong);
+}
+
+.item-tag{
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.5px;
+  color:var(--green-light);
+}
+
+.item-card h3{
+  font-size:24px;
+  margin:10px 0 14px;
+}
+
+.item-card p{
+  font-size:15px;
+  color:var(--text-sub);
+}
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+.info-wrap{
+  background:var(--green-deep);
+  border-radius:var(--radius-lg);
+  padding:70px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:50px;
+  color:var(--white);
+}
+
+.info-wrap h3{
+  font-size:18px;
+  opacity:.85;
+  margin-bottom:16px;
+}
+
+.info-wrap p{
+  font-size:17px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer{
+  padding:60px 0;
+  text-align:center;
+  font-size:14px;
+  color:var(--text-sub);
+  border-top:1px solid var(--gray-200);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media(max-width:768px){
+  .hero h1{font-size:40px}
+  .hero p{font-size:16px}
+  .nav-links{display:none}
+  section{padding:90px 0}
+  .info-wrap{padding:40px}
+}
+
 </style>
 </head>
+
 <body>
 
 <nav>
   <div class="container nav-inner">
-    <a href="#" class="logo">🌿 생생농장</a>
+    <div class="logo">🌿 생생농장</div>
     <div class="nav-links">
       <a href="#products">재배품목</a>
       <a href="#stores">출하처</a>
       <a href="#about">농장소개</a>
-      <a href="tel:01020791119">문의하기</a>
+      <a href="tel:01020791119">문의</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="container">
-    <span class="hero-tag">완주 로컬푸드 직출하 농가</span>
-    <h1>자연의 시간을 담은<br><span>생생</span>한 식탁</h1>
-    <p>완주 장기리 시설하우스에서 정성껏 키워낸 프리미엄 채소</p>
-    <div class="cta-group">
-      <a href="#products" class="btn btn-primary">품목 구경하기</a>
-      <a href="tel:01020791119" class="btn btn-outline">전화 상담</a>
+    <span class="hero-tag">완주 장기리 시설채소 전문 재배</span>
+    <h1>자연의 시간을 키우는<br><span>생생농장</span></h1>
+    <p>수확 순간까지 기준을 지키는 완주 직출하 농가</p>
+
+    <div class="btn-group">
+      <a href="#products" class="btn btn-primary">재배 품목 보기</a>
+      <a href="tel:01020791119" class="btn btn-outline">전화 문의</a>
     </div>
   </div>
 </header>
@@ -145,50 +398,52 @@ footer { padding: 50px 0; border-top: 1px solid #eee; text-align: center; color:
   <div class="container">
     <div class="section-title">
       <h2>재배 품목</h2>
-      <p>가장 맛있는 시기에 맞춰 정성껏 수확합니다.</p>
+      <p>시설 환경을 분리 관리하여 품질 편차를 최소화합니다.</p>
     </div>
+
     <div class="grid">
       <div class="item-card">
-        <span class="item-tag">BEST STRAWBERRY</span>
-        <h3>킹스베리 딸기</h3>
-        <p>압도적인 크기와 풍부한 과즙, 과육의 밀도까지 엄격하게 선별합니다.</p>
+        <span class="item-tag">STRAWBERRY</span>
+        <h3>킹스베리</h3>
+        <p>크기, 밀도, 당도 기준 선별 출하</p>
       </div>
       <div class="item-card">
-        <span class="item-tag">FRESH</span>
-        <h3>설향 딸기</h3>
-        <p>가장 대중적이지만 가장 어려운 숙도 관리, 생생농장의 노하우로 완성합니다.</p>
+        <span class="item-tag">STRAWBERRY</span>
+        <h3>설향</h3>
+        <p>숙도 편차 최소화 관리</p>
       </div>
       <div class="item-card">
         <span class="item-tag">VEGETABLE</span>
         <h3>취청오이</h3>
-        <p>시설 재배를 통해 일정한 온도와 습도를 유지하여 아삭한 식감을 극대화했습니다.</p>
+        <p>아삭한 조직감 중심 재배</p>
       </div>
       <div class="item-card">
         <span class="item-tag">VEGETABLE</span>
-        <h3>명품 깻잎 / 애호박</h3>
-        <p>연중 균일한 품질을 유지하기 위해 첨단 시설에서 체계적으로 관리합니다.</p>
+        <h3>깻잎 · 애호박</h3>
+        <p>연중 균일한 품질 유지</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="stores" style="background: var(--white);">
+<section id="stores">
   <div class="container">
-    <div class="info-box">
-      <div class="info-item">
-        <h3>출하 매장 정보</h3>
+    <div class="info-wrap">
+      <div>
+        <h3>출하 매장</h3>
         <p>
-          <strong>완주 로컬푸드 직매장</strong><br>
-          하가 · 삼천 · 효자 · 모악 · 둔산 · 혁신점<br><br>
-          <strong>농협 하나로마트</strong><br>
-          봉동점 · 용진점
+          완주 로컬푸드 직매장<br>
+          하가 · 삼천 · 효자 · 모악 · 둔산 · 혁신<br><br>
+          농협 하나로마트<br>
+          봉동 · 용진
         </p>
       </div>
-      <div class="info-item" id="about">
+      <div id="about">
         <h3>농장 소개</h3>
         <p>
-          전북 완주군 장기리 위치.<br>
-          단순한 생산을 넘어 소비자의 식탁에 '생생함'이 전달될 때까지, 시설 환경 데이터를 기반으로 정밀 재배를 실천합니다.
+          전라북도 완주군 장기리 위치.<br>
+          시설채소 전문 재배 농가로 품목별 생육 조건을 분리 관리하며
+          수확 기준일을 엄격히 적용합니다.
         </p>
       </div>
     </div>
@@ -197,8 +452,8 @@ footer { padding: 50px 0; border-top: 1px solid #eee; text-align: center; color:
 
 <footer>
   <div class="container">
-    <p><strong>생생농장</strong> | 대표번호: 010-2079-1119</p>
-    <p style="margin-top:10px; opacity: 0.6;">© 2026 SengSeng Farm. All rights reserved.</p>
+    <p><strong>생생농장</strong> | 010-2079-1119</p>
+    <p style="margin-top:10px;opacity:.6;">© 2026 SengSeng Farm</p>
   </div>
 </footer>
 
