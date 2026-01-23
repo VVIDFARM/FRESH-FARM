@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 | 킹스베리 & 신선채소</title>
+<title>생생농장 | 킹스베리 & 스마트팜 채소</title>
 
 <style>
 :root{
-    --red-neon: #ff2e2e;
     --red-grad: linear-gradient(135deg, #ff6b6b, #e83333);
     --green-grad: linear-gradient(135deg, #51cf66, #2fb573);
-    --bg-dark: #1a1c1b;
-    --card-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    --inner-shadow: inset 0 2px 5px rgba(255,255,255,0.4);
+    --smart-blue: #4dabf7;
+    --card-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 /* RESET */
@@ -26,34 +24,45 @@ body{
 
 /* ================= HEADER ================= */
 header{
-    padding:80px 20px;
+    padding:60px 20px;
     text-align:center;
-    background: radial-gradient(circle at 50% 0%, #fff5f5 0%, #ffffff 100%);
+    background: radial-gradient(circle at 50% 0%, #f0fdf4 0%, #ffffff 100%);
 }
 
+/* 직관적인 농산물 SVG (수정됨) */
 .main-visual {
     width: 100%;
     max-width: 500px;
-    margin: 0 auto 30px;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
 }
 
 .logo-text{
-    font-size: clamp(40px, 8vw, 68px);
+    font-size: clamp(38px, 8vw, 64px);
     font-weight: 900;
     letter-spacing: -2px;
-    background: linear-gradient(to right, #222, #444);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 .logo-text span {
     background: var(--red-grad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(232,51,51,0.2);
 }
 
-/* ================= PRODUCT CARDS ================= */
+/* ================= ICT SMART FARM TAG ================= */
+.ict-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e7f5ff;
+    color: #1971c2;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* ================= PRODUCT GRID ================= */
 section {
     max-width: 1200px;
     margin: 40px auto;
@@ -63,226 +72,180 @@ section {
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    gap: 25px;
 }
 
-/* 입체감 있는 카드 스타일 */
 .card {
     background: #fff;
-    border-radius: 30px;
-    padding: 40px 30px;
+    border-radius: 24px;
+    padding: 35px 25px;
     text-align: center;
     box-shadow: var(--card-shadow);
-    border: 1px solid rgba(0,0,0,0.03);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
+    border: 1px solid #f1f3f5;
+    transition: 0.3s ease;
 }
-.card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-}
+.card:hover { transform: translateY(-8px); border-color: #2fb573; }
 
-/* 킹스베리 프리미엄 카드 (네온 & 왕관) */
 .card.premium {
     background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
-    border: 2px solid rgba(232,51,51,0.2);
-}
-.crown {
-    font-size: 40px;
-    display: block;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 5px 10px rgba(255,215,0,0.5));
-    animation: float 3s infinite ease-in-out;
+    border: 2px solid #ffc9c9;
 }
 
-.card h3 {
-    font-size: 28px;
-    margin-bottom: 12px;
-    font-weight: 800;
-}
-.card.premium h3 { color: #e83333; }
+.crown-icon { font-size: 32px; display: block; margin-bottom: 5px; animation: bounce 2s infinite; }
+.card h3 { font-size: 26px; margin: 10px 0; font-weight: 800; }
+.card p { color: #666; font-size: 15px; }
 
-.badge {
-    display: inline-block;
-    padding: 6px 18px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    box-shadow: var(--inner-shadow);
+/* ================= SMART CONTROL MINI SECTION ================= */
+.smart-info {
+    grid-column: 1 / -1;
+    background: #f8faf9;
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    border: 1px dashed #ced4da;
 }
-.badge.red { background: var(--red-grad); color: #fff; }
-.badge.green { background: var(--green-grad); color: #fff; }
+.info-item { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #495057; }
+.info-item b { color: var(--green-grad); }
 
 /* ================= STORE INFO ================= */
-.store-section {
-    background: #f8faf9;
-    padding: 100px 20px;
-    border-radius: 60px 60px 0 0;
-    margin-top: 80px;
+.store-box {
+    background: #f1f3f5;
+    padding: 60px 20px;
+    border-radius: 40px;
+    margin-top: 60px;
 }
-.store-container {
+.store-grid {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 20px;
 }
-.store-item {
-    background: #fff;
-    padding: 35px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-.store-item h4 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #2fb573;
-}
-.store-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.store-tags span {
-    background: #f1f3f5;
-    padding: 7px 15px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-}
+.store-card { background: #fff; padding: 25px; border-radius: 20px; }
+.store-card h4 { color: #2fb573; margin-bottom: 12px; font-size: 18px; }
+.store-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.store-tags span { background: #f8f9fa; border: 1px solid #dee2e6; padding: 4px 10px; border-radius: 6px; font-size: 14px; }
 
-/* ================= FLOAT CALL BTN (네온효과) ================= */
-.call-btn-wrap {
+/* ================= FLOATING CALL BUTTON ================= */
+.floating-call {
     position: fixed;
     bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    width: 90%;
-    max-width: 400px;
-}
-.btn-neon-call {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    right: 30px;
+    width: 70px;
+    height: 70px;
     background: #111;
     color: #fff;
-    padding: 20px;
-    border-radius: 20px;
-    font-size: 22px;
-    font-weight: 900;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 20px rgba(47,181,115,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 15px rgba(47,181,115,0.3);
+    z-index: 9999;
     transition: 0.3s;
 }
-.btn-neon-call:active { transform: scale(0.95); }
-.btn-neon-call span { color: #2fb573; margin-right: 10px; }
+.floating-call:hover { transform: scale(1.1); background: #2fb573; }
+.floating-call span { font-size: 24px; }
+.floating-call b { font-size: 10px; margin-top: 2px; }
 
-/* ANIMATION */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-@media (max-width: 768px) {
-    .store-container { grid-template-columns: 1fr; }
-}
+@media (max-width: 768px) { .store-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <header>
+    <div class="ict-tag">📡 ICT 환경제어 스마트팜</div>
+    
     <svg class="main-visual" viewBox="0 0 450 150">
-        <defs>
-            <linearGradient id="strawGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff6b6b"/><stop offset="100%" stop-color="#e83333"/>
-            </linearGradient>
-            <filter id="shadow">
-                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.2"/>
-            </filter>
-        </defs>
-        <path d="M60 50 Q85 30 110 50 Q120 90 85 120 Q50 90 60 50" fill="url(#strawGrad)" filter="url(#shadow)"/>
-        <path d="M65 55 Q85 30 105 55 L85 70 Z" fill="#2fb573"/>
-        <rect x="140" y="35" width="22" height="90" rx="11" fill="#1b5e20" transform="rotate(-15 150 80)" filter="url(#shadow)"/>
-        <rect x="200" y="70" width="85" height="32" rx="16" fill="#ffbf00" filter="url(#shadow)"/>
-        <path d="M200 75 L188 86 L200 97 Z" fill="#9e7e00"/>
-        <path d="M330 40 Q380 70 330 120 Q280 70 330 40" fill="#2fb573" filter="url(#shadow)"/>
-        <path d="M330 40 L330 120 M330 65 L310 85 M330 85 L350 105" stroke="white" stroke-width="2" opacity="0.5"/>
+        <path d="M50 45 Q70 25 95 45 Q110 80 80 110 Q50 80 50 45" fill="#e83333"/>
+        <path d="M55 48 Q75 25 90 48 L75 60 Z" fill="#2fb573"/>
+        
+        <rect x="125" y="30" width="18" height="95" rx="9" fill="#1b5e20" transform="rotate(-10 134 77)"/>
+        
+        <rect x="180" y="65" width="90" height="28" rx="14" fill="#ffbf00"/>
+        <path d="M180 68 L170 79 L180 90 Z" fill="#9e7e00"/> <path d="M195 65 Q225 60 255 65" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/>
+        
+        <path d="M330 35 L340 45 L350 40 L355 55 L365 60 L355 75 L360 90 L345 100 L330 115 L315 100 L300 90 L305 75 L295 60 L305 55 L310 40 L320 45 Z" fill="#2fb573"/>
+        <path d="M330 35 L330 115 M330 55 L310 70 M330 75 L355 95" stroke="white" stroke-width="1.2" opacity="0.6"/>
     </svg>
 
     <h1 class="logo-text">생생<span>농장</span></h1>
-    <p class="tagline">완주 봉동 산지직송 프리미엄 농산물</p>
+    <p style="color:#666; font-weight:700; margin-top:5px;">완주 봉동 산지직송 프리미엄 농산물</p>
 </header>
 
 <section>
     <div class="grid">
+        <div class="smart-info">
+            <div class="info-item">🌡 <b>온도제어</b> 최적화</div>
+            <div class="info-item">💧 <b>자동양액</b> 공급</div>
+            <div class="info-item">🌤 <b>일사량</b> 감지 제어</div>
+            <div class="info-item">📱 <b>원격</b> 통합관제</div>
+        </div>
+
         <div class="card premium">
-            <span class="crown">👑</span>
-            <span class="badge red">PREMIUM</span>
-            <h3>킹스베리</h3>
-            <p>압도적인 크기, 복숭아 향이 나는<br>최고급 명품 딸기</p>
+            <span class="crown-icon">👑</span>
+            <h3 style="color:#e83333">킹스베리</h3>
+            <p>압도적인 크기! 은은한 복숭아 향이<br>매력적인 프리미엄 딸기</p>
         </div>
 
         <div class="card">
-            <span style="font-size:40px; display:block; margin-bottom:10px;">🍓</span>
-            <span class="badge red">인기품종</span>
+            <span style="font-size:35px">🍓</span>
             <h3>설향 딸기</h3>
-            <p>당도가 높고 과즙이 풍부하여<br>남녀노소 가장 사랑받는 딸기</p>
+            <p>달콤하고 과즙이 풍부한<br>대한민국 대표 딸기</p>
         </div>
 
         <div class="card">
-            <span style="font-size:40px; display:block; margin-bottom:10px;">🥒</span>
-            <span class="badge green">신선수확</span>
+            <span style="font-size:35px">🥒</span>
             <h3>취청오이</h3>
-            <p>수분 가득, 아삭한 식감이<br>살아있는 신선한 오이</p>
+            <p>아삭함이 살아있는<br>ICT 환경제어 신선 오이</p>
         </div>
 
         <div class="card">
-            <span style="font-size:40px; display:block; margin-bottom:10px;">🌭</span>
-            <span class="badge green">산지직송</span>
+            <span style="font-size:35px">🌭</span>
             <h3>인큐 애호박</h3>
-            <p>모양이 예쁘고 육질이 단단해<br>요리용으로 최고인 애호박</p>
+            <p>단단하고 달큰한 맛!<br>정밀 관리로 키운 명품 애호박</p>
         </div>
 
         <div class="card">
-            <span style="font-size:40px; display:block; margin-bottom:10px;">🍃</span>
-            <span class="badge green">신선수확</span>
+            <span style="font-size:35px">🍃</span>
             <h3>신선 깻잎</h3>
-            <p>향이 진하고 부드러워<br>입맛을 돋우는 밥상 친구</p>
+            <p>향이 깊고 부드러운<br>고품질 스마트팜 깻잎</p>
         </div>
+    </div>
+
+    <div class="store-box">
+        <h2 style="text-align:center; margin-bottom:30px; font-weight:800;">📍 납품 매장 안내</h2>
+        <div class="store-grid">
+            <div class="store-card">
+                <h4>완주로컬푸드 직매장</h4>
+                <div class="store-tags">
+                    <span>하가점</span> <span>효자점</span> <span>둔산점</span> 
+                    <span>모악점</span> <span>혁신점</span> <span>삼천점</span>
+                </div>
+            </div>
+            <div class="store-card">
+                <h4>농협 하나로마트</h4>
+                <div class="store-tags">
+                    <span>봉동농협</span> <span>용진농협</span>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:40px; color:#888; font-size:14px;">
+            전북 완주군 봉동읍 장기리 1729 | 생생농장
+        </p>
     </div>
 </section>
 
-<div class="store-section">
-    <div class="store-container">
-        <div class="store-item">
-            <h4>🟢 완주로컬푸드 직매장</h4>
-            <div class="store-tags">
-                <span>하가점</span> <span>효자점</span> <span>둔산점</span> 
-                <span>모악점</span> <span>혁신점</span> <span>삼천점</span>
-            </div>
-        </div>
-        <div class="store-item">
-            <h4>🟡 농협 하나로마트</h4>
-            <div class="store-tags">
-                <span>봉동농협</span> <span>용진농협</span>
-            </div>
-        </div>
-    </div>
-    
-    <div style="text-align:center; margin-top:50px; color:#888;">
-        <p>전북 완주군 봉동읍 장기리 1729</p>
-        <p style="font-size:14px; margin-top:10px;">© 생생농장. All Rights Reserved.</p>
-    </div>
-</div>
-
-<div class="call-btn-wrap">
-    <a href="tel:01039451394" class="btn-neon-call">
-        <span>📞</span> 주문 및 문의 010-3945-1394
-    </a>
-</div>
+<a href="tel:01039451394" class="floating-call">
+    <span>📞</span>
+    <b>전화문의</b>
+</a>
 
 </body>
 </html>
