@@ -7,11 +7,11 @@
 
 <style>
 :root{
-  --green:#1f7a4d;
-  --green-dark:#145c39;
-  --red:#c62828;
+  --green:#1f6f4a;
+  --green-dark:#134a32;
+  --red:#b71c1c;
   --bg:#ffffff;
-  --soft:#f3faf6;
+  --soft:#f2f7f4;
   --text:#111;
   --muted:#555;
 }
@@ -23,15 +23,18 @@ body{
   background:var(--bg);
   color:var(--text);
 }
+
+/* COMMON */
 section{
-  max-width:1300px;
+  max-width:1280px;
   margin:120px auto;
   padding:0 24px;
 }
 .title{
-  font-size:42px;
+  font-size:44px;
   color:var(--green-dark);
   margin-bottom:60px;
+  letter-spacing:-1px;
 }
 
 /* HEADER */
@@ -40,16 +43,16 @@ header{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(180deg,#e9f6ef,#fff);
+  background:linear-gradient(180deg,#eef6f1,#fff);
   text-align:center;
 }
-.logo-text{
+.logo{
   font-size:96px;
   font-weight:900;
   color:var(--green-dark);
 }
 .tagline{
-  margin-top:20px;
+  margin-top:18px;
   font-size:20px;
   color:#333;
 }
@@ -58,45 +61,45 @@ header{
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
+  gap:40px;
 }
 
 /* PRODUCT */
 .product{
   background:#fff;
-  border-radius:26px;
-  padding:40px;
-  border:1px solid #eaeaea;
+  border-radius:28px;
+  padding:46px 40px;
+  border:1px solid #e6e6e6;
   text-align:center;
-  transition:.3s;
+  transition:.35s;
 }
 .product:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px);
   border-color:var(--green);
 }
 .product svg{
-  margin-bottom:18px;
+  margin-bottom:22px;
 }
 .product h3{
-  font-size:22px;
+  font-size:23px;
   color:var(--green-dark);
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 .product p{
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.75;
 }
 
 /* MAP */
 .map-box{
   background:#fff;
-  border-radius:30px;
-  padding:50px;
-  border:1px solid #eaeaea;
+  border-radius:34px;
+  padding:60px;
+  border:1px solid #e6e6e6;
 }
 .map-title{
   font-size:26px;
-  margin-bottom:24px;
+  margin-bottom:30px;
   color:var(--green-dark);
 }
 
@@ -114,8 +117,8 @@ footer{
 
 <header>
   <div>
-    <div class="logo-text">생생농장</div>
-    <div class="tagline">설향 · 킹스베리 · 시설채소 재배 농가</div>
+    <div class="logo">생생농장</div>
+    <div class="tagline">킹스베리 중심 · 딸기 및 시설채소 재배 농가</div>
   </div>
 </header>
 
@@ -123,93 +126,59 @@ footer{
 <h2 class="title">재배 품목</h2>
 <div class="grid">
 
-<!-- 설향 -->
+<!-- 킹스베리 (주상품) -->
 <div class="product">
-<svg viewBox="0 0 64 64" width="60">
-<path d="M32 8c8 0 16 8 16 20S32 56 32 56 16 40 16 28 24 8 32 8z" fill="#c62828"/>
-<circle cx="26" cy="30" r="1.5" fill="#ffd54f"/>
-<circle cx="34" cy="34" r="1.5" fill="#ffd54f"/>
-</svg>
-<h3>설향 딸기</h3>
-<p>당도와 산도의 균형이 뛰어나며 과즙이 풍부한 주력 품종입니다.</p>
-</div>
-
-<!-- 킹스베리 -->
-<div class="product">
-<svg viewBox="0 0 64 64" width="60">
-<path d="M32 6c10 0 20 10 20 24S32 58 32 58 12 42 12 30 22 6 32 6z" fill="#8e0000"/>
+<svg viewBox="0 0 64 64" width="64">
+<defs>
+<linearGradient id="kb" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d32f2f"/>
+<stop offset="100%" stop-color="#7f0000"/>
+</linearGradient>
+</defs>
+<path d="M32 6
+C44 6 54 16 54 30
+C54 44 32 58 32 58
+C32 58 10 44 10 30
+C10 16 20 6 32 6Z"
+fill="url(#kb)"/>
+<path d="M18 18 Q32 8 46 18" fill="#2e7d32"/>
 </svg>
 <h3>킹스베리</h3>
-<p>과중이 크고 외형이 뛰어난 프리미엄 딸기로 선물용 출하에 적합합니다.</p>
+<p>
+과형이 크고 모양이 단정해 첫 인상이 확실한 딸기입니다.<br>
+당도는 묵직하고 산미가 튀지 않아 선물용·직거래 모두 만족도가 높습니다.<br>
+생생농장의 주력 품목으로 수확부터 선별까지 가장 신경 써 관리합니다.
+</p>
 </div>
 
-<!-- 취청 오이 -->
+<!-- 설향 -->
+<div class="product">
+<svg viewBox="0 0 64 64" width="64">
+<defs>
+<linearGradient id="sy" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ff5252"/>
+<stop offset="100%" stop-color="#c62828"/>
+</linearGradient>
+</defs>
+<path d="M32 10
+C42 10 50 18 50 28
+C50 40 32 54 32 54
+C32 54 14 40 14 28
+C14 18 22 10 32 10Z"
+fill="url(#sy)"/>
+<circle cx="26" cy="30" r="1.5" fill="#ffe082"/>
+<circle cx="36" cy="34" r="1.5" fill="#ffe082"/>
+</svg>
+<h3>설향</h3>
+<p>
+향이 강하고 과즙이 많은 품종으로 대중적인 선호도가 높습니다.<br>
+킹스베리보다 가볍게 즐기기 좋아 가정 소비용으로 많이 찾습니다.
+</p>
+</div>
+
+<!-- 취청 오이 (그대로) -->
 <div class="product">
 <svg viewBox="0 0 64 64" width="60">
 <rect x="8" y="22" width="48" height="20" rx="10" fill="#2e7d32"/>
 <circle cx="22" cy="32" r="2" fill="#1b5e20"/>
-<circle cx="42" cy="36" r="2" fill="#1b5e20"/>
-</svg>
-<h3>취청 오이</h3>
-<p>시설 재배로 길이와 굵기가 균일하며 아삭한 식감이 특징입니다.</p>
-</div>
-
-<!-- 깻잎 -->
-<div class="product">
-<svg viewBox="0 0 64 64" width="60">
-<path d="M32 6c10 8 18 18 14 30-4 10-14 18-14 18S22 46 18 36C14 24 22 14 32 6z" fill="#2f8f46"/>
-<path d="M32 10v40" stroke="#1b5e20" stroke-width="2"/>
-</svg>
-<h3>깻잎</h3>
-<p>시설 하우스 재배로 잎이 두껍고 향이 진한 것이 특징입니다.</p>
-</div>
-
-<!-- 애호박 -->
-<div class="product">
-<svg viewBox="0 0 64 64" width="60">
-<rect x="6" y="26" width="52" height="16" rx="8" fill="#9ccc65"/>
-<rect x="4" y="30" width="4" height="8" fill="#558b2f"/>
-</svg>
-<h3>애호박</h3>
-<p>연하고 수분감이 좋아 찌개·볶음용으로 선호도가 높은 품목입니다.</p>
-</div>
-
-</div>
-</section>
-
-<section>
-<h2 class="title">오시는 길</h2>
-<div class="map-box">
-<div class="map-title">딸기농장 약도</div>
-
-<svg viewBox="0 0 600 300" width="100%">
-<!-- 수로 -->
-<rect x="0" y="190" width="600" height="30" fill="#b3e5fc"/>
-<text x="20" y="210" font-size="14">수로</text>
-
-<!-- 서정길 -->
-<line x1="420" y1="0" x2="420" y2="300" stroke="#999" stroke-width="6"/>
-<text x="430" y="30" font-size="14">서정길</text>
-
-<!-- 농노길 -->
-<line x1="300" y1="190" x2="420" y2="190" stroke="#aaa" stroke-width="5"/>
-<text x="310" y="175" font-size="14">농노길</text>
-
-<!-- 농장 -->
-<circle cx="450" cy="150" r="14" fill="#c62828"/>
-<text x="470" y="155" font-size="15">생생농장</text>
-</svg>
-
-<p style="margin-top:20px;color:#555;line-height:1.6;">
-전북 완주군 봉동읍 장기리 1729<br>
-서정길 따라 진입 후 수로를 지난 뒤 우측 위치
-</p>
-</div>
-</section>
-
-<footer>
-<p>© 생생농장</p>
-</footer>
-
-</body>
-</html>
+<circle cx="42
