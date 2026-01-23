@@ -3,292 +3,279 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 | 킹스베리 & 산지직송 채소</title>
+<title>생생농장 | 스마트팜 킹스베리 & 산지직송</title>
 
 <style>
 :root{
-    --red-grad: linear-gradient(135deg, #ff6b6b, #e83333);
-    --green-grad: linear-gradient(135deg, #51cf66, #2fb573);
-    --card-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    --primary-green: #1b5e20;
+    --accent-red: #d32f2f;
+    --gold: #b8860b;
+    --bg-light: #f8f9fa;
+    --card-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-    font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-    background:#ffffff;
-    color:#222;
+    font-family:"Pretendard", "Apple SD Gothic Neo", sans-serif;
+    background:#fff;
+    color:#2c3e50;
     line-height:1.6;
 }
 
-/* ================= HEADER ================= */
-header{
-    padding:90px 20px 70px;
-    text-align:center;
-    background: radial-gradient(circle at 50% 0%, #f4fbf8 0%, #ffffff 80%);
+/* ================= HEADER (PREMIUM SVG) ================= */
+header {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #f1f8e9 0%, #ffffff 100%);
 }
 
-/* ================= PREMIUM LOGO ================= */
-.logo-wrap{
-    width:100%;
-    max-width:520px;
-    margin:0 auto 30px;
+.main-visual-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
-.logo-text{
-    font-size: clamp(44px, 8vw, 72px);
+
+.logo-text {
+    font-size: clamp(48px, 10vw, 72px);
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -3px;
+    margin-top: -20px;
 }
 .logo-text span {
-    background: var(--red-grad);
+    background: linear-gradient(135deg, var(--accent-red), #ff5252);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* ================= SMART TECH ================= */
-.smart-section{
-    background:#f7faf8;
-    border-radius:30px;
-    padding:35px 20px;
-    margin:40px auto 60px;
-    max-width:1200px;
-    text-align:center;
-    box-shadow:var(--card-shadow);
+/* ================= SMART TECH SECTION (NEW) ================= */
+.tech-section {
+    background: #fdfdfd;
+    padding: 60px 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
-.smart-title{
-    font-size:26px;
-    font-weight:900;
-    margin-bottom:18px;
-}
-.smart-tech-bar {
-    display: flex;
-    justify-content: center;
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
-    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 30px auto 0;
 }
-.tech-tag {
-    font-size: 14px;
-    background: #ffffff;
-    padding: 8px 14px;
-    border-radius: 10px;
-    color: #2f6f52;
-    font-weight: 800;
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+.tech-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    border: 1px solid #f0f0f0;
+    text-align: center;
 }
+.tech-item i { font-size: 24px; display: block; margin-bottom: 10px; }
+.tech-item h4 { font-size: 16px; color: var(--primary-green); margin-bottom: 5px; }
+.tech-item p { font-size: 13px; color: #777; }
 
 /* ================= PRODUCT GRID ================= */
 section { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-.section-title { font-size: 30px; font-weight: 900; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
+.section-title { 
+    text-align: center; 
+    font-size: 32px; 
+    font-weight: 800; 
+    margin-bottom: 40px; 
+}
+.section-title span { color: var(--primary-green); }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background: #fff;
-    border-radius: 22px;
-    padding: 38px 20px;
+    border-radius: 24px;
+    padding: 40px 25px;
     text-align: center;
     box-shadow: var(--card-shadow);
-    border: 1px solid #eef2f1;
-    transition: 0.35s ease;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
 }
-.card:hover { transform: translateY(-8px); border-color: #2fb573; }
-.card.premium { border: 3px solid #ffc9c9; background: #fffafb; }
-.card h3 { font-size: 26px; margin: 12px 0; font-weight: 900; }
-.card p { color: #666; font-size: 15px; }
+.card:hover { transform: translateY(-10px); }
+.card.premium { border: 2.5px solid #ffcdd2; }
+.card.premium::after {
+    content: "PREMIUM";
+    position: absolute; top: 15px; right: -30px;
+    background: var(--accent-red); color: #fff;
+    font-size: 10px; font-weight: 900;
+    padding: 5px 40px; transform: rotate(45deg);
+}
 
-/* ================= LOCATION ================= */
-.location-box{
-    background:#f8f9fa;
-    border-radius:25px;
-    padding:40px 25px;
-    text-align:center;
+/* ================= MAP SVG (RE-DESIGN) ================= */
+.map-box {
+    background: #f8f9fa;
+    border-radius: 30px;
+    padding: 40px;
+    margin-top: 30px;
 }
-.location-big{
-    font-size:22px;
-    font-weight:900;
-    margin-bottom:10px;
-}
-.location-sub{
-    color:#777;
-    font-size:15px;
-    line-height:1.6;
-}
-.map-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-top:20px;
-}
-.map-buttons a{
-    text-decoration:none;
-    padding:10px 18px;
-    border-radius:10px;
-    font-weight:800;
-    background:#ffffff;
-    color:#222;
-    box-shadow:var(--card-shadow);
+.refined-map {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
 }
 
 /* ================= CONTACT ================= */
-.contact-box {
-    background: #101312;
+.contact-btn {
+    display: inline-block;
+    background: var(--primary-green);
     color: #fff;
-    padding: 70px 20px;
-    border-radius: 35px;
-    text-align: center;
-    margin-top: 70px;
-}
-.contact-box h2 { font-size: 34px; margin-bottom: 12px; }
-.contact-box p { opacity: 0.7; margin-bottom: 32px; }
-.phone-num {
-    font-size: clamp(34px, 6vw, 52px);
-    font-weight: 900;
-    color: #2fb573;
+    padding: 20px 50px;
+    border-radius: 50px;
+    font-size: 24px;
+    font-weight: 800;
     text-decoration: none;
-    display: block;
+    margin-top: 20px;
 }
 
-/* ================= FLOATING CALL ================= */
+/* FLOATING */
 .floating-call {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 72px;
-    height: 72px;
-    background: #2fb573;
-    color: #fff;
+    position: fixed; bottom: 30px; right: 30px;
+    width: 75px; height: 75px;
+    background: #2fb573; color: #fff;
     border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 12px 30px rgba(47,181,115,0.45);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 30px rgba(47,181,115,0.5);
     z-index: 9999;
-    font-weight: 900;
-}
-.floating-call b { font-size: 11px; }
-
-@media (max-width: 768px) {
-    .logo-text { font-size: 46px; }
 }
 </style>
 </head>
 <body>
 
 <header>
-
-<!-- ================= FARM LOGO SVG ================= -->
-<div class="logo-wrap">
-<svg viewBox="0 0 520 180">
-    <ellipse cx="260" cy="90" rx="240" ry="70" fill="#e9fbf2"/>
-
-    <!-- Strawberry -->
-    <path d="M90 80 Q120 30 150 80 Q155 130 120 150 Q85 130 90 80" fill="#e83333"/>
-    <circle cx="115" cy="100" r="3" fill="#ffd6d6"/>
-    <circle cx="130" cy="115" r="3" fill="#ffd6d6"/>
-    <path d="M115 60 Q120 40 135 55" stroke="#2fb573" stroke-width="4" fill="none"/>
-
-    <!-- Cucumber -->
-    <rect x="185" y="65" width="95" height="30" rx="15" fill="#2fb573"/>
-    <circle cx="200" cy="80" r="3" fill="#b2f2bb"/>
-    <circle cx="225" cy="80" r="3" fill="#b2f2bb"/>
-    <circle cx="250" cy="80" r="3" fill="#b2f2bb"/>
-
-    <!-- Zucchini -->
-    <rect x="305" y="70" width="95" height="28" rx="14" fill="#ffbf00"/>
-    <rect x="395" y="75" width="12" height="18" rx="4" fill="#7a6200"/>
-
-    <!-- Perilla Leaf -->
-    <path d="M450 90 Q480 40 500 90 Q480 150 450 120 Q430 100 450 90" fill="#2fb573"/>
-    <path d="M450 90 L500 90" stroke="#ffffff" opacity="0.5"/>
-</svg>
-</div>
-
-<h1 class="logo-text">생생<span>농장</span></h1>
-<p style="color:#666; font-weight:700;">완주 봉동 산지직송 프리미엄 스마트팜</p>
+    <div class="main-visual-wrapper">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="berryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff4d4d" />
+                    <stop offset="100%" style="stop-color:#b71c1c" />
+                </linearGradient>
+                <filter id="shadow">
+                    <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.2"/>
+                </filter>
+            </defs>
+            <path d="M200 40 C160 40, 130 70, 130 110 C130 160, 200 190, 200 190 C200 190, 270 160, 270 110 C270 70, 240 40, 200 40" fill="url(#berryGrad)" filter="url(#shadow)"/>
+            <g fill="#ffea00" opacity="0.6">
+                <circle cx="170" cy="90" r="2"/><circle cx="200" cy="80" r="2"/><circle cx="230" cy="95" r="2"/>
+                <circle cx="160" cy="120" r="2"/><circle cx="200" cy="130" r="2"/><circle cx="240" cy="125" r="2"/>
+                <circle cx="185" cy="160" r="2"/><circle cx="215" cy="165" r="2"/>
+            </g>
+            <path d="M200 45 L180 20 Q200 10 220 20 Z" fill="#2e7d32"/>
+            <path d="M190 42 L150 30 Q170 15 195 25 Z" fill="#43a047"/>
+            <path d="M210 42 L250 30 Q230 15 205 25 Z" fill="#43a047"/>
+            <path d="M50 100 L110 100 M290 100 L350 100" stroke="#2e7d32" stroke-width="1" stroke-dasharray="4"/>
+            <circle cx="50" cy="100" r="3" fill="#2e7d32"/>
+            <circle cx="350" cy="100" r="3" fill="#2e7d32"/>
+        </svg>
+    </div>
+    <h1 class="logo-text">생생<span>농장</span></h1>
+    <p style="letter-spacing:4px; font-weight:800; color:#555; margin-top:10px;">PREMIUM SMART FARM</p>
 </header>
 
-<!-- ================= SMART TECH FIRST ================= -->
-<div class="smart-section">
-    <div class="smart-title">🚀 스마트팜 자동화 시스템</div>
-    <div class="smart-tech-bar">
-        <span class="tech-tag">🌡 온도 자동제어</span>
-        <span class="tech-tag">💧 양액 정밀공급</span>
-        <span class="tech-tag">☀️ 일사량 감지</span>
-        <span class="tech-tag">🌬 CO₂ 환경제어</span>
-        <span class="tech-tag">📱 실시간 원격 모니터링</span>
-    </div>
-</div>
-
-<!-- ================= PRODUCTS ================= -->
 <section id="products">
-<h2 class="section-title">🧺 출하 품목</h2>
-<div class="grid">
-    <div class="card premium">
-        <span style="font-size:34px">👑</span>
-        <h3 style="color:#e83333">킹스베리</h3>
-        <p>초대형 과육 · 고당도 · 프리미엄 딸기</p>
+    <h2 class="section-title">생생농장 <span>대표 품목</span></h2>
+    <div class="grid">
+        <div class="card premium">
+            <div style="font-size:50px; margin-bottom:15px;">🍓</div>
+            <h3 style="font-size:28px; color:var(--accent-red); font-weight:900;">킹스베리</h3>
+            <p>일반 딸기의 2~3배 크기<br>은은한 복숭아 향의 명품 딸기</p>
+        </div>
+        <div class="card">
+            <div style="font-size:50px; margin-bottom:15px;">🥒</div>
+            <h3 style="font-size:24px; font-weight:800;">취청오이 / 애호박</h3>
+            <p>스마트 양액 재배로<br>쓴맛 없이 아삭하고 달큰한 맛</p>
+        </div>
+        <div class="card">
+            <div style="font-size:50px; margin-bottom:15px;">🌿</div>
+            <h3 style="font-size:24px; font-weight:800;">신선 채소류</h3>
+            <p>GAP 인증 기준으로 관리하는<br>믿고 먹는 우리 가족 식재료</p>
+        </div>
     </div>
-    <div class="card">
-        <span style="font-size:34px">🍓</span>
-        <h3>설향 딸기</h3>
-        <p>과즙 풍부 · 대중 인기 품종</p>
-    </div>
-    <div class="card">
-        <span style="font-size:34px">🥒</span>
-        <h3>취청오이</h3>
-        <p>아삭한 식감 · 저장성 우수</p>
-    </div>
-    <div class="card">
-        <span style="font-size:34px">🎃</span>
-        <h3>인큐 애호박</h3>
-        <p>단단한 육질 · 달큰한 풍미</p>
-    </div>
-    <div class="card">
-        <span style="font-size:34px">🍃</span>
-        <h3>신선 깻잎</h3>
-        <p>향 진하고 잎이 부드러움</p>
-    </div>
-</div>
 </section>
 
-<!-- ================= LOCATION ================= -->
+<div class="tech-section">
+    <div style="max-width:1200px; margin:0 auto; text-align:center;">
+        <h3 style="font-size:22px; font-weight:800;">데이터로 키우는 <span style="color:var(--primary-green)">최첨단 스마트팜</span></h3>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <i>🌡️</i>
+                <h4>온습도 자동제어</h4>
+                <p>생육 최적 온도 24시간 유지</p>
+            </div>
+            <div class="tech-item">
+                <i>💧</i>
+                <h4>정밀 양액 시스템</h4>
+                <p>필요한 영양분만 정확히 공급</p>
+            </div>
+            <div class="tech-item">
+                <i>☀️</i>
+                <h4>광합성 최적화</h4>
+                <p>일사량 감지 자동 차광 시스템</p>
+            </div>
+            <div class="tech-item">
+                <i>📱</i>
+                <h4>AI 원격 모니터링</h4>
+                <p>품질 이상 유무 실시간 검수</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section id="location">
-<h2 class="section-title">📍 농장 위치</h2>
-<div class="location-box">
-    <div class="location-big">전라북도 완주군 봉동읍 장기리 1729</div>
-    <div class="location-sub">
-        봉동읍 중심지 → 서두교회 인근 → 차량 진입 가능<br>
-        내비게이션에 <b>“장기리 1729”</b> 검색
+    <h2 class="section-title">📍 직접 방문 및 출하처</h2>
+    <div class="map-box" style="text-align: center;">
+        <svg class="refined-map" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 250 Q150 250 200 200 L200 0" fill="none" stroke="#e0e0e0" stroke-width="40"/>
+            <path d="M200 200 L600 200" fill="none" stroke="#e0e0e0" stroke-width="40"/>
+            <path d="M0 250 Q150 250 200 200 L200 0" fill="none" stroke="#fff" stroke-width="34"/>
+            <path d="M200 200 L600 200" fill="none" stroke="#fff" stroke-width="34"/>
+            
+            <rect x="300" y="110" width="100" height="60" rx="8" fill="#fff" stroke="#ddd" stroke-width="2"/>
+            <text x="350" y="145" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">서두교회</text>
+            
+            <g transform="translate(200, 200)">
+                <circle r="35" fill="var(--accent-red)" opacity="0.1">
+                    <animate attributeName="r" values="30;45;30" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <circle r="10" fill="var(--accent-red)"/>
+                <text y="50" font-size="18" font-weight="900" text-anchor="middle" fill="var(--accent-red)">생생농장 (본점)</text>
+                <text y="75" font-size="13" text-anchor="middle" fill="#666">전북 완주군 봉동읍 장기리 1729</text>
+            </g>
+
+            <text x="50" y="290" font-size="12" fill="#999" font-weight="bold">← 봉동읍내 방면</text>
+            <text x="500" y="240" font-size="12" fill="#999" font-weight="bold">고산 방면 →</text>
+            <text x="250" y="50" font-size="12" fill="#999" font-weight="bold" transform="rotate(-90 250 50)">전주/용진 방면</text>
+        </svg>
     </div>
-    <div class="map-buttons">
-        <a target="_blank" href="https://map.naver.com/v5/search/장기리%201729">네이버지도</a>
-        <a target="_blank" href="https://map.kakao.com/link/search/장기리%201729">카카오맵</a>
-    </div>
-</div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="contact-box">
-<h2>구매 · 방문 문의</h2>
-<p>365일 스마트팜 정밀관리 · 산지직송</p>
-<a href="tel:01039451394" class="phone-num">010-3945-1394</a>
+<section id="contact" style="text-align: center; background: #1a1c1b; color:#fff; padding: 80px 20px; border-radius: 40px;">
+    <h2 style="font-size:36px; margin-bottom:10px;">신선함을 지금 바로 주문하세요</h2>
+    <p style="opacity:0.6; margin-bottom:40px;">대량 구매 및 식자재 납품 문의 환영합니다.</p>
+    
+    <a href="tel:01039451394" class="contact-btn">010-3945-1394</a>
+    
+    <p style="margin-top:30px; color:#2fb573; font-weight:700;">전북 완주군 봉동읍 장기리 1729 (서두마을)</p>
 </section>
 
 <footer>
-<p style="text-align: center; padding: 40px; color: #bbb; font-size: 14px;">
-© 생생농장. All Rights Reserved.
-</p>
+    <p style="text-align: center; padding: 40px; color: #bbb; font-size: 14px;">
+        © 2024 생생농장 SMART FARM. All Rights Reserved.
+    </p>
 </footer>
 
 <a href="tel:01039451394" class="floating-call">
-<span style="font-size:24px">📞</span>
-<b>문의</b>
+    <span style="font-size:24px">📞</span>
+    <b style="font-size:11px">전화문의</b>
 </a>
 
 </body>
