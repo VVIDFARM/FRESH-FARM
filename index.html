@@ -5,113 +5,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>생생농장</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
 <style>
-
-/* =========================
-   RESET
-========================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-html,body{
-  font-family:'Noto Sans KR', sans-serif;
-  background:#f4f6f3;
-  color:#222;
-  line-height:1.6;
-}
-img{max-width:100%; display:block;}
-a{text-decoration:none; color:inherit;}
-button{border:none; background:none; cursor:pointer;}
-
 /* =========================
    COLOR SYSTEM
 ========================= */
 :root{
-  --green-dark:#1f3d2b;
-  --green:#2e5f44;
-  --green-light:#e7efe9;
-  --red:#b71c1c;
-  --gray:#666;
-  --white:#fff;
+  --red:#c62828;
+  --red-soft:#ffebee;
+  --green:#2e7d32;
+  --green-soft:#e8f5e9;
+  --dark:#1b1b1b;
+  --gray:#555;
+  --bg:#fafafa;
 }
+
+/* =========================
+   RESET
+========================= */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
 
 /* =========================
    HEADER
 ========================= */
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  background:#fff;
-  z-index:999;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at top, var(--red-soft), transparent 50%),
+    linear-gradient(180deg,#fff,var(--bg));
 }
-.header-inner{
+.logo-wrap{
+  animation:fadeUp 1s ease forwards;
+}
+.logo-text{
+  font-size:clamp(56px,8vw,110px);
+  font-weight:900;
+  letter-spacing:6px;
+  color:var(--red);
+}
+.tagline{
+  margin-top:18px;
+  font-size:20px;
+  color:#333;
+}
+.cta{
+  margin-top:40px;
+  display:inline-block;
+  padding:18px 70px;
+  background:var(--red);
+  color:#fff;
+  border-radius:80px;
+  font-weight:900;
+}
+
+/* =========================
+   NAV
+========================= */
+nav{
+  position:sticky;
+  top:0;
+  background:#ffffffee;
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #eee;
+  z-index:999;
+}
+.nav-wrap{
   max-width:1400px;
   margin:auto;
-  padding:18px 30px;
+  padding:16px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.logo{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:-1px;
+.nav-links a{
+  margin-left:32px;
+  font-weight:800;
 }
-.menu{
-  display:flex;
-  gap:26px;
-  align-items:center;
-}
-.menu a{
-  font-weight:600;
-}
-.call-btn{
-  background:var(--green-dark);
+.nav-call{
+  background:var(--green);
   color:#fff;
-  padding:12px 22px;
+  padding:10px 22px;
   border-radius:40px;
-  font-weight:700;
-}
-
-/* =========================
-   HERO
-========================= */
-.hero{
-  padding-top:120px;
-  padding-bottom:140px;
-  background:linear-gradient(180deg,#ffffff 0%,#f1f4f0 100%);
-  text-align:center;
-}
-.hero h1{
-  font-size:56px;
-  font-weight:900;
-  margin-bottom:24px;
-}
-.hero p{
-  font-size:20px;
-  color:#555;
 }
 
 /* =========================
    SECTION COMMON
 ========================= */
-.section{
+section{
   max-width:1400px;
-  margin:140px auto;
-  padding:0 30px;
+  margin:160px auto;
+  padding:0 28px;
 }
-.section-title{
-  font-size:40px;
-  font-weight:900;
+.title{
+  font-size:clamp(36px,4vw,56px);
   margin-bottom:60px;
+  color:var(--red);
 }
 
 /* =========================
@@ -119,14 +118,14 @@ header{
 ========================= */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:40px;
 }
 .product{
   background:#fff;
-  padding:40px;
-  border-radius:28px;
-  box-shadow:0 30px 60px rgba(0,0,0,.08);
+  padding:46px;
+  border-radius:30px;
+  box-shadow:0 30px 60px rgba(0,0,0,.1);
   transition:.4s;
 }
 .product:hover{
@@ -134,195 +133,165 @@ header{
 }
 .product svg{
   width:70px;
-  margin-bottom:24px;
+  margin-bottom:26px;
 }
 .product h3{
   font-size:22px;
-  font-weight:800;
   margin-bottom:14px;
 }
 .product p{
   color:#444;
-  font-size:16px;
+  line-height:1.7;
 }
 
 /* =========================
    MAP
 ========================= */
-.map-wrap{
+.map-box{
   background:#fff;
   padding:60px;
   border-radius:40px;
-  box-shadow:0 30px 60px rgba(0,0,0,.08);
+  box-shadow:0 30px 60px rgba(0,0,0,.1);
 }
-.map-wrap svg{
-  max-width:700px;
+.map-box svg{
+  max-width:800px;
   margin:auto;
   display:block;
-}
-
-/* =========================
-   INFO
-========================= */
-.info{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:60px;
-}
-.info-box{
-  background:var(--white);
-  padding:50px;
-  border-radius:30px;
-  box-shadow:0 30px 60px rgba(0,0,0,.08);
-}
-.info-box h4{
-  font-size:24px;
-  margin-bottom:18px;
-}
-.info-box p{
-  font-size:16px;
-  color:#444;
 }
 
 /* =========================
    FOOTER
 ========================= */
 footer{
-  background:var(--green-dark);
+  background:var(--green);
   color:#fff;
-  padding:100px 30px;
-}
-.footer-inner{
-  max-width:1400px;
-  margin:auto;
+  padding:120px 20px;
   text-align:center;
 }
-.footer-inner p{
-  font-size:18px;
-}
-.footer-inner a{
-  display:inline-block;
-  margin-top:30px;
-  background:#fff;
-  color:var(--green-dark);
-  padding:16px 34px;
-  border-radius:40px;
+.call-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--green);
+  color:#fff;
+  padding:16px 26px;
+  border-radius:60px;
   font-weight:900;
 }
 
+/* =========================
+   ANIM
+========================= */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:none;}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo">생생농장</div>
-    <nav class="menu">
-      <a href="#products">품목</a>
-      <a href="#map">오시는길</a>
-      <a href="tel:010XXXXXXXX" class="call-btn">📞 010-XXXX-XXXX</a>
-    </nav>
+  <div class="logo-wrap">
+    <div class="logo-text">생생농장</div>
+    <div class="tagline">킹스베리를 중심으로 정직하게 재배합니다</div>
+    <a href="#product" class="cta">재배 품목 보기</a>
   </div>
 </header>
 
-<section class="hero">
-  <h1>정직하게 키웁니다</h1>
-  <p>킹스베리를 중심으로 품질에 집중하는 농장</p>
-</section>
+<nav>
+  <div class="nav-wrap">
+    <strong>생생농장</strong>
+    <div class="nav-links">
+      <a href="#product">품목</a>
+      <a href="#map">오시는길</a>
+      <a href="tel:01039451394" class="nav-call">📞 010-3945-1394</a>
+    </div>
+  </div>
+</nav>
 
-<section id="products" class="section">
-<h2 class="section-title">재배 품목</h2>
-
+<section id="product">
+<h2 class="title">재배 품목</h2>
 <div class="products">
 
 <!-- 킹스베리 -->
 <div class="product">
-<svg viewBox="0 0 64 64">
-<path d="M32 6c10 0 20 12 20 26S32 58 32 58 12 44 12 32 22 6 32 6z" fill="#b71c1c"/>
-</svg>
+<svg viewBox="0 0 64 64"><circle cx="32" cy="36" r="22" fill="#c62828"/></svg>
 <h3>킹스베리 (주력)</h3>
 <p>
 과 크기와 당도를 기준으로 선별 재배합니다.<br>
-주문·출하 중심 품종입니다.
+도매·출하 중심으로 관리하는 핵심 품목입니다.
 </p>
 </div>
 
 <!-- 설향 -->
 <div class="product">
-<svg viewBox="0 0 64 64">
-<path d="M32 10c8 0 16 10 16 22S32 54 32 54 16 40 16 32 24 10 32 10z" fill="#d32f2f"/>
-</svg>
+<svg viewBox="0 0 64 64"><circle cx="32" cy="36" r="20" fill="#e53935"/></svg>
 <h3>설향</h3>
 <p>
-향과 산미 균형이 좋은 품종으로<br>
-직거래용으로 재배합니다.
+향과 식감 균형이 좋아<br>
+직거래 및 생과 판매용으로 재배합니다.
 </p>
 </div>
 
 <!-- 취청 오이 -->
 <div class="product">
-<svg viewBox="0 0 64 64">
-<rect x="10" y="14" width="44" height="36" rx="18" fill="#2e7d32"/>
-</svg>
+<svg viewBox="0 0 64 64"><rect x="8" y="22" width="48" height="20" rx="10" fill="#2e7d32"/></svg>
 <h3>취청 오이</h3>
 <p>
-식감 위주로 관리하여<br>
-생과 출하에 적합합니다.
+아삭한 식감 위주로 관리하며<br>
+일정 크기에서 바로 수확합니다.
 </p>
 </div>
 
 <!-- 깻잎 -->
 <div class="product">
-<svg viewBox="0 0 64 64">
-<path d="M32 6c10 8 18 18 14 30-4 10-14 18-14 18S22 46 18 36C14 24 22 14 32 6z" fill="#388e3c"/>
-</svg>
+<svg viewBox="0 0 64 64"><path d="M32 6C18 18 14 30 20 42c6 12 12 16 12 16s6-4 12-16c6-12 2-24-12-36z" fill="#388e3c"/></svg>
 <h3>깻잎</h3>
 <p>
-잎 결 관리에 집중한 깻잎입니다.
+잎 결 손상 없이 관리하여<br>
+선별 출하합니다.
 </p>
 </div>
 
 <!-- 애호박 -->
 <div class="product">
-<svg viewBox="0 0 64 64">
-<rect x="8" y="22" width="48" height="20" rx="10" fill="#8bc34a"/>
-</svg>
+<svg viewBox="0 0 64 64"><rect x="6" y="26" width="52" height="14" rx="7" fill="#8bc34a"/></svg>
 <h3>애호박</h3>
 <p>
-연한 과육 위주로 수확합니다.
+연한 과육 기준으로 수확하며<br>
+시장 출하용으로 재배합니다.
 </p>
 </div>
 
 </div>
 </section>
 
-<section id="map" class="section">
-<h2 class="section-title">오시는 길</h2>
+<section id="map">
+<h2 class="title">오시는 길</h2>
+<div class="map-box">
+<svg viewBox="0 0 800 400">
+<line x1="50" y1="200" x2="750" y2="200" stroke="#333" stroke-width="5"/>
+<text x="360" y="180">서정길</text>
 
-<div class="map-wrap">
-<svg viewBox="0 0 700 400">
-<line x1="50" y1="200" x2="650" y2="200" stroke="#333" stroke-width="5"/>
-<text x="300" y="180">서정길</text>
+<rect x="380" y="220" width="80" height="40" fill="#90caf9"/>
+<text x="402" y="245">수로</text>
 
-<rect x="310" y="220" width="80" height="40" fill="#90caf9"/>
-<text x="330" y="245">수로</text>
+<line x1="420" y1="260" x2="420" y2="330" stroke="#333" stroke-width="5"/>
+<text x="440" y="320">농노길</text>
 
-<line x1="350" y1="260" x2="350" y2="330" stroke="#333" stroke-width="5"/>
-<text x="365" y="315">농노길</text>
-
-<circle cx="350" cy="350" r="10" fill="#b71c1c"/>
-<text x="370" y="355">생생농장</text>
+<circle cx="420" cy="350" r="10" fill="#c62828"/>
+<text x="440" y="355">생생농장</text>
 </svg>
 </div>
 </section>
 
 <footer>
-  <div class="footer-inner">
-    <p>방문 및 출하 문의</p>
-    <a href="tel:010XXXXXXXX">📞 바로 전화하기</a>
-  </div>
+<p>📞 010-3945-1394</p>
+<p>전북 완주군 봉동읍 장기리 1729</p>
 </footer>
+
+<a href="tel:01039451394" class="call-float">📞 바로 전화</a>
 
 </body>
 </html>
