@@ -23,24 +23,22 @@ body{
 
 /* ================= HEADER ================= */
 header{
-    padding:60px 20px;
+    padding:80px 20px;
     text-align:center;
-    background: radial-gradient(circle at 50% 0%, #f0fdf4 0%, #ffffff 100%);
+    background: radial-gradient(circle at 50% 0%, #f8fdfb 0%, #ffffff 100%);
 }
 
-/* 메인 SVG (애호박/깻잎 정교화) */
+/* 깔끔하게 정리된 메인 비주얼 */
 .main-visual {
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto 10px;
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.1));
+    max-width: 400px;
+    margin: 0 auto 25px;
 }
 
 .logo-text{
-    font-size: clamp(38px, 8vw, 64px);
+    font-size: clamp(42px, 8vw, 68px);
     font-weight: 900;
     letter-spacing: -2px;
-    margin-bottom: 5px;
 }
 .logo-text span {
     background: var(--red-grad);
@@ -48,12 +46,9 @@ header{
     -webkit-text-fill-color: transparent;
 }
 
-/* ================= PRODUCT GRID (주인공) ================= */
-section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
+/* ================= PRODUCT GRID ================= */
+section { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.section-title { font-size: 28px; font-weight: 800; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
 
 .grid {
     display: grid;
@@ -71,72 +66,73 @@ section {
     transition: 0.3s ease;
 }
 .card:hover { transform: translateY(-5px); border-color: #2fb573; }
-
-.card.premium {
-    background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
-    border: 2px solid #ffc9c9;
-}
-
-.crown-icon { font-size: 32px; display: block; margin-bottom: 5px; animation: bounce 2s infinite; }
+.card.premium { border: 2px solid #ffc9c9; background: #fffafb; }
 .card h3 { font-size: 26px; margin: 10px 0; font-weight: 800; }
-.card p { color: #666; font-size: 15px; word-break: keep-all; }
+.card p { color: #666; font-size: 15px; }
 
-/* 애호박 전용 SVG (카드용) */
-.squash-svg { width: 80px; height: 80px; margin-bottom: 10px; }
-
-/* ================= SMART CONTROL (아래로 이동) ================= */
-.smart-tech-section {
-    background: #f8faf9;
-    padding: 40px 20px;
-    border-radius: 30px;
-    margin-top: 40px;
+/* ================= MAP SVG (오시는 길) ================= */
+.map-container {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 25px;
+    padding: 30px;
+    margin-top: 20px;
     text-align: center;
 }
-.smart-tech-section h4 { font-size: 18px; margin-bottom: 20px; color: #1971c2; }
-.smart-info {
+.map-svg {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 15px;
+    background: #f1f3f5;
+    margin-bottom: 20px;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-box {
+    background: #1a1c1b;
+    color: #fff;
+    padding: 60px 20px;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 50px;
+}
+.contact-box h2 { font-size: 32px; margin-bottom: 10px; }
+.contact-box p { opacity: 0.7; margin-bottom: 30px; }
+.phone-num {
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 900;
+    color: #2fb573;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* ================= SMART TECH ================= */
+.smart-tech-bar {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.info-item {
-    background: #fff;
-    padding: 10px 15px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-    border: 1px solid #e7f5ff;
-}
-.info-item b { color: #2fb573; }
-
-/* ================= STORE INFO ================= */
-.store-box {
-    background: #f1f3f5;
-    padding: 60px 20px;
-    border-radius: 40px;
-    margin-top: 40px;
-}
-.store-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
-.store-card { background: #fff; padding: 25px; border-radius: 20px; }
-.store-card h4 { color: #2fb573; margin-bottom: 12px; font-size: 18px; }
-.store-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.store-tags span { background: #f8f9fa; border: 1px solid #dee2e6; padding: 4px 10px; border-radius: 6px; font-size: 14px; }
+.tech-tag {
+    font-size: 13px;
+    background: #f0f4f2;
+    padding: 5px 12px;
+    border-radius: 8px;
+    color: #4a6759;
+    font-weight: 700;
+}
 
-/* ================= FLOATING CALL BUTTON ================= */
+/* ================= FLOATING CALL ================= */
 .floating-call {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 70px;
     height: 70px;
-    background: #111;
+    background: #2fb573;
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -144,107 +140,112 @@ section {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 15px rgba(47,181,115,0.3);
+    box-shadow: 0 10px 25px rgba(47,181,115,0.4);
     z-index: 9999;
+    font-weight: 900;
 }
-.floating-call span { font-size: 24px; }
-.floating-call b { font-size: 10px; margin-top: 2px; }
+.floating-call b { font-size: 10px; }
 
-@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-
-@media (max-width: 768px) { .store-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+    .logo-text { font-size: 45px; }
+}
 </style>
 </head>
 <body>
 
 <header>
-    <svg class="main-visual" viewBox="0 0 450 150">
-        <path d="M50 45 Q70 25 95 45 Q110 80 80 110 Q50 80 50 45" fill="#e83333"/>
-        <path d="M55 48 Q75 25 90 48 L75 60 Z" fill="#2fb573"/>
-        <rect x="125" y="30" width="16" height="95" rx="8" fill="#1b5e20" transform="rotate(-10 134 77)"/>
-        <g>
-            <rect x="180" y="65" width="100" height="26" rx="13" fill="#ffbf00"/>
-            <path d="M180 65 L172 73 L180 81 Z" fill="#7a6200"/> <rect x="195" y="68" width="70" height="4" rx="2" fill="white" opacity="0.3"/> </g>
-        <path d="M330 35 L342 45 L355 42 L358 55 L370 65 L358 75 L362 90 L345 102 L330 115 L315 102 L298 90 L302 75 L290 65 L302 55 L305 42 L318 45 Z" fill="#2fb573"/>
+    <svg class="main-visual" viewBox="0 0 320 100">
+        <path d="M40 30 Q55 15 70 30 Q80 60 55 85 Q30 60 40 30" fill="#e83333"/>
+        <path d="M45 32 Q55 15 65 32 L55 42 Z" fill="#2fb573"/>
+        <rect x="100" y="25" width="14" height="70" rx="7" fill="#1b5e20" transform="rotate(-10 107 60)"/>
+        <rect x="150" y="55" width="70" height="24" rx="12" fill="#ffbf00"/>
+        <path d="M150 55 L143 67 L150 79 Z" fill="#7a6200"/>
+        <path d="M260 30 Q290 50 260 90 Q230 50 260 30" fill="#2fb573"/>
+        <path d="M260 30 L260 90 M260 50 L245 65 M260 65 L275 80" stroke="white" stroke-width="1.5" opacity="0.5"/>
     </svg>
 
     <h1 class="logo-text">생생<span>농장</span></h1>
     <p style="color:#666; font-weight:700;">완주 봉동 산지직송 프리미엄 농산물</p>
 </header>
 
-<section>
+<section id="products">
     <div class="grid">
         <div class="card premium">
-            <span class="crown-icon">👑</span>
+            <span style="font-size:30px">👑</span>
             <h3 style="color:#e83333">킹스베리</h3>
-            <p>복숭아 향이 나는 압도적 크기의 프리미엄 딸기</p>
+            <p>압도적 크기, 달콤한 복숭아 향</p>
         </div>
-
         <div class="card">
-            <span style="font-size:35px">🍓</span>
+            <span style="font-size:30px">🍓</span>
             <h3>설향 딸기</h3>
-            <p>새콤달콤 과즙이 풍부한 인기 품종</p>
+            <p>과즙 팡팡! 새콤달콤 인기 품종</p>
         </div>
-
         <div class="card">
-            <span style="font-size:35px">🥒</span>
+            <span style="font-size:30px">🥒</span>
             <h3>취청오이</h3>
             <p>아삭아삭 신선함이 오래가는 오이</p>
         </div>
-
         <div class="card">
-            <svg class="squash-svg" viewBox="0 0 100 100">
+            <svg style="width:60px; height:60px; margin-bottom:10px" viewBox="0 0 100 100">
                 <rect x="10" y="40" width="80" height="22" rx="11" fill="#ffbf00"/>
                 <path d="M10 40 L2 48 L10 56 Z" fill="#7a6200"/>
                 <rect x="25" y="43" width="50" height="3" rx="1.5" fill="white" opacity="0.4"/>
             </svg>
             <h3>인큐 애호박</h3>
-            <p>단단하고 달큰한 요리용 명품 호박</p>
+            <p>육질이 단단하고 달큰한 명품 호박</p>
         </div>
-
         <div class="card">
-            <span style="font-size:35px">🍃</span>
+            <span style="font-size:30px">🍃</span>
             <h3>신선 깻잎</h3>
             <p>향이 깊고 부드러운 고품질 깻잎</p>
         </div>
     </div>
+</section>
 
-    <div class="smart-tech-section">
-        <h4>📡 ICT 환경제어 시스템 생산</h4>
-        <div class="smart-info">
-            <div class="info-item">🌡 <b>온도</b> 자동제어</div>
-            <div class="info-item">💧 <b>양액</b> 정밀공급</div>
-            <div class="info-item">☀️ <b>일사량</b> 감지</div>
-            <div class="info-item">📱 <b>원격</b> 모니터링</div>
-        </div>
-    </div>
-
-    <div class="store-box">
-        <h2 style="text-align:center; margin-bottom:30px; font-weight:800;">📍 오프라인 판매처</h2>
-        <div class="store-grid">
-            <div class="store-card">
-                <h4>완주로컬푸드 직매장</h4>
-                <div class="store-tags">
-                    <span>하가점</span> <span>효자점</span> <span>둔산점</span> 
-                    <span>모악점</span> <span>혁신점</span> <span>삼천점</span>
-                </div>
-            </div>
-            <div class="store-card">
-                <h4>농협 하나로마트</h4>
-                <div class="store-tags">
-                    <span>봉동농협</span> <span>용진농협</span>
-                </div>
-            </div>
-        </div>
-        <p style="text-align:center; margin-top:40px; color:#888; font-size:14px;">
-            전북 완주군 봉동읍 장기리 1729 | 생생농장
-        </p>
+<section id="location">
+    <h2 class="section-title">📍 오시는 길</h2>
+    <div class="map-container">
+        <svg class="map-svg" viewBox="0 0 500 250">
+            <rect x="0" y="100" width="500" height="40" fill="#dee2e6"/> <rect x="350" y="0" width="40" height="250" fill="#dee2e6"/> <rect x="300" y="30" width="140" height="50" rx="10" fill="#fff" stroke="#ccc"/>
+            <text x="370" y="60" font-size="14" font-weight="bold" text-anchor="middle">서두교회</text>
+            
+            <circle cx="200" cy="120" r="15" fill="#e83333" opacity="0.2">
+                <animate attributeName="r" values="15;25;15" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="200" cy="120" r="8" fill="#e83333"/>
+            <text x="200" y="160" font-size="16" font-weight="900" text-anchor="middle" fill="#e83333">생생농장 (장기리 1729)</text>
+            
+            <text x="50" y="125" font-size="12" fill="#888">봉동읍내 방면</text>
+            <text x="400" y="230" font-size="12" fill="#888">고산 방면</text>
+        </svg>
+        <p style="font-weight: 700; font-size: 18px;">전북 완주군 봉동읍 장기리 1729</p>
+        <p style="color:#888;">서두교회 인근 위치</p>
     </div>
 </section>
 
+<section id="contact" class="contact-box">
+    <h2>구매 및 방문 문의</h2>
+    <p>스마트팜 환경제어로 365일 신선하게 관리합니다.</p>
+    
+    <a href="tel:01039451394" class="phone-num">010-3945-1394</a>
+    
+    <div class="smart-tech-bar">
+        <span class="tech-tag">🌡 온도 자동제어</span>
+        <span class="tech-tag">💧 양액 정밀공급</span>
+        <span class="tech-tag">☀️ 일사량 감지</span>
+        <span class="tech-tag">📱 원격 모니터링</span>
+    </div>
+</section>
+
+<footer>
+    <p style="text-align: center; padding: 40px; color: #bbb; font-size: 14px;">
+        © 생생농장. All Rights Reserved.
+    </p>
+</footer>
+
 <a href="tel:01039451394" class="floating-call">
-    <span>📞</span>
-    <b>전화문의</b>
+    <span style="font-size:24px">📞</span>
+    <b>문의</b>
 </a>
 
 </body>
