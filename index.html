@@ -3,179 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 | 완주 시설채소 전문가</title>
+<title>생생농장 | THE ART OF FARMING</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <style>
-/* GPT의 훌륭한 디자인 토큰 계승 + Gemini의 디테일 추가 */
 :root {
-  --green-deep: #1B3C18;
-  --green-main: #2D5A27;
-  --green-bright: #4CAF50;
+  --gold: #C5A059;
+  --deep-green: #0A1F08;
+  --clay: #F4F1EE;
   --white: #ffffff;
-  --bg-light: #f4f7f4;
-  --accent: #FF5722;
-  --shadow-p: 0 20px 40px rgba(0,0,0,0.08);
+  --text: #1A1A1A;
+  --soft-green: #E8F0E6;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Pretendard, sans-serif; background: var(--bg-light); color: #1a1a1a; line-height: 1.7; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+body { font-family: Pretendard, sans-serif; background-color: var(--clay); color: var(--text); overflow-x: hidden; }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* NAV - 스크롤 시 그림자 효과를 고려한 투명도 조절 */
+/* =====================
+   HEADER & NAV
+===================== */
 nav {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: fixed; top: 0; width: 100%; height: 90px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; z-index: 1000; transition: 0.5s;
 }
-.nav-inner { height: 80px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 24px; font-weight: 800; color: var(--green-deep); letter-spacing: -1px; }
+.logo { font-size: 20px; font-weight: 900; letter-spacing: 4px; color: var(--deep-green); }
+.nav-menu { display: flex; gap: 40px; }
+.nav-menu a { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text); text-decoration: none; opacity: 0.6; transition: 0.3s; }
+.nav-menu a:hover { opacity: 1; color: var(--gold); }
 
-/* HERO - 시각적 압도감 유도 */
+/* =====================
+   HERO SECTION (CINEMATIC)
+===================== */
 .hero {
-  padding: 160px 0 100px; text-align: center;
-  background: radial-gradient(circle at top right, #eaf5e9, transparent),
-              radial-gradient(circle at bottom left, #f1f8e9, transparent);
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  flex-direction: column; text-align: center; background: var(--clay);
+  position: relative; overflow: hidden;
 }
-.badge-status {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--white); padding: 8px 16px; border-radius: 100px;
-  font-size: 14px; font-weight: 700; color: var(--green-main);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 24px;
+.hero-video-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(244,241,238,0.5), var(--clay)), 
+              url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=2070') center/cover;
+  opacity: 0.2; transform: scale(1.1); filter: blur(4px);
 }
-.badge-status::before { content: ""; width: 8px; height: 8px; background: var(--green-bright); border-radius: 50%; display: inline-block; animation: blink 1.5s infinite; }
-@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+.hero-content { z-index: 10; transform: translateY(20px); }
+.hero-sub { font-size: 14px; font-weight: 800; color: var(--gold); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+.hero h1 { font-size: clamp(40px, 8vw, 110px); font-weight: 900; line-height: 0.9; color: var(--deep-green); letter-spacing: -4px; margin-bottom: 30px; }
+.hero h1 span { color: var(--gold); font-style: italic; font-family: "serif"; }
 
-.hero h1 { font-size: clamp(32px, 5vw, 64px); font-weight: 900; line-height: 1.2; margin-bottom: 24px; color: var(--green-deep); }
-.hero h1 span { color: var(--green-bright); }
-.hero p { font-size: 20px; color: #555; max-width: 600px; margin: 0 auto 40px; }
-
-/* PRODUCT CARDS - 호버 시 깊이감 차별화 */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.card {
-  background: var(--white); padding: 40px; border-radius: 24px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative; border: 1px solid transparent;
+.scroll-indicator {
+  position: absolute; bottom: 40px; font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700; animation: bounce 2s infinite;
 }
-.card:hover { transform: translateY(-15px); border-color: var(--green-bright); box-shadow: var(--shadow-p); }
-.card .icon { font-size: 40px; margin-bottom: 20px; display: block; }
-.card h3 { font-size: 24px; margin-bottom: 12px; color: var(--green-deep); }
-.card p { color: #666; font-size: 16px; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
 
-/* STORE INFO - 더 직관적인 데이터 레이아웃 */
-.store-section { background: var(--green-deep); color: var(--white); border-radius: 40px; padding: 80px 60px; margin: 100px 0; }
-.store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.store-list h3 { font-size: 28px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; }
-.location-item { margin-bottom: 20px; }
-.location-item strong { font-size: 18px; color: var(--green-bright); display: block; margin-bottom: 5px; }
+/* =====================
+   CURATED SECTION (PRODUCTS)
+===================== */
+.section { padding: 180px 5%; max-width: 1600px; margin: 0 auto; }
+.section-header { margin-bottom: 100px; }
+.section-header .line { width: 60px; height: 2px; background: var(--gold); margin-bottom: 20px; }
+.section-header h2 { font-size: 50px; font-weight: 900; letter-spacing: -2px; line-height: 1; }
 
-/* CTA SECTION */
-.cta-banner { background: var(--white); padding: 60px; border-radius: 24px; text-align: center; box-shadow: var(--shadow-p); }
-.cta-banner h2 { font-size: 32px; margin-bottom: 20px; }
-.btn-main {
-  background: var(--green-main); color: var(--white); padding: 18px 40px;
-  border-radius: 14px; font-weight: 700; font-size: 18px; display: inline-block;
+.product-showcase { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px; }
+.p-item { grid-column: span 6; position: relative; margin-bottom: 80px; }
+.p-item:nth-child(even) { margin-top: 100px; } /* 지그재그 레이아웃 */
+
+.p-img-wrapper { 
+  width: 100%; aspect-ratio: 4/5; background: #ddd; border-radius: 4px; overflow: hidden;
+  margin-bottom: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.1);
 }
+.p-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.p-item:hover img { transform: scale(1.08); }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .store-grid { grid-template-columns: 1fr; gap: 40px; }
-  .store-section { padding: 40px 24px; border-radius: 0; }
+.p-info h3 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+.p-info p { font-size: 16px; color: var(--text); opacity: 0.6; max-width: 400px; line-height: 1.8; }
+.p-tag { font-size: 12px; font-weight: 900; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+/* =====================
+   EXPERIENCE SECTION
+===================== */
+.exp-section { background: var(--deep-green); color: var(--white); padding: 150px 5%; border-radius: 60px 60px 0 0; }
+.exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+.exp-text h2 { font-size: 60px; font-weight: 900; line-height: 1.1; margin-bottom: 40px; }
+.exp-text p { font-size: 18px; opacity: 0.7; line-height: 2; margin-bottom: 40px; }
+
+.stats { display: flex; gap: 50px; }
+.stat-item b { font-size: 40px; display: block; color: var(--gold); }
+.stat-item span { font-size: 12px; text-transform: uppercase; opacity: 0.5; }
+
+/* =====================
+   CONTACT & FOOTER
+===================== */
+.footer { padding: 100px 5%; text-align: center; background: var(--white); }
+.footer h2 { font-size: clamp(30px, 5vw, 80px); font-weight: 900; letter-spacing: -3px; margin-bottom: 50px; }
+.footer .btn-contact {
+  font-size: 24px; font-weight: 900; color: var(--text); text-decoration: none;
+  padding: 20px 60px; border: 1px solid #ddd; border-radius: 100px; transition: 0.4s;
+}
+.footer .btn-contact:hover { background: var(--deep-green); color: var(--white); border-color: var(--deep-green); }
+
+/* MOBILE REFINEMENT */
+@media (max-width: 900px) {
+  .p-item { grid-column: span 12; }
+  .p-item:nth-child(even) { margin-top: 0; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 60px; }
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="container nav-inner">
-    <div class="logo">🌿 생생농장</div>
-    <div style="display: flex; gap: 20px; font-weight: 600;">
-      <a href="#products">품목</a>
-      <a href="#stores">출하처</a>
-      <a href="tel:01020791119" style="color: var(--green-bright);">상담하기</a>
-    </div>
+  <div class="logo">SENGSENG®</div>
+  <div class="nav-menu">
+    <a href="#products">Collection</a>
+    <a href="#about">Philosophy</a>
+    <a href="#stores">Stockists</a>
+    <a href="tel:01020791119">Contact</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="container">
-    <div class="badge-status">실시간 출하 가능: 딸기(설향), 오이</div>
-    <h1>오늘 수확해 오늘 보내는<br><span>생생함</span>의 가치</h1>
-    <p>완주 장기리의 비옥한 토양과 스마트 시설 제어로<br>가장 맛있는 순간의 채소를 전해드립니다.</p>
-    <a href="tel:01020791119" class="btn-main">재배 및 납품 문의하기</a>
+<section class="hero">
+  <div class="hero-video-bg"></div>
+  <div class="hero-content">
+    <span class="hero-sub">Est. 2026 / Wanjun, Korea</span>
+    <h1>PURELY<br><span>RAW</span> NATURE</h1>
+    <p>완주 장기리의 정적 속에서 빚어낸 시설채소의 정점</p>
   </div>
-</header>
+  <div class="scroll-indicator">Scroll to Explore</div>
+</section>
 
-<section id="products" class="container">
-  <div style="text-align: center; margin-bottom: 60px;">
-    <h2 style="font-size: 36px; font-weight: 800;">전문 재배 품목</h2>
-    <p style="color: #666;">각 하우스별 독립 제어 시스템으로 최적의 맛을 구현합니다.</p>
+<section class="section" id="products">
+  <div class="section-header">
+    <div class="line"></div>
+    <h2>CURATED<br>COLLECTION</h2>
   </div>
-  <div class="grid">
-    <div class="card">
-      <span class="icon">🍓</span>
-      <h3>킹스베리</h3>
-      <p>일반 딸기보다 2배 큰 압도적 크기,<br>풍부한 복숭아향이 일품입니다.</p>
+
+  <div class="product-showcase">
+    <div class="p-item">
+      <span class="p-tag">The Signature</span>
+      <div class="p-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1464960350423-95c6825f3963?auto=format&fit=crop&q=80&w=1000" alt="Strawberry">
+      </div>
+      <div class="p-info">
+        <h3>킹스베리</h3>
+        <p>압도적인 크기 속에 응축된 섬세한 당도. 생생농장이 제안하는 프리미엄 딸기의 기준입니다.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="icon">🍰</span>
-      <h3>설향 딸기</h3>
-      <p>가장 달콤한 시기에 수확하여<br>로컬푸드 직매장으로 당일 출하됩니다.</p>
+    <div class="p-item">
+      <span class="p-tag">Seasonal Essential</span>
+      <div class="p-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&q=80&w=1000" alt="Cucumber">
+      </div>
+      <div class="p-info">
+        <h3>취청오이</h3>
+        <p>새벽의 이슬을 머금은 듯한 아삭함. 완주 시설 재배 기술이 만들어낸 완벽한 식감입니다.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="icon">🥒</span>
-      <h3>취청오이</h3>
-      <p>단단한 과육과 아삭한 식감,<br>신선함이 오래가는 고품질 오이입니다.</p>
+    <div class="p-item">
+      <span class="p-tag">The Craft</span>
+      <div class="p-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?auto=format&fit=crop&q=80&w=1000" alt="Strawberry">
+      </div>
+      <div class="p-info">
+        <h3>설향</h3>
+        <p>가장 순수한 달콤함. 숙도 95% 이상의 최적기 수확만을 원칙으로 합니다.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="icon">🍃</span>
-      <h3>깻잎 & 애호박</h3>
-      <p>사계절 내내 변함없는 품질로<br>신선한 식탁을 책임집니다.</p>
+    <div class="p-item">
+      <span class="p-tag">Daily Freshness</span>
+      <div class="p-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&q=80&w=1000" alt="Zucchini">
+      </div>
+      <div class="p-info">
+        <h3>깻잎 & 애호박</h3>
+        <p>매일의 식탁을 지키는 변함없는 품질. 연중 균일한 환경 제어의 결과물입니다.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="container">
-  <section id="stores" class="store-section">
-    <div class="store-grid">
-      <div class="store-list">
-        <h3>출하 직매장</h3>
-        <div class="location-item">
-          <strong>완주 로컬푸드</strong>
-          하가 · 삼천 · 효자 · 모악 · 둔산 · 혁신점
-        </div>
-        <div class="location-item">
-          <strong>농협 하나로마트</strong>
-          봉동점 · 용진점
-        </div>
-      </div>
-      <div class="store-list" id="about">
-        <h3>농장 철학</h3>
-        <p>생생농장은 '기준'을 지킵니다.</p>
-        <p style="opacity: 0.8; font-size: 16px; margin-top: 15px;">
-          완주군 장기리의 비닐하우스 안에서 식물이 가장 편안한 온도를 찾습니다. 
-          우리는 대량 생산보다, 하나를 수확하더라도 최고의 상태로 출하하는 것을 목표로 합니다.
-        </p>
+<section class="exp-section" id="about">
+  <div class="exp-grid">
+    <div class="exp-text">
+      <h2>자연을 통제하는<br>가장 섬세한 방법</h2>
+      <p>
+        생생농장은 단순히 채소를 기르지 않습니다. 완주 장기리의 기술력을 바탕으로 온도, 습도, 광량을 예술의 경지로 제어합니다. 우리가 지키는 수확 기준일은 고객과의 타협할 수 없는 약속입니다.
+      </p>
+      <div class="stats">
+        <div class="stat-item"><b>365</b><span>Stability</span></div>
+        <div class="stat-item"><b>100%</b><span>Authentic</span></div>
+        <div class="stat-item"><b>07:00</b><span>Daily Harvest</span></div>
       </div>
     </div>
-  </section>
-</div>
+    <div style="border-radius: 30px; overflow: hidden; opacity: 0.8;">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" alt="Smart Farm">
+    </div>
+  </div>
+</section>
 
-<div class="container" style="margin-bottom: 100px;">
-  <div class="cta-banner">
-    <h2>대량 주문 및 직거래 문의</h2>
-    <p style="margin-bottom: 30px; color: #666;">식당 납품 및 단체 주문 상담은 언제나 환영합니다.</p>
-    <a href="tel:01020791119" style="font-size: 28px; font-weight: 800; color: var(--green-main);">📞 010-2079-1119</a>
+<div class="footer">
+  <p style="letter-spacing: 3px; font-weight: 800; opacity: 0.3; margin-bottom: 20px;">READY TO CONNECT</p>
+  <h2>함께 생생한 내일을<br>만들어보세요.</h2>
+  <a href="tel:01020791119" class="btn-contact">DIRECT CALL</a>
+  
+  <div style="margin-top: 100px; opacity: 0.4; font-size: 13px;">
+    <p>WANJU-GUN JANGGI-RI 555, JEOLLABUK-DO, KOREA</p>
+    <p style="margin-top: 10px;">© 2026 SENGSENG FARM ARCHIVE.</p>
   </div>
 </div>
-
-<footer style="padding: 40px 0; border-top: 1px solid #ddd; text-align: center; color: #888;">
-  <div class="container">
-    <p>전라북도 완주군 장기리 <strong>생생농장</strong></p>
-    <p style="font-size: 13px; margin-top: 8px;">Copyright © 2026 SengSeng Farm. All rights reserved.</p>
-  </div>
-</footer>
 
 </body>
 </html>
