@@ -3,16 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="생생농장 | 완주에서 재배해 완주로 출하하는 프리미엄 농산물">
+<meta name="keywords" content="생생농장, 완주 딸기, 킹스베리, 설향, 취청오이, 로컬푸드">
+<meta name="theme-color" content="#0e1110">
 <title>생생농장</title>
 
 <style>
 :root{
-  --bg:#0e1110;
-  --fg:#f5f7f6;
-  --sub:#aeb4b1;
+  --bg:#0c0f0e;
+  --fg:#f4f6f5;
+  --sub:#9aa09d;
   --green:#3cff9e;
-  --green-d:#1fa56b;
-  --card:#161a18;
+  --green-d:#1c7a55;
+  --card:#151917;
+  --line:rgba(255,255,255,.06);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -26,26 +30,31 @@ body{
 /* NAV */
 nav{
   position:fixed;
-  top:0; left:0;
+  top:0;left:0;
   width:100%;
-  background:rgba(14,17,16,.75);
-  backdrop-filter:blur(10px);
+  background:rgba(12,15,14,.75);
+  backdrop-filter:blur(14px);
   z-index:1000;
+  border-bottom:1px solid var(--line);
 }
 .nav-inner{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
-  padding:18px 20px;
+  padding:18px 24px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+}
+nav strong{
+  font-size:18px;
+  letter-spacing:.5px;
 }
 nav a{
   color:var(--fg);
   text-decoration:none;
   margin-left:28px;
-  font-size:15px;
-  opacity:.85;
+  font-size:14px;
+  opacity:.8;
 }
 nav a:hover{opacity:1;color:var(--green)}
 
@@ -60,89 +69,135 @@ header{
 }
 .hero-inner{
   text-align:center;
+  max-width:900px;
+  padding:0 20px;
   z-index:2;
 }
 header h1{
-  font-size:72px;
+  font-size:82px;
   font-weight:900;
-  letter-spacing:-2px;
+  letter-spacing:-3px;
 }
 header p{
-  margin-top:18px;
-  font-size:20px;
+  margin-top:22px;
+  font-size:22px;
   color:var(--sub);
 }
 
-/* NEON SVG */
+/* CTA */
+.cta{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+.cta a{
+  padding:14px 28px;
+  border-radius:999px;
+  font-size:16px;
+  text-decoration:none;
+}
+.cta-primary{
+  background:var(--green);
+  color:#000;
+}
+.cta-secondary{
+  border:1px solid var(--green);
+  color:var(--green);
+}
+
+/* NEON SVG BG */
 .hero-svg{
   position:absolute;
-  width:800px;
-  opacity:.9;
-  filter:drop-shadow(0 0 40px rgba(60,255,158,.35));
+  width:900px;
+  opacity:.85;
+  filter:
+    drop-shadow(0 0 40px rgba(60,255,158,.35))
+    drop-shadow(0 0 120px rgba(60,255,158,.15));
 }
 
 /* SECTION */
 section{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
-  padding:120px 20px;
+  padding:140px 24px;
 }
 h2{
-  font-size:44px;
-  margin-bottom:24px;
+  font-size:48px;
+  margin-bottom:28px;
 }
 .section-desc{
   color:var(--sub);
-  max-width:720px;
+  max-width:760px;
+  font-size:18px;
 }
 
 /* GRID */
 .grid{
-  margin-top:64px;
+  margin-top:72px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
+  gap:40px;
 }
 .card{
-  background:var(--card);
-  padding:36px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,.04);
+  background:linear-gradient(180deg,#161b19,#121615);
+  padding:40px;
+  border-radius:24px;
+  border:1px solid var(--line);
 }
 .card h3{
-  font-size:24px;
-  margin-bottom:12px;
+  font-size:26px;
+  margin-bottom:14px;
 }
 .card p{
   color:var(--sub);
   font-size:15px;
 }
 
-/* STORE LIST */
-.store{
-  margin-top:24px;
-  font-size:17px;
+/* BADGE */
+.badge{
+  display:inline-block;
+  margin-bottom:14px;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px;
+  color:#000;
+  background:var(--green);
+}
+
+/* LIST */
+.list{
+  margin-top:40px;
   color:var(--sub);
+  font-size:18px;
+  line-height:1.8;
 }
 
 /* CONTACT */
-.contact{
-  display:flex;
-  flex-wrap:wrap;
+.contact-wrap{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:40px;
 }
-.contact a{
+.contact-box{
+  padding:36px;
+  border:1px solid var(--line);
+  border-radius:20px;
+}
+.contact-box a{
   color:var(--green);
-  text-decoration:none;
   font-size:22px;
+  text-decoration:none;
 }
 
 /* FOOTER */
 footer{
-  border-top:1px solid rgba(255,255,255,.06);
-  padding:60px 20px;
+  border-top:1px solid var(--line);
+  padding:80px 20px;
   text-align:center;
   color:var(--sub);
+  font-size:14px;
 }
 </style>
 </head>
@@ -155,6 +210,7 @@ footer{
     <div>
       <a href="#products">품목</a>
       <a href="#stores">출하매장</a>
+      <a href="#process">재배원칙</a>
       <a href="#about">농장소개</a>
       <a href="#contact">문의</a>
     </div>
@@ -164,77 +220,109 @@ footer{
 <header>
   <div class="hero-inner">
     <h1>생생농장</h1>
-    <p>완주에서 재배해, 완주로 바로 출하합니다</p>
+    <p>완주에서 재배해, 오늘 수확한 농산물을 오늘 출하합니다</p>
+
+    <div class="cta">
+      <a href="#products" class="cta-primary">재배 품목 보기</a>
+      <a href="tel:01020791119" class="cta-secondary">전화 문의</a>
+    </div>
   </div>
 
-  <!-- NEON AGRI SVG -->
   <svg class="hero-svg" viewBox="0 0 600 600">
     <defs>
-      <radialGradient id="g1">
+      <radialGradient id="g">
         <stop offset="0%" stop-color="#3cff9e"/>
-        <stop offset="100%" stop-color="#0e1110"/>
+        <stop offset="70%" stop-color="#16382a"/>
+        <stop offset="100%" stop-color="#0c0f0e"/>
       </radialGradient>
     </defs>
-    <circle cx="300" cy="300" r="260" fill="url(#g1)"/>
-    <path d="M150 360 C220 180,380 180,450 360"
-          stroke="#3cff9e" stroke-width="14" fill="none"/>
-    <path d="M300 120 V360"
-          stroke="#3cff9e" stroke-width="10"/>
-    <circle cx="300" cy="120" r="16" fill="#3cff9e"/>
+    <circle cx="300" cy="300" r="260" fill="url(#g)"/>
+    <path d="M120 380 C220 180,380 180,480 380"
+          stroke="#3cff9e" stroke-width="12" fill="none"/>
+    <path d="M300 120 V380"
+          stroke="#3cff9e" stroke-width="8"/>
   </svg>
 </header>
 
 <section id="products">
   <h2>재배 품목</h2>
   <p class="section-desc">
-    검증된 품종만 선택해, 수확 시점 기준으로 출하합니다.
+    다품목 대량 재배가 아닌, 품질 기준 통과 품종만 출하합니다.
   </p>
 
   <div class="grid">
-    <div class="card"><h3>킹스베리</h3><p>과육 밀도와 당도를 기준으로 선별 출하</p></div>
-    <div class="card"><h3>설향</h3><p>산지 기준 최적 숙도 유지</p></div>
-    <div class="card"><h3>취청오이</h3><p>아삭한 식감 중심 재배</p></div>
-    <div class="card"><h3>깻잎</h3><p>향 손실 최소화 수확</p></div>
-    <div class="card"><h3>애호박</h3><p>조직감 유지 품질 선별</p></div>
+    <div class="card">
+      <span class="badge">프리미엄 딸기</span>
+      <h3>킹스베리</h3>
+      <p>당도, 과육 밀도, 향을 기준으로 선별 수확</p>
+    </div>
+    <div class="card">
+      <span class="badge">주력 품종</span>
+      <h3>설향</h3>
+      <p>과숙 이전 최적 숙도 기준 출하</p>
+    </div>
+    <div class="card">
+      <span class="badge">식감 중심</span>
+      <h3>취청오이</h3>
+      <p>아삭함 유지 재배 및 선별</p>
+    </div>
+    <div class="card">
+      <span class="badge">향 채소</span>
+      <h3>깻잎</h3>
+      <p>통풍 위주 재배로 향 보존</p>
+    </div>
+    <div class="card">
+      <span class="badge">제철 채소</span>
+      <h3>애호박</h3>
+      <p>조리 시 조직감 유지 품질</p>
+    </div>
   </div>
 </section>
 
 <section id="stores">
   <h2>출하 매장</h2>
-  <div class="store">
+  <div class="list">
     완주 로컬푸드 직매장  
-    (하가, 삼천, 효자, 모악, 둔산, 혁신)
-  </div>
-  <div class="store">
+    (하가점, 삼천점, 효자점, 모악점, 둔산점, 혁신점)<br>
     농협 하나로마트  
     (봉동점, 용진점)
+  </div>
+</section>
+
+<section id="process">
+  <h2>재배 원칙</h2>
+  <div class="list">
+    • 밀식 재배 미실시<br>
+    • 수확 후 장기 저장 미실시<br>
+    • 당일 수확, 당일 출하 원칙<br>
+    • 외관보다 식감·맛 우선 기준
   </div>
 </section>
 
 <section id="about">
   <h2>농장 소개</h2>
   <p class="section-desc">
-    생생농장은 전라북도 완주군 장기리에서  
-    소규모 밀도 재배를 원칙으로 운영됩니다.
+    생생농장은 전라북도 완주군 장기리 1729에 위치한 농장으로  
+    소규모 밀도 재배를 통해 품질 관리에 집중합니다.
   </p>
 </section>
 
 <section id="contact">
   <h2>문의</h2>
-  <div class="contact">
-    <div>
-      <p>전화</p>
+  <div class="contact-wrap">
+    <div class="contact-box">
+      <p>전화 문의</p>
       <a href="tel:01020791119">010-2079-1119</a>
     </div>
-    <div>
-      <p>주소</p>
+    <div class="contact-box">
+      <p>농장 주소</p>
       <span>전북 완주군 장기리 1729</span>
     </div>
   </div>
 </section>
 
 <footer>
-  © 생생농장
+  © 생생농장 · 완주
 </footer>
 
 </body>
