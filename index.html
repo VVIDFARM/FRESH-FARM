@@ -7,103 +7,83 @@
 
 <style>
 :root{
-    --red:#e83333;
-    --red-dark:#c61f1f;
-    --green:#2fb573;
-    --green-dark:#1e8d5a;
+    --red:#d32f2f;
+    --green:#2e7d32;
     --bg:#ffffff;
-    --soft:#f7fffb;
+    --soft:#f1f8f4;
     --text:#111;
     --muted:#555;
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 body{
     font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     background:var(--bg);
     color:var(--text);
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 header{
     min-height:100vh;
     background:
-        radial-gradient(circle at top, rgba(232,51,51,.18), transparent 45%),
-        linear-gradient(180deg,var(--soft),#ffffff);
+        linear-gradient(180deg,var(--soft),#fff);
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:40px 20px;
-    overflow:hidden;
 }
 
-.logo-wrap{
+.hero{
+    max-width:900px;
+}
+
+.crops{
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:22px;
-    animation:fadeUp 1s ease forwards;
+    justify-content:center;
+    gap:24px;
+    margin-bottom:30px;
 }
 
-/* LOGO ICON */
-.logo-icon{
-    width:140px;
-    filter:drop-shadow(0 10px 20px rgba(0,0,0,.15));
-    animation:float 4s ease-in-out infinite;
+.crops svg{
+    width:64px;
 }
 
-/* LOGO TEXT */
-.logo-text{
-    font-size:clamp(54px,8vw,110px);
+h1{
+    font-size:clamp(46px,7vw,88px);
     font-weight:900;
-    letter-spacing:8px;
-    background:linear-gradient(45deg,var(--red),var(--red-dark));
-    -webkit-background-clip:text;
-    color:transparent;
+    color:var(--green);
+    letter-spacing:6px;
 }
 
 .tagline{
+    margin-top:16px;
     font-size:20px;
     color:#333;
 }
 
-/* CTA */
 .cta{
+    display:inline-block;
     margin-top:40px;
     padding:18px 70px;
-    background:linear-gradient(45deg,var(--red),var(--red-dark));
+    background:var(--red);
     color:#fff;
-    border-radius:80px;
-    text-decoration:none;
+    border-radius:60px;
     font-weight:900;
-    position:relative;
-    overflow:hidden;
+    text-decoration:none;
 }
 
-.cta::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
-    transform:translateX(-100%);
-    animation:shine 3s infinite;
-}
-
-/* ================= NAV ================= */
+/* NAV */
 nav{
     position:sticky;
     top:0;
-    background:#ffffffee;
-    backdrop-filter:blur(8px);
+    background:#fff;
     border-bottom:1px solid #eee;
-    z-index:999;
+    z-index:1000;
 }
 
 .nav-wrap{
-    max-width:1300px;
+    max-width:1200px;
     margin:auto;
     padding:14px 24px;
     display:flex;
@@ -111,169 +91,88 @@ nav{
     align-items:center;
 }
 
-.logo-mini{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.logo{
     font-weight:900;
-    color:var(--red);
+    color:var(--green);
 }
 
-.logo-mini svg{width:28px;}
-
 .nav-links a{
-    margin-left:32px;
+    margin-left:26px;
     text-decoration:none;
     color:#222;
     font-weight:800;
-    position:relative;
 }
 
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0; bottom:-6px;
-    width:0; height:3px;
-    background:var(--red);
-    transition:.3s;
-}
-.nav-links a:hover::after{width:100%;}
-
-/* ================= SECTION ================= */
+/* SECTION */
 section{
-    max-width:1300px;
-    margin:140px auto;
+    max-width:1200px;
+    margin:120px auto;
     padding:0 24px;
 }
 
 .title{
-    font-size:clamp(34px,4vw,54px);
-    margin-bottom:50px;
-    color:var(--red);
+    font-size:clamp(32px,4vw,48px);
+    color:var(--green);
+    margin-bottom:40px;
 }
 
+/* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:36px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:32px;
 }
 
 .card{
     background:#fff;
-    padding:42px 38px;
-    border-radius:26px;
-    border:1px solid #f1f1f1;
-    transition:.35s;
-    position:relative;
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent,rgba(232,51,51,.08),transparent);
-    opacity:0;
-    transition:.3s;
-}
-.card:hover::before{opacity:1;}
-.card:hover{
-    transform:translateY(-8px);
-    border-color:var(--red);
+    padding:36px;
+    border-radius:24px;
+    border:1px solid #eee;
+    text-align:center;
 }
 
 .card h3{
-    color:var(--green);
-    margin-bottom:14px;
-    font-size:22px;
-}
-.card p{
-    color:var(--muted);
-    line-height:1.7;
+    color:var(--red);
+    margin-bottom:12px;
 }
 
-/* PRODUCT */
-.product{
-    text-align:center;
-}
-.badge{
-    display:inline-block;
-    background:var(--green);
-    color:#fff;
-    padding:6px 16px;
-    border-radius:30px;
-    font-size:13px;
-    margin-bottom:14px;
-}
-
-/* SMART FARM */
-.smart{
-    background:linear-gradient(135deg,#ecfff7,#ffffff);
-    border-radius:40px;
-    padding:80px 60px;
+/* MAP */
+.map-box{
+    background:var(--soft);
+    border-radius:36px;
+    padding:50px;
     display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
     align-items:center;
 }
 
-.smart ul{
-    margin-top:18px;
-    line-height:2;
+.map-box svg{
+    width:100%;
 }
 
-/* FOOTER */
 footer{
     background:var(--soft);
-    padding:120px 20px;
+    padding:80px 20px;
     text-align:center;
 }
 
 /* FLOAT CALL */
-.call-float{
+.call{
     position:fixed;
-    bottom:22px;
-    right:22px;
-    background:linear-gradient(45deg,var(--green),var(--green-dark));
+    right:20px;
+    bottom:20px;
+    background:var(--green);
     color:#fff;
     padding:18px 26px;
-    border-radius:60px;
-    font-weight:900;
+    border-radius:50px;
     text-decoration:none;
+    font-weight:900;
     box-shadow:0 10px 20px rgba(0,0,0,.25);
-    z-index:9999;
-    animation:pulse 1.5s infinite;
 }
-
-/* ANIMATION */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(30px);}
-    to{opacity:1;transform:none;}
-}
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-}
-@keyframes shine{
-    0%{transform:translateX(-100%);}
-    40%{transform:translateX(120%);}
-    100%{transform:translateX(120%);}
-}
-@keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(47,181,115,.7);}
-    70%{box-shadow:0 0 0 18px rgba(47,181,115,0);}
-    100%{box-shadow:0 0 0 0 rgba(47,181,115,0);}
-}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(40px);transition:.6s;}
-.reveal.active{opacity:1;transform:none;}
 
 @media(max-width:900px){
-    .smart{
-        grid-template-columns:1fr;
-        padding:50px 28px;
-    }
+    .map-box{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -281,139 +180,105 @@ footer{
 <body>
 
 <header>
-    <div class="logo-wrap">
-        <!-- 딸기 SVG 로고 -->
-        <svg class="logo-icon" viewBox="0 0 120 120">
-            <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#ff5a5a"/>
-                    <stop offset="100%" stop-color="#c61f1f"/>
-                </linearGradient>
-            </defs>
-            <circle cx="60" cy="70" r="40" fill="url(#g)"/>
-            <path d="M26 52 Q60 14 94 52" fill="#2fb573"/>
-            <g fill="#fff" opacity=".9">
-                <circle cx="44" cy="72" r="3"/>
-                <circle cx="60" cy="84" r="3"/>
-                <circle cx="75" cy="68" r="3"/>
-                <circle cx="55" cy="60" r="2.5"/>
-            </g>
-        </svg>
+    <div class="hero">
+        <div class="crops">
+            <!-- 딸기 -->
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="60" r="28" fill="#d32f2f"/>
+                <path d="M25 45 Q50 20 75 45" fill="#2e7d32"/>
+            </svg>
+            <!-- 오이 -->
+            <svg viewBox="0 0 100 100">
+                <rect x="20" y="30" width="60" height="40" rx="20" fill="#43a047"/>
+            </svg>
+            <!-- 깻잎 -->
+            <svg viewBox="0 0 100 100">
+                <path d="M50 15 C15 35 15 75 50 85 C85 75 85 35 50 15" fill="#2e7d32"/>
+            </svg>
+            <!-- 호박 -->
+            <svg viewBox="0 0 100 100">
+                <ellipse cx="50" cy="60" rx="30" ry="24" fill="#ef6c00"/>
+                <rect x="46" y="22" width="8" height="18" fill="#2e7d32"/>
+            </svg>
+        </div>
 
-        <div class="logo-text">생생농장</div>
-        <div class="tagline">설향 · 킹스베리 전문 스마트팜</div>
-        <a class="cta" href="#product">딸기 보러가기</a>
+        <h1>생생농장</h1>
+        <div class="tagline">
+            딸기 · 오이 · 깻잎 · 호박<br>
+            농부가 직접 키워 정직하게 내놓습니다
+        </div>
+
+        <a href="#map" class="cta">오시는 길</a>
     </div>
 </header>
 
 <nav>
-<div class="nav-wrap">
-    <div class="logo-mini">
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="60" r="28" fill="#e83333"/>
-            <path d="M25 45 Q50 20 75 45" fill="#2fb573"/>
-        </svg>
-        생생농장
+    <div class="nav-wrap">
+        <div class="logo">생생농장</div>
+        <div class="nav-links">
+            <a href="#crop">재배작물</a>
+            <a href="#map">약도</a>
+            <a href="tel:01039451394">문의</a>
+        </div>
     </div>
-    <div class="nav-links">
-        <a href="#about">농장소개</a>
-        <a href="#smart">스마트팜</a>
-        <a href="#product">제품</a>
-        <a href="#contact">문의</a>
-    </div>
-</div>
 </nav>
 
-<section id="about" class="reveal">
-<h2 class="title">농장 소개</h2>
-<div class="grid">
-    <div class="card">
-        <h3>고설 재배 시스템</h3>
-        <p>위생적이고 균일한 환경에서 딸기의 생육을 안정적으로 관리합니다.</p>
+<section id="crop">
+    <h2 class="title">재배 작물</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>딸기</h3>
+            <p>설향 위주 고당도 재배</p>
+        </div>
+        <div class="card">
+            <h3>오이</h3>
+            <p>아삭하고 신선한 제철 오이</p>
+        </div>
+        <div class="card">
+            <h3>깻잎</h3>
+            <p>향 진하고 연한 잎</p>
+        </div>
+        <div class="card">
+            <h3>호박</h3>
+            <p>농가 직재배 제철 호박</p>
+        </div>
     </div>
-    <div class="card">
-        <h3>정밀 환경 제어</h3>
-        <p>온도·습도·양액을 자동 제어하여 연중 고품질 생산을 유지합니다.</p>
-    </div>
-    <div class="card">
-        <h3>직접 재배 · 직거래</h3>
-        <p>불필요한 유통을 줄여 신선함과 합리적인 가격을 제공합니다.</p>
-    </div>
-</div>
 </section>
 
-<section id="smart" class="reveal">
-<div class="smart">
-    <div>
-        <h2 class="title">스마트팜 운영</h2>
-        <p>센서 기반 자동화 시스템으로 작물 상태를 실시간 모니터링합니다.</p>
-        <ul>
-            <li>✔️ 온습도 자동 제어</li>
-            <li>✔️ 양액 정밀 공급</li>
-            <li>✔️ 생육 데이터 분석</li>
-            <li>✔️ 병해 예방 관리</li>
-        </ul>
-    </div>
-    <div>
-        <svg viewBox="0 0 200 200" width="100%">
-            <rect x="20" y="40" width="160" height="100" rx="16" fill="#e8fff4"/>
-            <circle cx="60" cy="90" r="14" fill="#2fb573"/>
-            <circle cx="100" cy="90" r="14" fill="#e83333"/>
-            <circle cx="140" cy="90" r="14" fill="#2fb573"/>
+<section id="map">
+    <h2 class="title">오시는 길</h2>
+    <div class="map-box">
+        <div>
+            <h3>딸기농장</h3>
+            <p>전북 완주군 봉동읍 장기리 1729</p>
+            <p>전화 010-3945-1394</p>
+            <p style="margin-top:12px;color:#555;">
+                봉동읍에서 장기리 방향으로 오시면<br>
+                비닐하우스 단지 안쪽에 있습니다
+            </p>
+        </div>
+
+        <!-- 약도 -->
+        <svg viewBox="0 0 320 220">
+            <rect x="0" y="0" width="320" height="220" rx="24" fill="#fff"/>
+            <!-- 도로 -->
+            <line x1="20" y1="110" x2="300" y2="110" stroke="#ccc" stroke-width="8"/>
+            <line x1="160" y1="20" x2="160" y2="200" stroke="#ddd" stroke-width="6"/>
+            <!-- 농장 -->
+            <circle cx="210" cy="110" r="14" fill="#d32f2f"/>
+            <text x="180" y="85" font-size="13">딸기농장</text>
+            <!-- 방향 -->
+            <text x="24" y="96" font-size="12">봉동읍</text>
+            <text x="240" y="96" font-size="12">장기리</text>
         </svg>
     </div>
-</div>
-</section>
-
-<section id="product" class="reveal">
-<h2 class="title">판매 품종</h2>
-<div class="grid">
-    <div class="card product">
-        <div class="badge">인기</div>
-        <h3>설향</h3>
-        <p>당도와 향이 뛰어나고 과즙이 풍부한 대표 품종.</p>
-    </div>
-    <div class="card product">
-        <div class="badge">프리미엄</div>
-        <h3>킹스베리</h3>
-        <p>대과형 프리미엄 품종으로 선물용으로 인기.</p>
-    </div>
-</div>
-</section>
-
-<section id="contact" class="reveal">
-<h2 class="title">문의 및 위치</h2>
-<div class="grid">
-    <div class="card">
-        <h3>전화 문의</h3>
-        <p>010-3945-1394</p>
-        <a class="call-btn" href="tel:01039451394">바로 전화하기</a>
-    </div>
-    <div class="card">
-        <h3>농장 주소</h3>
-        <p>전북 완주군 봉동읍 장기리 1729</p>
-    </div>
-</div>
 </section>
 
 <footer>
-<p>© 생생농장. All Rights Reserved.</p>
+    <p>생생농장</p>
 </footer>
 
-<a class="call-float" href="tel:01039451394">📞 전화</a>
-
-<script>
-const reveals = document.querySelectorAll(".reveal");
-function reveal(){
-    reveals.forEach(el=>{
-        if(el.getBoundingClientRect().top < window.innerHeight - 80){
-            el.classList.add("active");
-        }
-    });
-}
-window.addEventListener("scroll", reveal);
-reveal();
-</script>
+<a class="call" href="tel:01039451394">전화</a>
 
 </body>
 </html>
