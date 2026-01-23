@@ -1,257 +1,240 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>생생농장 | 킹스베리·설향·취청오이·깻잎·애호박</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생생농장</title>
 
 <style>
-:root {
-  --green:#1f7a4a;
-  --dark:#1b1b1b;
-  --gray:#666;
-  --light:#f6f7f4;
-  --accent:#e53935;
+:root{
+  --bg:#0e1110;
+  --fg:#f5f7f6;
+  --sub:#aeb4b1;
+  --green:#3cff9e;
+  --green-d:#1fa56b;
+  --card:#161a18;
 }
 
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;
+  background:var(--bg);
+  color:var(--fg);
 }
 
-body {
-  background:var(--light);
-  color:var(--dark);
-  line-height:1.6;
+/* NAV */
+nav{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  background:rgba(14,17,16,.75);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav a{
+  color:var(--fg);
+  text-decoration:none;
+  margin-left:28px;
+  font-size:15px;
+  opacity:.85;
+}
+nav a:hover{opacity:1;color:var(--green)}
 
-header {
-  background:linear-gradient(135deg,#1f7a4a,#3fa86b);
-  color:white;
-  padding:80px 20px 120px;
+/* HERO */
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
   overflow:hidden;
 }
-
-header h1 {
-  font-size:56px;
+.hero-inner{
+  text-align:center;
+  z-index:2;
+}
+header h1{
+  font-size:72px;
   font-weight:900;
   letter-spacing:-2px;
 }
-
-header p {
+header p{
+  margin-top:18px;
   font-size:20px;
-  margin-top:12px;
-  opacity:.95;
+  color:var(--sub);
 }
 
-.hero-svg {
+/* NEON SVG */
+.hero-svg{
   position:absolute;
-  right:-100px;
-  bottom:-120px;
-  width:600px;
-  opacity:.25;
+  width:800px;
+  opacity:.9;
+  filter:drop-shadow(0 0 40px rgba(60,255,158,.35));
 }
 
-section {
+/* SECTION */
+section{
   max-width:1200px;
-  margin:0 auto;
-  padding:100px 20px;
+  margin:auto;
+  padding:120px 20px;
 }
-
-.section-title {
-  font-size:42px;
-  font-weight:900;
+h2{
+  font-size:44px;
   margin-bottom:24px;
-  letter-spacing:-1px;
+}
+.section-desc{
+  color:var(--sub);
+  max-width:720px;
 }
 
-.section-desc {
-  font-size:18px;
-  color:var(--gray);
-  max-width:800px;
-}
-
-.grid {
+/* GRID */
+.grid{
+  margin-top:64px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:40px;
-  margin-top:60px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
 }
-
-.card {
-  background:white;
+.card{
+  background:var(--card);
   padding:36px;
   border-radius:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  border:1px solid rgba(255,255,255,.04);
 }
-
-.card h3 {
-  font-size:26px;
-  margin-bottom:12px;
-}
-
-.card p {
-  color:var(--gray);
-  font-size:16px;
-}
-
-.badge {
-  display:inline-block;
-  padding:6px 14px;
-  background:var(--green);
-  color:white;
-  border-radius:999px;
-  font-size:14px;
-  margin-bottom:16px;
-}
-
-.store-list {
-  margin-top:40px;
-  font-size:18px;
-}
-
-.store-list li {
-  margin-bottom:10px;
-}
-
-footer {
-  background:#111;
-  color:#aaa;
-  padding:80px 20px;
-}
-
-footer h4 {
+.card h3{
   font-size:24px;
-  color:white;
   margin-bottom:12px;
 }
+.card p{
+  color:var(--sub);
+  font-size:15px;
+}
 
-footer p {
-  margin-bottom:8px;
+/* STORE LIST */
+.store{
+  margin-top:24px;
+  font-size:17px;
+  color:var(--sub);
+}
+
+/* CONTACT */
+.contact{
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+}
+.contact a{
+  color:var(--green);
+  text-decoration:none;
+  font-size:22px;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:60px 20px;
+  text-align:center;
+  color:var(--sub);
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>생생농장</h1>
-  <p>완주에서 자라, 오늘 수확해 오늘 내놓는 정직한 농산물</p>
+<nav>
+  <div class="nav-inner">
+    <strong>생생농장</strong>
+    <div>
+      <a href="#products">품목</a>
+      <a href="#stores">출하매장</a>
+      <a href="#about">농장소개</a>
+      <a href="#contact">문의</a>
+    </div>
+  </div>
+</nav>
 
-  <!-- HERO SVG -->
-  <svg class="hero-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<header>
+  <div class="hero-inner">
+    <h1>생생농장</h1>
+    <p>완주에서 재배해, 완주로 바로 출하합니다</p>
+  </div>
+
+  <!-- NEON AGRI SVG -->
+  <svg class="hero-svg" viewBox="0 0 600 600">
     <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#ffffff"/>
-        <stop offset="100%" stop-color="#c8ffd8"/>
-      </linearGradient>
+      <radialGradient id="g1">
+        <stop offset="0%" stop-color="#3cff9e"/>
+        <stop offset="100%" stop-color="#0e1110"/>
+      </radialGradient>
     </defs>
-    <circle cx="250" cy="250" r="220" fill="url(#g)" />
-    <path d="M150 300 C180 200, 320 200, 350 300" fill="none" stroke="#1f7a4a" stroke-width="16"/>
-    <circle cx="200" cy="260" r="18" fill="#1f7a4a"/>
-    <circle cx="300" cy="260" r="18" fill="#1f7a4a"/>
-    <path d="M250 120 C230 90, 180 80, 160 60" stroke="#1f7a4a" stroke-width="10" fill="none"/>
-    <path d="M250 120 C270 90, 320 80, 340 60" stroke="#1f7a4a" stroke-width="10" fill="none"/>
+    <circle cx="300" cy="300" r="260" fill="url(#g1)"/>
+    <path d="M150 360 C220 180,380 180,450 360"
+          stroke="#3cff9e" stroke-width="14" fill="none"/>
+    <path d="M300 120 V360"
+          stroke="#3cff9e" stroke-width="10"/>
+    <circle cx="300" cy="120" r="16" fill="#3cff9e"/>
   </svg>
 </header>
 
-<section>
-  <h2 class="section-title">재배 품목</h2>
+<section id="products">
+  <h2>재배 품목</h2>
   <p class="section-desc">
-    생생농장은 다품목 대량이 아니라,  
-    **맛이 검증된 품종만 골라 밀도 있게 재배**합니다.
+    검증된 품종만 선택해, 수확 시점 기준으로 출하합니다.
   </p>
 
   <div class="grid">
-    <div class="card">
-      <span class="badge">프리미엄 딸기</span>
-      <h3>킹스베리</h3>
-      <p>
-        당도·과육·향 삼박자 완성형.  
-        크기만 큰 딸기가 아니라, 씹는 순간 과즙이 터지는 품종.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">국민 딸기</span>
-      <h3>설향</h3>
-      <p>
-        산지에서 바로 먹을 때 진가가 드러나는 설향.  
-        과숙 이전 단계에서 출하해 물리지 않는 단맛.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">아삭함 기준</span>
-      <h3>취청오이</h3>
-      <p>
-        물 오이 아님.  
-        씹는 소리로 품질 증명되는 오이.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">향 채소</span>
-      <h3>깻잎</h3>
-      <p>
-        얇고 진한 향.  
-        비닐하우스 밀식 안 하고 통풍 위주 재배.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">제철 채소</span>
-      <h3>애호박</h3>
-      <p>
-        수분 많은 무른 호박 제외.  
-        볶아도 흐물해지지 않는 조직감.
-      </p>
-    </div>
+    <div class="card"><h3>킹스베리</h3><p>과육 밀도와 당도를 기준으로 선별 출하</p></div>
+    <div class="card"><h3>설향</h3><p>산지 기준 최적 숙도 유지</p></div>
+    <div class="card"><h3>취청오이</h3><p>아삭한 식감 중심 재배</p></div>
+    <div class="card"><h3>깻잎</h3><p>향 손실 최소화 수확</p></div>
+    <div class="card"><h3>애호박</h3><p>조직감 유지 품질 선별</p></div>
   </div>
 </section>
 
-<section>
-  <h2 class="section-title">출하 매장</h2>
-  <p class="section-desc">
-    중간 상인 거치지 않고,  
-    **완주 로컬 유통망 + 농협 하나로마트**로 바로 출하합니다.
-  </p>
-
-  <ul class="store-list">
-    <li>완주 로컬푸드 직매장: 하가점, 삼천점, 효자점, 모악점, 둔산점, 혁신점</li>
-    <li>농협 하나로마트: 봉동점, 용진점</li>
-  </ul>
+<section id="stores">
+  <h2>출하 매장</h2>
+  <div class="store">
+    완주 로컬푸드 직매장  
+    (하가, 삼천, 효자, 모악, 둔산, 혁신)
+  </div>
+  <div class="store">
+    농협 하나로마트  
+    (봉동점, 용진점)
+  </div>
 </section>
 
-<section>
-  <h2 class="section-title">농장 정보</h2>
+<section id="about">
+  <h2>농장 소개</h2>
+  <p class="section-desc">
+    생생농장은 전라북도 완주군 장기리에서  
+    소규모 밀도 재배를 원칙으로 운영됩니다.
+  </p>
+</section>
 
-  <div class="grid">
-    <div class="card">
-      <h3>농장명</h3>
-      <p>생생농장</p>
+<section id="contact">
+  <h2>문의</h2>
+  <div class="contact">
+    <div>
+      <p>전화</p>
+      <a href="tel:01020791119">010-2079-1119</a>
     </div>
-
-    <div class="card">
-      <h3>딸기 농장 주소</h3>
-      <p>전라북도 완주군 장기리 1729</p>
-    </div>
-
-    <div class="card">
-      <h3>연락처</h3>
-      <p>010-2079-1119</p>
+    <div>
+      <p>주소</p>
+      <span>전북 완주군 장기리 1729</span>
     </div>
   </div>
 </section>
 
 <footer>
-  <h4>생생농장</h4>
-  <p>완주에서 재배, 완주에서 판매</p>
-  <p>전화 010-2079-1119</p>
-  <p>© 생생농장. All rights reserved.</p>
+  © 생생농장
 </footer>
 
 </body>
