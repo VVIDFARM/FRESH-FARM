@@ -3,271 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 | 킹스베리 & 스마트팜 채소</title>
+<title>생생농장 | 첨단 스마트팜 & 킹스베리</title>
 
 <style>
 :root{
     --red:#e83333;
     --green:#2fb573;
-    --dark-green:#1e7d4c;
-    --yellow:#ffbf00;
-    --bg:#ffffff;
-    --soft-bg:#f4f9f6;
-    --text:#222;
-    --muted:#666;
+    --dark:#2c3e50;
+    --gold:#f39c12;
+    --soft-bg:#f8faf9;
 }
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
     font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-    background:var(--bg);
-    color:var(--text);
+    background:#fff;
+    color:#333;
     line-height:1.6;
 }
 
 /* ================= HEADER ================= */
 header{
-    min-height:75vh;
+    min-height:70vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:40px 20px;
-    background: linear-gradient(180deg, var(--soft-bg) 0%, #fff 100%);
+    background: radial-gradient(circle at 50% 50%, #f0f7f4 0%, #ffffff 100%);
 }
 
-.main-logo-svg { width:240px; margin-bottom:30px; }
+.main-svg { width:280px; margin-bottom:20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08)); }
 
 .logo-text{
-    font-size:clamp(40px, 8vw, 72px);
+    font-size:clamp(42px, 7vw, 64px);
     font-weight:900;
-    color:var(--text);
-    letter-spacing:-1.5px;
-    margin-bottom:10px;
+    color:var(--dark);
+    letter-spacing:-1px;
 }
 .logo-text span { color:var(--green); }
 
 .tagline{
     font-size:18px;
-    font-weight:500;
-    color:var(--muted);
-    letter-spacing:2px;
+    color:#666;
+    margin-top:10px;
+    font-weight: 500;
 }
 
-/* ================= NAV ================= */
-nav{
-    position:sticky;
-    top:0;
-    background:rgba(255,255,255,0.95);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid #eee;
-    z-index:999;
+/* ================= SMART FARM SECTION ================= */
+.smart-tech {
+    background: var(--dark);
+    color: #fff;
+    padding: 80px 24px;
+    border-radius: 40px;
+    margin: 60px 20px;
 }
-.nav-wrap{
-    max-width:1100px;
-    margin:auto;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 40px auto 0;
 }
-.nav-links a{
-    text-decoration:none;
-    color:var(--text);
-    font-weight:700;
-    margin-left:25px;
-    font-size:15px;
+.tech-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
 }
+.tech-item h4 { color: var(--green); margin-bottom: 10px; }
+.tech-item p { font-size: 14px; opacity: 0.8; }
 
-/* ================= SECTION ================= */
-section{
-    max-width:1100px;
-    margin:100px auto;
-    padding:0 24px;
-}
+/* ================= PRODUCT SECTION ================= */
+section{ max-width:1100px; margin:100px auto; padding:0 24px; }
+.title{ font-size:32px; margin-bottom:50px; text-align:center; font-weight:800; }
+.title b { color:var(--green); }
 
-.title{
-    font-size:32px;
-    margin-bottom:50px;
-    font-weight:800;
-    text-align:center;
-}
-.title b { color:var(--green); font-weight:800; }
-
-/* PRODUCT GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-    gap:25px;
+    gap:20px;
 }
-
 .card{
     background:#fff;
-    padding:40px 30px;
-    border-radius:20px;
+    padding:35px;
+    border-radius:25px;
     border:1px solid #eee;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 .card:hover { border-color:var(--green); transform:translateY(-5px); }
-
-/* 주력상품 킹스베리 강조 */
-.card.main-product{
-    background:var(--soft-bg);
-    border:2px solid var(--red);
-}
-.card.main-product h3 { color:var(--red); }
+.card.premium { border:2px solid var(--red); background:#fff9f9; }
+.card h3 { margin: 10px 0; font-size: 22px; }
 .badge {
     display:inline-block;
-    padding:4px 12px;
-    border-radius:4px;
+    padding:3px 10px;
+    border-radius:5px;
     font-size:12px;
     font-weight:800;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 .badge.red { background:var(--red); color:#fff; }
 .badge.green { background:var(--green); color:#fff; }
 
-/* 납품처 스타일 */
-.store-section {
+/* ================= STORES ================= */
+.store-box {
     background: var(--soft-bg);
-    padding: 80px 24px;
-    border-radius: 40px;
-}
-.store-grid {
+    padding: 50px 30px;
+    border-radius: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
+    gap: 30px;
 }
-.store-list h4 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.store-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.store-tags span {
+.store-list h4 { margin-bottom: 15px; color: var(--dark); }
+.tags span {
+    display: inline-block;
     background: #fff;
     border: 1px solid #ddd;
-    padding: 6px 14px;
+    padding: 5px 12px;
+    margin: 3px;
     border-radius: 6px;
     font-size: 14px;
-    font-weight: 600;
 }
 
-/* FOOTER */
-footer{
-    padding:60px 20px;
-    text-align:center;
-    border-top:1px solid #eee;
-    color:var(--muted);
-    font-size:14px;
-}
-
+/* ================= ANIMATION ================= */
 .reveal{opacity:0;transform:translateY(30px);transition:.8s;}
 .reveal.active{opacity:1;transform:none;}
 
-@media (max-width: 768px) {
-    .store-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 768px) { .store-box { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <header>
-    <svg class="main-logo-svg" viewBox="0 0 200 100">
-        <path d="M40 40 Q55 35 70 40 Q75 65 55 80 Q35 65 40 40" fill="#e83333"/>
-        <path d="M45 42 Q55 30 65 42" fill="#2fb573" stroke="#fff" stroke-width="1"/>
-        <rect x="85" y="35" width="12" height="45" rx="6" fill="#1e7d4c" transform="rotate(-10 91 57)"/>
-        <rect x="110" y="55" width="45" height="16" rx="8" fill="#ffbf00"/>
-        <path d="M165 45 Q185 60 165 85 Q145 60 165 45" fill="#2fb573"/>
-        <path d="M165 45 L165 85" stroke="#fff" stroke-width="0.5" opacity="0.5"/>
+    <svg class="main-svg" viewBox="0 0 300 120">
+        <path d="M50 40 Q70 30 90 40 Q100 70 70 95 Q40 70 50 40" fill="#e83333"/>
+        <path d="M55 42 Q70 25 85 42 L70 50 Z" fill="#2fb573"/>
+        <g fill="#fff" opacity="0.5">
+            <circle cx="60" cy="55" r="1.5"/><circle cx="80" cy="55" r="1.5"/>
+            <circle cx="70" cy="65" r="1.5"/><circle cx="60" cy="75" r="1.5"/>
+            <circle cx="80" cy="75" r="1.5"/>
+        </g>
+        
+        <rect x="115" y="30" width="16" height="65" rx="8" fill="#1b5e20" transform="rotate(-15 123 62)"/>
+        <circle cx="120" cy="45" r="1" fill="#fff" opacity="0.3"/>
+        <circle cx="128" cy="65" r="1" fill="#fff" opacity="0.3"/>
+
+        <rect x="155" y="55" width="55" height="22" rx="11" fill="#f1c40f"/>
+        <path d="M155 60 L148 66 L155 72 Z" fill="#9e7e00"/>
+
+        <path d="M230 35 Q260 55 230 95 Q200 55 230 35" fill="#2fb573" stroke="#1e8d5a" stroke-width="1"/>
+        <path d="M230 35 L230 95 M230 50 L215 65 M230 65 L250 80" stroke="#fff" stroke-width="1" opacity="0.4"/>
     </svg>
 
     <div class="logo-text">생생<span>농장</span></div>
-    <div class="tagline">PREMIUM SMART FARM</div>
+    <div class="tagline">완주 봉동 스마트팜 산지직송</div>
 </header>
 
-<nav>
-    <div class="nav-wrap">
-        <div style="font-weight:900; color:var(--green);">SS FARM</div>
-        <div class="nav-links">
-            <a href="#products">생산품목</a>
-            <a href="#stores">납품처</a>
-            <a href="#contact">문의</a>
-        </div>
+<section class="smart-tech reveal">
+    <div style="text-align: center;">
+        <h2 style="font-size: 28px;">첨단 스마트팜 <b>환경제어 시스템</b></h2>
+        <p style="opacity: 0.7; margin-top: 10px;">365일 최적의 생육 데이터를 유지합니다</p>
     </div>
-</nav>
-
-<section id="products" class="reveal">
-    <h2 class="title">생산 <b>품목</b></h2>
-    <div class="grid">
-        <div class="card main-product">
-            <span class="badge red">주력 상품</span>
-            <h3>킹스베리 · 설향</h3>
-            <p>고설 재배 방식으로 생산한 최고급 딸기입니다. 압도적인 크기와 당도를 자랑합니다.</p>
+    <div class="tech-grid">
+        <div class="tech-item">
+            <h4>🌡 실시간 온·습도</h4>
+            <p>센서를 통한 24시간 자동 통풍 및 난방 제어로 작물 스트레스를 최소화합니다.</p>
         </div>
-        <div class="card">
-            <span class="badge green">신선 채소</span>
-            <h3>취청오이</h3>
-            <p>수분 함량이 높고 육질이 단단하여 아삭한 식감이 오래 유지됩니다.</p>
+        <div class="tech-item">
+            <h4>💧 정밀 양액 공급</h4>
+            <p>생육 단계별 필요한 영양분을 컴퓨터가 정밀하게 계산하여 공급합니다.</p>
         </div>
-        <div class="card">
-            <span class="badge green">신선 채소</span>
-            <h3>인큐 애호박</h3>
-            <p>균일한 크기와 깨끗한 외관, 달큰한 풍미가 특징인 고품질 애호박입니다.</p>
+        <div class="tech-item">
+            <h4>☁️ CO2 농도 관리</h4>
+            <p>광합성 효율을 극대화하기 위해 실내 이산화탄소 농도를 실시간 조절합니다.</p>
         </div>
-        <div class="card">
-            <span class="badge green">신선 채소</span>
-            <h3>깻잎</h3>
-            <p>향이 짙고 뒷면의 자줏빛이 선명한 최상품 깻잎만을 엄선합니다.</p>
+        <div class="tech-item">
+            <h4>📱 원격 모니터링</h4>
+            <p>언제 어디서든 모바일로 농장 상태를 확인하고 즉각 대응합니다.</p>
         </div>
     </div>
 </section>
 
-<section id="stores" class="store-section reveal">
-    <h2 class="title">납품 <b>매장</b></h2>
-    <div class="store-grid">
+<section id="products" class="reveal">
+    <h2 class="title">생산 <b>품목</b></h2>
+    <div class="grid">
+        <div class="card premium">
+            <span class="badge red">주력상품</span>
+            <h3>킹스베리 · 설향</h3>
+            <p>일반 딸기보다 크고 당도가 높은 프리미엄 품종입니다.</p>
+        </div>
+        <div class="card">
+            <span class="badge green">산지직송</span>
+            <h3>취청오이</h3>
+            <p>아삭한 식감이 일품인 고품질 오이입니다.</p>
+        </div>
+        <div class="card">
+            <span class="badge green">산지직송</span>
+            <h3>인큐 애호박</h3>
+            <p>육질이 단단하고 고소한 풍미의 애호박입니다.</p>
+        </div>
+        <div class="card">
+            <span class="badge green">산지직송</span>
+            <h3>신선 깻잎</h3>
+            <p>향이 진하고 신선도가 오래 유지되는 깻잎입니다.</p>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2 class="title">주요 <b>납품처</b></h2>
+    <div class="store-box">
         <div class="store-list">
             <h4>🟢 완주로컬푸드 직매장</h4>
-            <div class="store-tags">
+            <div class="tags">
                 <span>하가점</span> <span>효자점</span> <span>둔산점</span> 
                 <span>모악점</span> <span>혁신점</span> <span>삼천점</span>
             </div>
         </div>
         <div class="store-list">
             <h4>🟡 농협 하나로마트</h4>
-            <div class="store-tags">
+            <div class="tags">
                 <span>봉동농협</span> <span>용진농협</span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="contact" class="reveal" style="text-align:center;">
-    <h2 class="title">문의 및 <b>찾아오시는 길</b></h2>
-    <p style="font-size:24px; font-weight:800; margin-bottom:10px;">010-3945-1394</p>
-    <p style="color:var(--muted);">전북 완주군 봉동읍 장기리 1729</p>
-    <a href="tel:01039451394" style="display:inline-block; margin-top:30px; padding:15px 40px; background:var(--text); color:#fff; text-decoration:none; border-radius:8px; font-weight:700;">전화 문의하기</a>
+<section style="text-align: center;" class="reveal">
+    <h2 class="title">생생농장 <b>문의</b></h2>
+    <p style="font-size: 26px; font-weight: 900; color: var(--green);">010-3945-1394</p>
+    <p style="color: #666; margin-top: 5px;">전북 완주군 봉동읍 장기리 1729</p>
 </section>
 
 <footer>
-    <p>© 생생농장. All Rights Reserved.</p>
+    <p style="text-align: center; padding: 40px; color: #999; font-size: 14px; border-top: 1px solid #eee;">
+        © 생생농장. All Rights Reserved.
+    </p>
 </footer>
 
 <script>
     const reveals = document.querySelectorAll(".reveal");
     function reveal(){
         reveals.forEach(el=>{
-            if(el.getBoundingClientRect().top < window.innerHeight - 80){
+            if(el.getBoundingClientRect().top < window.innerHeight - 100){
                 el.classList.add("active");
             }
         });
