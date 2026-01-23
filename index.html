@@ -6,157 +6,98 @@
 <title>생생농장</title>
 
 <style>
-:root{
-  --red:#c62828;
-  --green:#2e7d32;
-  --green-soft:#eef6f0;
-  --soil:#8d6e63;
-  --text:#111;
-  --muted:#555;
+body {
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    background: #f6f8f5;
+    color: #2e2e2e;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  color:var(--text);
-  background:#fff;
+header {
+    background: linear-gradient(135deg, #1b5e20, #d32f2f);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
 }
 
-/* HEADER */
-header{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:linear-gradient(180deg,var(--green-soft),#fff);
-  padding:40px 20px;
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
 }
 
-.hero{max-width:900px;}
-
-.crop-icons{
-  display:flex;
-  justify-content:center;
-  gap:26px;
-  margin-bottom:32px;
+header p {
+    font-size: 1.1rem;
+    opacity: 0.95;
 }
 
-.crop-icons svg{
-  width:70px;
+section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
 }
 
-h1{
-  font-size:clamp(48px,7vw,92px);
-  font-weight:900;
-  color:var(--green);
-  letter-spacing:6px;
+.title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border-left: 6px solid #c62828;
+    padding-left: 14px;
 }
 
-.tagline{
-  margin-top:18px;
-  font-size:20px;
-  color:#333;
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
 }
 
-.cta{
-  display:inline-block;
-  margin-top:40px;
-  padding:18px 70px;
-  background:var(--red);
-  color:#fff;
-  border-radius:60px;
-  font-weight:900;
-  text-decoration:none;
+.product {
+    background: #fff;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
 }
 
-/* NAV */
-nav{
-  position:sticky;
-  top:0;
-  background:#fff;
-  border-bottom:1px solid #eee;
-  z-index:1000;
-}
-.nav-wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 24px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.logo{font-weight:900;color:var(--green);}
-.nav-links a{
-  margin-left:26px;
-  text-decoration:none;
-  color:#222;
-  font-weight:800;
+.icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
 }
 
-/* SECTION */
-section{
-  max-width:1200px;
-  margin:120px auto;
-  padding:0 24px;
-}
-.title{
-  font-size:clamp(32px,4vw,48px);
-  color:var(--green);
-  margin-bottom:40px;
+.product h3 {
+    margin-bottom: 10px;
+    color: #1b5e20;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
-}
-.card{
-  border:1px solid #eee;
-  border-radius:26px;
-  padding:36px;
-  background:#fff;
-}
-.card h3{
-  color:var(--red);
-  margin-bottom:10px;
-}
-.card p{color:var(--muted);line-height:1.6;}
-
-/* MAP */
-.map-box{
-  background:var(--green-soft);
-  border-radius:40px;
-  padding:50px;
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:40px;
-  align-items:center;
-}
-.map-box svg{width:100%;}
-
-footer{
-  background:var(--green-soft);
-  padding:80px 20px;
-  text-align:center;
+.map-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
-.call{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:var(--green);
-  color:#fff;
-  padding:18px 26px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:900;
-  box-shadow:0 10px 20px rgba(0,0,0,.25);
+.map-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
 }
 
-@media(max-width:900px){
-  .map-box{grid-template-columns:1fr;}
+.map-info p {
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+svg {
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+footer {
+    background: #1b5e20;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    margin-top: 100px;
 }
 </style>
 </head>
@@ -164,149 +105,85 @@ footer{
 <body>
 
 <header>
-  <div class="hero">
-    <div class="crop-icons">
-      <!-- 딸기 -->
-      <svg viewBox="0 0 100 100">
-        <path d="M50 20 C20 35 25 80 50 88 C75 80 80 35 50 20Z" fill="#c62828"/>
-        <path d="M30 30 Q50 10 70 30" fill="#2e7d32"/>
-        <g fill="#ffd54f">
-          <circle cx="40" cy="55" r="2"/>
-          <circle cx="55" cy="65" r="2"/>
-          <circle cx="60" cy="45" r="2"/>
-        </g>
-      </svg>
-
-      <!-- 오이(취청) -->
-      <svg viewBox="0 0 100 100">
-        <path d="M20 55 C30 35 70 35 80 55 C70 75 30 75 20 55Z" fill="#43a047"/>
-        <g stroke="#2e7d32" stroke-width="2">
-          <line x1="35" y1="45" x2="35" y2="65"/>
-          <line x1="50" y1="42" x2="50" y2="68"/>
-          <line x1="65" y1="45" x2="65" y2="65"/>
-        </g>
-      </svg>
-
-      <!-- 깻잎 -->
-      <svg viewBox="0 0 100 100">
-        <path d="M50 12 C18 28 20 78 50 88 C80 78 82 28 50 12Z" fill="#2e7d32"/>
-        <path d="M50 18 L50 86" stroke="#a5d6a7" stroke-width="2"/>
-        <path d="M50 30 Q35 40 30 50" stroke="#a5d6a7" stroke-width="2" fill="none"/>
-        <path d="M50 30 Q65 40 70 50" stroke="#a5d6a7" stroke-width="2" fill="none"/>
-      </svg>
-
-      <!-- 애호박 -->
-      <svg viewBox="0 0 100 100">
-        <ellipse cx="50" cy="60" rx="32" ry="22" fill="#7cb342"/>
-        <rect x="46" y="25" width="8" height="18" fill="#33691e"/>
-        <g stroke="#558b2f" stroke-width="2">
-          <line x1="30" y1="55" x2="70" y2="55"/>
-          <line x1="30" y1="65" x2="70" y2="65"/>
-        </g>
-      </svg>
-    </div>
-
     <h1>생생농장</h1>
-    <div class="tagline">
-      설향 · 킹스베리 딸기<br>
-      취청오이 · 깻잎 · 애호박 재배
-    </div>
-
-    <a href="#map" class="cta">오시는 길</a>
-  </div>
+    <p>땅과 시간을 속이지 않고 키웁니다</p>
 </header>
 
-<nav>
-  <div class="nav-wrap">
-    <div class="logo">생생농장</div>
-    <div class="nav-links">
-      <a href="#crop">재배품목</a>
-      <a href="#map">약도</a>
-      <a href="tel:01039451394">문의</a>
+<section>
+    <h2 class="title">재배 품목</h2>
+    <div class="products">
+        <div class="product">
+            <div class="icon">🍓</div>
+            <h3>킹스베리</h3>
+            <p>크고 단단한 과육<br>프리미엄 딸기</p>
+        </div>
+        <div class="product">
+            <div class="icon">🍓</div>
+            <h3>설향</h3>
+            <p>향이 깊고 달콤한<br>국내 대표 딸기</p>
+        </div>
+        <div class="product">
+            <div class="icon">🥒</div>
+            <h3>오이</h3>
+            <p>아삭한 식감<br>신선 출하</p>
+        </div>
+        <div class="product">
+            <div class="icon">🌿</div>
+            <h3>깻잎</h3>
+            <p>향 진한 잎<br>매일 수확</p>
+        </div>
+        <div class="product">
+            <div class="icon">🎃</div>
+            <h3>애호박</h3>
+            <p>단단한 육질<br>국거리 최적</p>
+        </div>
     </div>
-  </div>
-</nav>
-
-<section id="crop">
-  <h2 class="title">재배 품목</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>딸기</h3>
-      <p>
-        설향과 킹스베리를 재배합니다.<br>
-        설향은 당도와 향이 뛰어나고,<br>
-        킹스베리는 과가 크고 단단해 선물용으로 좋습니다.
-      </p>
-    </div>
-    <div class="card">
-      <h3>취청 오이</h3>
-      <p>
-        껍질이 얇고 아삭한 취청 오이로<br>
-        생식과 반찬용 모두 적합합니다.
-      </p>
-    </div>
-    <div class="card">
-      <h3>깻잎</h3>
-      <p>
-        향이 강하고 잎이 연한 품종으로<br>
-        수확 즉시 출하합니다.
-      </p>
-    </div>
-    <div class="card">
-      <h3>애호박</h3>
-      <p>
-        제철에 맞춰 재배하는 애호박으로<br>
-        수분이 많고 식감이 부드럽습니다.
-      </p>
-    </div>
-  </div>
 </section>
 
-<section id="map">
-  <h2 class="title">오시는 길</h2>
-  <div class="map-box">
-    <div>
-      <h3>딸기농장</h3>
-      <p>전북 완주군 봉동읍 장기리 1729</p>
-      <p>전화 010-3945-1394</p>
-      <p style="margin-top:12px;color:#555;">
-        서장길 따라 오시다가<br>
-        수로 건너기 전 우측 농로로 진입
-      </p>
+<section>
+    <h2 class="title">오시는 길</h2>
+    <div class="map-box">
+        <div class="map-info">
+            <h3>딸기농장</h3>
+            <p>
+                전북 완주군 봉동읍 장기리 1729<br>
+                서정길 → 농노길 진입<br>
+                수로 건넌 후 우측 위치
+            </p>
+            <p>전화 010-3945-1394</p>
+        </div>
+
+        <!-- 약도 SVG -->
+        <svg viewBox="0 0 400 260">
+            <!-- 배경 -->
+            <rect x="0" y="0" width="400" height="260" rx="20" fill="#fafafa"/>
+
+            <!-- 서정길 -->
+            <line x1="20" y1="130" x2="380" y2="130" stroke="#9e9e9e" stroke-width="10"/>
+            <text x="30" y="115" font-size="13">서정길</text>
+
+            <!-- 농노길 -->
+            <line x1="200" y1="40" x2="200" y2="220" stroke="#bdbdbd" stroke-width="8"/>
+            <text x="210" y="60" font-size="13">농노길</text>
+
+            <!-- 수로 -->
+            <rect x="230" y="0" width="20" height="260" fill="#64b5f6"/>
+            <text x="255" y="30" font-size="12">수로</text>
+
+            <!-- 농장 위치 -->
+            <circle cx="310" cy="160" r="10" fill="#c62828"/>
+            <text x="290" y="145" font-size="13" fill="#c62828">딸기농장</text>
+
+            <!-- 방향 화살 -->
+            <polygon points="270,160 250,150 250,170" fill="#2e7d32"/>
+            <text x="260" y="190" font-size="12">수로 건넌 후 우측</text>
+        </svg>
     </div>
-
-    <!-- 실제 지형 반영 약도 -->
-    <svg viewBox="0 0 360 240">
-      <rect width="360" height="240" rx="24" fill="#fff"/>
-
-      <!-- 수로 -->
-      <rect x="0" y="150" width="360" height="30" fill="#bbdefb"/>
-      <text x="10" y="145" font-size="12">수로</text>
-
-      <!-- 도로 -->
-      <line x1="200" y1="0" x2="200" y2="240" stroke="#ccc" stroke-width="10"/>
-      <text x="210" y="20" font-size="12">서장길</text>
-
-      <!-- 교회 -->
-      <rect x="120" y="120" width="40" height="20" fill="#e0e0e0"/>
-      <text x="108" y="115" font-size="11">서두교회</text>
-
-      <!-- 마을 -->
-      <rect x="40" y="110" width="50" height="30" fill="#e0e0e0"/>
-      <text x="20" y="105" font-size="11">서두정보화마을</text>
-
-      <!-- 농장 -->
-      <circle cx="200" cy="90" r="10" fill="#c62828"/>
-      <text x="165" y="75" font-size="12">딸기농장</text>
-    </svg>
-  </div>
 </section>
 
 <footer>
-  <p>생생농장</p>
+    <p>© 생생농장</p>
 </footer>
-
-<a class="call" href="tel:01039451394">전화</a>
 
 </body>
 </html>
