@@ -6,15 +6,27 @@
 <title>생생농장</title>
 
 <style>
+/* =====================
+   COLOR SYSTEM
+===================== */
 :root{
-  --bg:#0c0f0e;
-  --fg:#f4f6f5;
-  --sub:#9aa09d;
-  --green:#3cff9e;
-  --card:#151917;
-  --line:rgba(255,255,255,.06);
+  --bg:#0b0c0b;
+  --fg:#f5f6f5;
+  --sub:#b5b9b6;
+
+  --lime:#7CFF00;
+  --lime-soft:#c9ff9e;
+
+  --red:#ff2a2a;
+  --red-soft:#ff8a8a;
+
+  --card:#141614;
+  --line:rgba(255,255,255,.08);
 }
 
+/* =====================
+   RESET
+===================== */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -23,34 +35,51 @@ body{
   color:var(--fg);
 }
 
-/* NAV */
+/* =====================
+   NAV
+===================== */
 nav{
   position:fixed;
   top:0;left:0;
   width:100%;
-  background:rgba(12,15,14,.85);
-  backdrop-filter:blur(12px);
   z-index:1000;
+  background:rgba(11,12,11,.85);
+  backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
 .nav-inner{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
-  padding:14px 20px;
+  padding:16px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
+nav strong{
+  font-size:18px;
+  letter-spacing:.5px;
+  color:var(--lime);
+}
 nav a{
   color:var(--fg);
   text-decoration:none;
-  margin-left:20px;
+  margin-left:22px;
   font-size:14px;
-  opacity:.8;
+  position:relative;
 }
-nav a:hover{opacity:1;color:var(--green)}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-6px;
+  width:0;height:2px;
+  background:var(--red);
+  transition:.25s;
+}
+nav a:hover::after{width:100%}
 
-/* HERO */
+/* =====================
+   HERO
+===================== */
 header{
   min-height:100vh;
   padding-top:90px;
@@ -62,94 +91,118 @@ header{
 }
 .hero-inner{
   text-align:center;
-  max-width:720px;
+  max-width:760px;
   padding:0 20px;
   z-index:2;
 }
 header h1{
-  font-size:72px;
+  font-size:80px;
   font-weight:900;
   letter-spacing:-2px;
 }
+header h1 span{
+  color:var(--red);
+}
 header p{
   margin-top:18px;
-  font-size:20px;
+  font-size:22px;
   color:var(--sub);
 }
 
-/* MOBILE FIX */
-@media (max-width:768px){
-  header h1{font-size:44px}
+/* MOBILE */
+@media(max-width:768px){
+  header h1{font-size:46px}
   header p{font-size:16px}
 }
 
-/* CTA */
+/* =====================
+   CTA BUTTONS
+===================== */
 .cta{
-  margin-top:32px;
+  margin-top:36px;
   display:flex;
   justify-content:center;
-  gap:14px;
+  gap:16px;
   flex-wrap:wrap;
 }
 .cta a{
-  padding:12px 24px;
+  padding:14px 28px;
   border-radius:999px;
   font-size:15px;
   text-decoration:none;
+  transition:.25s;
 }
 .cta-primary{
-  background:var(--green);
-  color:#000;
+  background:var(--red);
+  color:#fff;
+}
+.cta-primary:hover{
+  background:#ff4444;
+  transform:translateY(-2px);
 }
 .cta-secondary{
-  border:1px solid var(--green);
-  color:var(--green);
+  border:2px solid var(--lime);
+  color:var(--lime);
+}
+.cta-secondary:hover{
+  background:var(--lime);
+  color:#000;
 }
 
-/* BACKGROUND SVG (FIXED) */
+/* =====================
+   HERO SVG BACKGROUND
+===================== */
 .hero-bg{
   position:absolute;
   inset:0;
   z-index:1;
-  opacity:.25;
-  pointer-events:none;
+  opacity:.35;
 }
 .hero-bg svg{
   width:100%;
   height:100%;
 }
 
-/* SECTION */
+/* =====================
+   SECTION
+===================== */
 section{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
-  padding:120px 20px;
+  padding:130px 20px;
 }
 h2{
-  font-size:42px;
-  margin-bottom:24px;
+  font-size:44px;
+  margin-bottom:22px;
 }
 .section-desc{
   color:var(--sub);
   max-width:760px;
-  font-size:17px;
+  font-size:18px;
 }
 
-/* GRID */
+/* =====================
+   GRID / CARD
+===================== */
 .grid{
-  margin-top:60px;
+  margin-top:64px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:36px;
 }
 .card{
   background:var(--card);
-  padding:36px;
-  border-radius:22px;
+  padding:40px;
+  border-radius:24px;
   border:1px solid var(--line);
+  transition:.3s;
+}
+.card:hover{
+  border-color:var(--lime);
+  box-shadow:0 0 0 1px var(--lime-soft);
 }
 .card h3{
-  font-size:24px;
+  font-size:26px;
   margin-bottom:10px;
 }
 .card p{
@@ -157,20 +210,37 @@ h2{
   font-size:15px;
 }
 
-/* CONTACT */
-.contact a{
-  color:var(--green);
-  font-size:22px;
-  text-decoration:none;
+/* =====================
+   BADGE
+===================== */
+.badge{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:13px;
+  background:var(--lime);
+  color:#000;
 }
 
-/* FOOTER */
+/* =====================
+   CONTACT
+===================== */
+.contact a{
+  font-size:26px;
+  color:var(--red);
+  text-decoration:none;
+}
+.contact a:hover{color:#ff6666}
+
+/* =====================
+   FOOTER
+===================== */
 footer{
   border-top:1px solid var(--line);
-  padding:60px 20px;
+  padding:70px 20px;
   text-align:center;
   color:var(--sub);
-  font-size:14px;
 }
 </style>
 </head>
@@ -191,7 +261,7 @@ footer{
 
 <header>
   <div class="hero-inner">
-    <h1>생생농장</h1>
+    <h1><span>생생</span>농장</h1>
     <p>시설채소 전문 재배 · 완주 직출하</p>
 
     <div class="cta">
@@ -200,16 +270,20 @@ footer{
     </div>
   </div>
 
-  <!-- BACKGROUND SVG -->
+  <!-- COMPLEX SVG BACKGROUND -->
   <div class="hero-bg">
-    <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+    <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <radialGradient id="g">
-          <stop offset="0%" stop-color="#3cff9e"/>
-          <stop offset="100%" stop-color="#0c0f0e"/>
+        <radialGradient id="limeGlow">
+          <stop offset="0%" stop-color="#7CFF00"/>
+          <stop offset="100%" stop-color="#0b0c0b"/>
         </radialGradient>
       </defs>
-      <circle cx="300" cy="300" r="260" fill="url(#g)"/>
+      <circle cx="400" cy="400" r="340" fill="url(#limeGlow)"/>
+      <path d="M120 520 C260 260,540 260,680 520"
+            stroke="#ff2a2a" stroke-width="14" fill="none"/>
+      <path d="M400 180 V520"
+            stroke="#7CFF00" stroke-width="10"/>
     </svg>
   </div>
 </header>
@@ -217,15 +291,15 @@ footer{
 <section id="products">
   <h2>재배 품목</h2>
   <p class="section-desc">
-    시설 하우스에서 품목별 생육 특성에 맞춰 재배합니다.
+    시설 하우스 기반으로 품목별 생육 조건을 분리 관리합니다.
   </p>
 
   <div class="grid">
-    <div class="card"><h3>킹스베리</h3><p>과육 밀도 기준 선별 출하</p></div>
-    <div class="card"><h3>설향</h3><p>숙도 관리 중심 재배</p></div>
-    <div class="card"><h3>취청오이</h3><p>시설 재배로 식감 유지</p></div>
-    <div class="card"><h3>깻잎</h3><p>연중 품질 균일화 관리</p></div>
-    <div class="card"><h3>애호박</h3><p>시설 환경 제어 재배</p></div>
+    <div class="card"><span class="badge">딸기</span><h3>킹스베리</h3><p>과육 밀도 기준 선별</p></div>
+    <div class="card"><span class="badge">딸기</span><h3>설향</h3><p>숙도 관리 중심 출하</p></div>
+    <div class="card"><span class="badge">채소</span><h3>취청오이</h3><p>시설 재배 식감 유지</p></div>
+    <div class="card"><span class="badge">채소</span><h3>깻잎</h3><p>연중 품질 균일화</p></div>
+    <div class="card"><span class="badge">채소</span><h3>애호박</h3><p>조직감 위주 관리</p></div>
   </div>
 </section>
 
@@ -240,8 +314,8 @@ footer{
 <section id="about">
   <h2>농장 소개</h2>
   <p class="section-desc">
-    생생농장은 전라북도 완주군 장기리 1729에 위치한  
-    **시설채소 전문 재배 농가**로,  
+    생생농장은 전라북도 완주군 장기리에 위치한  
+    <strong>시설채소 전문 재배 농가</strong>로,  
     품목별 생육 환경 관리와 수확 시점 기준 출하를 원칙으로 합니다.
   </p>
 </section>
