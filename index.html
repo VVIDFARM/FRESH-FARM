@@ -5,257 +5,323 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>생생농장</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --green:#1f3d2b;
-  --red:#c62828;
-  --light:#f6f7f5;
-}
 
-body{
+/* =========================
+   RESET
+========================= */
+*{
   margin:0;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
-  background:var(--light);
+  padding:0;
+  box-sizing:border-box;
+}
+html,body{
+  font-family:'Noto Sans KR', sans-serif;
+  background:#f4f6f3;
   color:#222;
+  line-height:1.6;
+}
+img{max-width:100%; display:block;}
+a{text-decoration:none; color:inherit;}
+button{border:none; background:none; cursor:pointer;}
+
+/* =========================
+   COLOR SYSTEM
+========================= */
+:root{
+  --green-dark:#1f3d2b;
+  --green:#2e5f44;
+  --green-light:#e7efe9;
+  --red:#b71c1c;
+  --gray:#666;
+  --white:#fff;
 }
 
-a{ text-decoration:none; color:inherit; }
-
-/* 상단 */
+/* =========================
+   HEADER
+========================= */
 header{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:100;
+  left:0;
+  width:100%;
   background:#fff;
-  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  z-index:999;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
-
-.nav{
-  max-width:1200px;
+.header-inner{
+  max-width:1400px;
   margin:auto;
-  padding:16px 20px;
+  padding:18px 30px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-
-.nav h1{
-  font-size:22px;
-  letter-spacing:-.5px;
+.logo{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-1px;
 }
-
-.call{
-  background:var(--green);
-  color:#fff;
-  padding:10px 18px;
-  border-radius:30px;
+.menu{
+  display:flex;
+  gap:26px;
+  align-items:center;
+}
+.menu a{
   font-weight:600;
 }
-
-/* 히어로 */
-.hero{
-  padding:80px 20px 60px;
-  text-align:center;
-}
-
-.hero h2{
-  font-size:42px;
-  margin-bottom:14px;
-}
-
-.hero p{
-  font-size:18px;
-  color:#555;
-}
-
-/* 품목 */
-.section{
-  max-width:1200px;
-  margin:80px auto;
-  padding:0 20px;
-}
-
-.section h3{
-  font-size:32px;
-  margin-bottom:40px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-}
-
-.card{
-  background:#fff;
-  border-radius:22px;
-  padding:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-}
-
-.card svg{
-  width:64px;
-  margin-bottom:20px;
-}
-
-.card h4{
-  font-size:20px;
-  margin-bottom:10px;
-}
-
-.card p{
-  font-size:15px;
-  line-height:1.6;
-  color:#444;
-}
-
-/* 약도 */
-.map{
-  background:#fff;
-  border-radius:30px;
-  padding:40px;
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
-}
-
-.map svg{
-  width:100%;
-  max-width:600px;
-  display:block;
-  margin:auto;
-}
-
-/* 하단 */
-footer{
-  background:var(--green);
+.call-btn{
+  background:var(--green-dark);
   color:#fff;
-  padding:60px 20px;
-  text-align:center;
-}
-
-footer a{
-  display:inline-block;
-  margin-top:20px;
-  background:#fff;
-  color:var(--green);
-  padding:14px 28px;
+  padding:12px 22px;
   border-radius:40px;
   font-weight:700;
 }
+
+/* =========================
+   HERO
+========================= */
+.hero{
+  padding-top:120px;
+  padding-bottom:140px;
+  background:linear-gradient(180deg,#ffffff 0%,#f1f4f0 100%);
+  text-align:center;
+}
+.hero h1{
+  font-size:56px;
+  font-weight:900;
+  margin-bottom:24px;
+}
+.hero p{
+  font-size:20px;
+  color:#555;
+}
+
+/* =========================
+   SECTION COMMON
+========================= */
+.section{
+  max-width:1400px;
+  margin:140px auto;
+  padding:0 30px;
+}
+.section-title{
+  font-size:40px;
+  font-weight:900;
+  margin-bottom:60px;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+.product{
+  background:#fff;
+  padding:40px;
+  border-radius:28px;
+  box-shadow:0 30px 60px rgba(0,0,0,.08);
+  transition:.4s;
+}
+.product:hover{
+  transform:translateY(-10px);
+}
+.product svg{
+  width:70px;
+  margin-bottom:24px;
+}
+.product h3{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+.product p{
+  color:#444;
+  font-size:16px;
+}
+
+/* =========================
+   MAP
+========================= */
+.map-wrap{
+  background:#fff;
+  padding:60px;
+  border-radius:40px;
+  box-shadow:0 30px 60px rgba(0,0,0,.08);
+}
+.map-wrap svg{
+  max-width:700px;
+  margin:auto;
+  display:block;
+}
+
+/* =========================
+   INFO
+========================= */
+.info{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:60px;
+}
+.info-box{
+  background:var(--white);
+  padding:50px;
+  border-radius:30px;
+  box-shadow:0 30px 60px rgba(0,0,0,.08);
+}
+.info-box h4{
+  font-size:24px;
+  margin-bottom:18px;
+}
+.info-box p{
+  font-size:16px;
+  color:#444;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  background:var(--green-dark);
+  color:#fff;
+  padding:100px 30px;
+}
+.footer-inner{
+  max-width:1400px;
+  margin:auto;
+  text-align:center;
+}
+.footer-inner p{
+  font-size:18px;
+}
+.footer-inner a{
+  display:inline-block;
+  margin-top:30px;
+  background:#fff;
+  color:var(--green-dark);
+  padding:16px 34px;
+  border-radius:40px;
+  font-weight:900;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="nav">
-    <h1>생생농장</h1>
-    <a class="call" href="tel:010XXXXXXXX">📞 010-XXXX-XXXX</a>
+  <div class="header-inner">
+    <div class="logo">생생농장</div>
+    <nav class="menu">
+      <a href="#products">품목</a>
+      <a href="#map">오시는길</a>
+      <a href="tel:010XXXXXXXX" class="call-btn">📞 010-XXXX-XXXX</a>
+    </nav>
   </div>
 </header>
 
 <section class="hero">
-  <h2>정성으로 키운, 진짜 농산물</h2>
-  <p>주력 품목 킹스베리를 중심으로 재배합니다</p>
+  <h1>정직하게 키웁니다</h1>
+  <p>킹스베리를 중심으로 품질에 집중하는 농장</p>
 </section>
 
-<section class="section">
-<h3>재배 품목</h3>
+<section id="products" class="section">
+<h2 class="section-title">재배 품목</h2>
 
 <div class="products">
 
-<div class="card">
 <!-- 킹스베리 -->
+<div class="product">
 <svg viewBox="0 0 64 64">
 <path d="M32 6c10 0 20 12 20 26S32 58 32 58 12 44 12 32 22 6 32 6z" fill="#b71c1c"/>
-<circle cx="26" cy="30" r="2" fill="#ffd54f"/>
-<circle cx="36" cy="36" r="2" fill="#ffd54f"/>
 </svg>
-<h4>킹스베리 (주상품)</h4>
+<h3>킹스베리 (주력)</h3>
 <p>
-대과 중심 재배 품종.<br>
-과육 단단하고 당도 높아 선물·프리미엄 출하에 적합합니다.
+과 크기와 당도를 기준으로 선별 재배합니다.<br>
+주문·출하 중심 품종입니다.
 </p>
 </div>
 
-<div class="card">
 <!-- 설향 -->
+<div class="product">
 <svg viewBox="0 0 64 64">
 <path d="M32 10c8 0 16 10 16 22S32 54 32 54 16 40 16 32 24 10 32 10z" fill="#d32f2f"/>
 </svg>
-<h4>설향</h4>
+<h3>설향</h3>
 <p>
-향과 산미 균형이 좋은 품종.<br>
-대중성과 맛을 모두 갖춘 딸기입니다.
+향과 산미 균형이 좋은 품종으로<br>
+직거래용으로 재배합니다.
 </p>
 </div>
 
-<div class="card">
 <!-- 취청 오이 -->
+<div class="product">
 <svg viewBox="0 0 64 64">
 <rect x="10" y="14" width="44" height="36" rx="18" fill="#2e7d32"/>
 </svg>
-<h4>취청 오이</h4>
+<h3>취청 오이</h3>
 <p>
-껍질 얇고 식감이 살아있는 오이.<br>
-생과·요리용 모두 적합합니다.
+식감 위주로 관리하여<br>
+생과 출하에 적합합니다.
 </p>
 </div>
 
-<div class="card">
 <!-- 깻잎 -->
+<div class="product">
 <svg viewBox="0 0 64 64">
 <path d="M32 6c10 8 18 18 14 30-4 10-14 18-14 18S22 46 18 36C14 24 22 14 32 6z" fill="#388e3c"/>
 </svg>
-<h4>깻잎</h4>
+<h3>깻잎</h3>
 <p>
-잎 결이 살아있고 향이 강한 깻잎.<br>
-식당 납품에 적합합니다.
+잎 결 관리에 집중한 깻잎입니다.
 </p>
 </div>
 
-<div class="card">
 <!-- 애호박 -->
+<div class="product">
 <svg viewBox="0 0 64 64">
 <rect x="8" y="22" width="48" height="20" rx="10" fill="#8bc34a"/>
 </svg>
-<h4>애호박</h4>
+<h3>애호박</h3>
 <p>
-연한 과육과 담백한 맛.<br>
-가정용·업소용 모두 안정적인 품질입니다.
+연한 과육 위주로 수확합니다.
 </p>
 </div>
 
 </div>
 </section>
 
-<section class="section">
-<h3>오시는 길</h3>
+<section id="map" class="section">
+<h2 class="section-title">오시는 길</h2>
 
-<div class="map">
-<svg viewBox="0 0 600 400">
-<line x1="50" y1="200" x2="550" y2="200" stroke="#444" stroke-width="4"/>
-<text x="260" y="185">서정길</text>
+<div class="map-wrap">
+<svg viewBox="0 0 700 400">
+<line x1="50" y1="200" x2="650" y2="200" stroke="#333" stroke-width="5"/>
+<text x="300" y="180">서정길</text>
 
-<rect x="260" y="220" width="80" height="40" fill="#90caf9"/>
-<text x="275" y="245">수로</text>
+<rect x="310" y="220" width="80" height="40" fill="#90caf9"/>
+<text x="330" y="245">수로</text>
 
-<line x1="340" y1="240" x2="340" y2="320" stroke="#444" stroke-width="4"/>
-<text x="350" y="300">농노길</text>
+<line x1="350" y1="260" x2="350" y2="330" stroke="#333" stroke-width="5"/>
+<text x="365" y="315">농노길</text>
 
-<circle cx="340" cy="330" r="10" fill="#c62828"/>
-<text x="360" y="335">생생농장</text>
+<circle cx="350" cy="350" r="10" fill="#b71c1c"/>
+<text x="370" y="355">생생농장</text>
 </svg>
 </div>
 </section>
 
 <footer>
-<p>문의 및 방문 예약</p>
-<a href="tel:010XXXXXXXX">📞 바로 전화하기</a>
+  <div class="footer-inner">
+    <p>방문 및 출하 문의</p>
+    <a href="tel:010XXXXXXXX">📞 바로 전화하기</a>
+  </div>
 </footer>
 
 </body>
