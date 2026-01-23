@@ -3,251 +3,531 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장 | 첨단 스마트팜 & 킹스베리</title>
+<title>생생농장 | 스마트팜의 신선함을 식탁까지</title>
 
 <style>
 :root{
+    --primary-green:#2fb573;
+    --dark-green:#1e8d5a;
     --red:#e83333;
-    --green:#2fb573;
-    --dark:#2c3e50;
-    --gold:#f39c12;
-    --soft-bg:#f8faf9;
+    --yellow:#ffc107;
+    --blue:#3498db;
+    --dark-text:#2c3e50;
+    --light-text:#666;
+    --bg-light:#f8faf9;
+    --bg-dark:#2c3e50; /* 스마트팜 섹션 배경 */
+    --accent-bg:#e9f7ef; /* 강조 배경색 */
 }
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
     font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-    background:#fff;
-    color:#333;
+    background:var(--bg-light);
+    color:var(--dark-text);
     line-height:1.6;
 }
+a{text-decoration:none; color:inherit;}
 
 /* ================= HEADER ================= */
 header{
-    min-height:70vh;
+    min-height:80vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:40px 20px;
-    background: radial-gradient(circle at 50% 50%, #f0f7f4 0%, #ffffff 100%);
+    padding:60px 20px;
+    background: linear-gradient(180deg, var(--bg-light) 0%, #ffffff 100%);
 }
 
-.main-svg { width:280px; margin-bottom:20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08)); }
+.main-logo-wrapper { margin-bottom: 20px; }
+.main-logo-svg { width:320px; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1)); }
 
 .logo-text{
-    font-size:clamp(42px, 7vw, 64px);
+    font-size:clamp(48px, 8vw, 76px);
     font-weight:900;
-    color:var(--dark);
-    letter-spacing:-1px;
-}
-.logo-text span { color:var(--green); }
-
-.tagline{
-    font-size:18px;
-    color:#666;
-    margin-top:10px;
-    font-weight: 500;
-}
-
-/* ================= SMART FARM SECTION ================= */
-.smart-tech {
-    background: var(--dark);
-    color: #fff;
-    padding: 80px 24px;
-    border-radius: 40px;
-    margin: 60px 20px;
-}
-.tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    max-width: 1100px;
-    margin: 40px auto 0;
-}
-.tech-item {
-    text-align: center;
-    padding: 20px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
-}
-.tech-item h4 { color: var(--green); margin-bottom: 10px; }
-.tech-item p { font-size: 14px; opacity: 0.8; }
-
-/* ================= PRODUCT SECTION ================= */
-section{ max-width:1100px; margin:100px auto; padding:0 24px; }
-.title{ font-size:32px; margin-bottom:50px; text-align:center; font-weight:800; }
-.title b { color:var(--green); }
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-    gap:20px;
-}
-.card{
-    background:#fff;
-    padding:35px;
-    border-radius:25px;
-    border:1px solid #eee;
-    transition: 0.3s;
-}
-.card:hover { border-color:var(--green); transform:translateY(-5px); }
-.card.premium { border:2px solid var(--red); background:#fff9f9; }
-.card h3 { margin: 10px 0; font-size: 22px; }
-.badge {
-    display:inline-block;
-    padding:3px 10px;
-    border-radius:5px;
-    font-size:12px;
-    font-weight:800;
+    color:var(--dark-text);
+    letter-spacing:-1.5px;
     margin-bottom:10px;
 }
-.badge.red { background:var(--red); color:#fff; }
-.badge.green { background:var(--green); color:#fff; }
+.logo-text span { color:var(--primary-green); }
 
-/* ================= STORES ================= */
-.store-box {
-    background: var(--soft-bg);
-    padding: 50px 30px;
-    border-radius: 30px;
+.tagline{
+    font-size:20px;
+    color:var(--light-text);
+    font-weight:500;
+    margin-top:10px;
+}
+
+/* ================= NAVIGATION ================= */
+nav{
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #eee;
+    z-index:1000;
+}
+.nav-wrap{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.nav-title {
+    font-weight:900;
+    color:var(--primary-green);
+    font-size:20px;
+}
+.nav-links a{
+    font-weight:700;
+    margin-left:30px;
+    color:var(--dark-text);
+    transition: color 0.3s;
+}
+.nav-links a:hover { color:var(--primary-green); }
+
+/* ================= SECTION COMMON STYLES ================= */
+section{
+    max-width:1200px;
+    margin:120px auto;
+    padding:0 24px;
+}
+.section-title{
+    font-size:clamp(30px, 4vw, 42px);
+    font-weight:800;
+    text-align:center;
+    margin-bottom:60px;
+}
+.section-title b { color:var(--primary-green); }
+
+/* ================= SMART FARM STORY ================= */
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+.story-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.story-icon-wrapper { margin-bottom: 20px; }
+.story-icon { width: 80px; height: 80px; color: var(--primary-green); }
+.story-item h3 { font-size: 22px; margin-bottom: 10px; color: var(--dark-text); }
+.story-item p { font-size: 15px; color: var(--light-text); }
+
+/* ================= WHY US (Value Proposition) ================= */
+.why-us-section {
+    background: var(--accent-bg);
+    padding: 80px 24px;
+    border-radius: 40px;
+}
+.why-us-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 60px;
+    align-items: center;
 }
-.store-list h4 { margin-bottom: 15px; color: var(--dark); }
-.tags span {
-    display: inline-block;
+.why-us-grid .text-content h2 {
+    font-size:clamp(28px, 3.5vw, 38px);
+    font-weight:800;
+    margin-bottom:20px;
+    line-height:1.3;
+}
+.why-us-grid .text-content h2 b { color:var(--dark-green); }
+.why-us-grid .text-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 30px;
+}
+.why-us-grid .text-content li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 17px;
+    color: var(--light-text);
+}
+.why-us-grid .text-content li svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    color: var(--primary-green);
+    flex-shrink: 0;
+}
+.why-us-image-wrapper { text-align: center; }
+.why-us-image { width: 100%; max-width: 450px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+
+/* ================= PRODUCTS ================= */
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:25px;
+}
+.product-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #eee;
+    transition: 0.3s ease;
+    text-align: center;
+}
+.product-card:hover { border-color:var(--primary-green); transform:translateY(-5px); }
+.product-card.premium { border:2px solid var(--red); background:#fff5f5; }
+.product-card .product-icon { width: 80px; height: 80px; margin-bottom: 15px; }
+.product-card h3 { font-size: 24px; margin-bottom: 10px; color: var(--dark-text); }
+.product-card p { font-size: 15px; color: var(--light-text); }
+.product-badge {
+    display:inline-block;
+    padding:5px 15px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:15px;
+    color:#fff;
+}
+.product-badge.red { background:var(--red); }
+.product-badge.green { background:var(--primary-green); }
+
+/* ================= DELIVERY & PAYMENT ================= */
+.delivery-payment-section {
+    background: #fff;
+    padding: 80px 24px;
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    margin: 120px auto;
+}
+.delivery-payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+.delivery-payment-item h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: var(--dark-text);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.delivery-payment-item h3 svg { color:var(--primary-green); width: 32px; height: 32px; }
+.delivery-payment-item ul { list-style: none; padding-left: 0; }
+.delivery-payment-item li {
+    background: var(--bg-light);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.delivery-payment-item li strong { color: var(--dark-text); }
+
+/* ================= STORES ================= */
+.store-section {
+    background: var(--accent-bg);
+    padding: 80px 24px;
+    border-radius: 40px;
+}
+.store-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.store-list h4 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: var(--dark-text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.store-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.store-tags span {
     background: #fff;
     border: 1px solid #ddd;
-    padding: 5px 12px;
-    margin: 3px;
-    border-radius: 6px;
-    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark-text);
 }
 
-/* ================= ANIMATION ================= */
-.reveal{opacity:0;transform:translateY(30px);transition:.8s;}
+/* ================= CONTACT ================= */
+.contact-section { text-align: center; }
+.contact-section p { font-size: 18px; color: var(--light-text); }
+.contact-section .phone-number {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--primary-green);
+    margin: 20px 0 10px;
+}
+.contact-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 18px 45px;
+    background: var(--dark-text);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+.contact-btn:hover { background: var(--primary-green); }
+
+
+/* ================= FOOTER ================= */
+footer{
+    padding:60px 20px;
+    text-align:center;
+    border-top:1px solid #eee;
+    color:var(--light-text);
+    font-size:14px;
+    margin-top:100px;
+}
+
+/* ================= ANIMATIONS ================= */
+.reveal{opacity:0;transform:translateY(40px);transition:.9s ease-out;}
 .reveal.active{opacity:1;transform:none;}
 
-@media (max-width: 768px) { .store-box { grid-template-columns: 1fr; } }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .why-us-grid, .delivery-payment-grid, .store-grid {
+        grid-template-columns: 1fr;
+    }
+    .why-us-grid .why-us-image-wrapper { order: -1; margin-bottom: 40px; }
+}
+@media (max-width: 600px) {
+    .nav-links { display: none; }
+    .nav-wrap { justify-content: center; }
+}
 </style>
 </head>
 <body>
 
 <header>
-    <svg class="main-svg" viewBox="0 0 300 120">
-        <path d="M50 40 Q70 30 90 40 Q100 70 70 95 Q40 70 50 40" fill="#e83333"/>
-        <path d="M55 42 Q70 25 85 42 L70 50 Z" fill="#2fb573"/>
-        <g fill="#fff" opacity="0.5">
-            <circle cx="60" cy="55" r="1.5"/><circle cx="80" cy="55" r="1.5"/>
-            <circle cx="70" cy="65" r="1.5"/><circle cx="60" cy="75" r="1.5"/>
-            <circle cx="80" cy="75" r="1.5"/>
-        </g>
-        
-        <rect x="115" y="30" width="16" height="65" rx="8" fill="#1b5e20" transform="rotate(-15 123 62)"/>
-        <circle cx="120" cy="45" r="1" fill="#fff" opacity="0.3"/>
-        <circle cx="128" cy="65" r="1" fill="#fff" opacity="0.3"/>
+    <div class="main-logo-wrapper">
+        <svg class="main-logo-svg" viewBox="0 0 400 150">
+            <path d="M50 40 Q70 20 90 40 Q100 70 70 95 Q40 70 50 40" fill="#e83333"/>
+            <path d="M55 42 Q70 28 85 42 L70 50 Z" fill="#2fb573"/>
+            <g fill="#fff" opacity="0.6">
+                <circle cx="60" cy="55" r="2"/><circle cx="80" cy="55" r="2"/>
+                <circle cx="70" cy="65" r="2"/><circle cx="60" cy="75" r="2"/>
+                <circle cx="80" cy="75" r="2"/>
+            </g>
+            <rect x="120" y="30" width="20" height="80" rx="10" fill="#2fb573" transform="rotate(-10 130 70)"/>
+            <circle cx="128" cy="45" r="2" fill="#fff" opacity="0.4"/>
+            <circle cx="138" cy="75" r="2" fill="#fff" opacity="0.4"/>
+            <rect x="180" y="60" width="70" height="25" rx="12" fill="#ffc107"/>
+            <circle cx="185" cy="72" r="2" fill="#fff" opacity="0.4"/>
+            <circle cx="235" cy="68" r="2" fill="#fff" opacity="0.4"/>
+            <path d="M300 35 Q335 60 300 100 Q265 60 300 35" fill="#2fb573" stroke="#1e8d5a" stroke-width="2"/>
+            <path d="M300 35 L300 100 M300 50 L280 65 M300 65 L320 80" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+            <rect x="100" y="90" width="180" height="40" rx="5" fill="#aab7c0"/>
+            <path d="M100 90 L110 80 L270 80 L280 90 Z" fill="#7f8c8d"/>
+            <rect x="150" y="95" width="20" height="25" fill="#f0f7f4"/>
+            <rect x="210" y="95" width="20" height="25" fill="#f0f7f4"/>
+            <circle cx="140" cy="110" r="5" fill="#34495e"/>
+            <circle cx="240" cy="110" r="5" fill="#34495e"/>
+        </svg>
+    </div>
 
-        <rect x="155" y="55" width="55" height="22" rx="11" fill="#f1c40f"/>
-        <path d="M155 60 L148 66 L155 72 Z" fill="#9e7e00"/>
-
-        <path d="M230 35 Q260 55 230 95 Q200 55 230 35" fill="#2fb573" stroke="#1e8d5a" stroke-width="1"/>
-        <path d="M230 35 L230 95 M230 50 L215 65 M230 65 L250 80" stroke="#fff" stroke-width="1" opacity="0.4"/>
-    </svg>
-
-    <div class="logo-text">생생<span>농장</span></div>
-    <div class="tagline">완주 봉동 스마트팜 산지직송</div>
+    <h1 class="logo-text">생생<span>농장</span></h1>
+    <p class="tagline">첨단 스마트팜의 신선함이 가득한 곳</p>
 </header>
 
-<section class="smart-tech reveal">
-    <div style="text-align: center;">
-        <h2 style="font-size: 28px;">첨단 스마트팜 <b>환경제어 시스템</b></h2>
-        <p style="opacity: 0.7; margin-top: 10px;">365일 최적의 생육 데이터를 유지합니다</p>
+<nav>
+    <div class="nav-wrap">
+        <div class="nav-title">생생농장</div>
+        <div class="nav-links">
+            <a href="#story">농장소개</a>
+            <a href="#why-us">왜 생생농장?</a>
+            <a href="#products">생산품목</a>
+            <a href="#delivery">구매안내</a>
+            <a href="#stores">납품처</a>
+            <a href="#contact">문의</a>
+        </div>
     </div>
-    <div class="tech-grid">
-        <div class="tech-item">
-            <h4>🌡 실시간 온·습도</h4>
-            <p>센서를 통한 24시간 자동 통풍 및 난방 제어로 작물 스트레스를 최소화합니다.</p>
+</nav>
+
+<section id="story" class="reveal">
+    <h2 class="section-title">생생농장의 <b>생산 스토리</b></h2>
+    <div class="story-grid">
+        <div class="story-item">
+            <div class="story-icon-wrapper">
+                <svg class="story-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <h3>첨단 스마트팜</h3>
+            <p>최신 ICT 기술 기반의 정밀 환경 제어로 작물 생육에 최적화된 환경을 제공합니다.</p>
         </div>
-        <div class="tech-item">
-            <h4>💧 정밀 양액 공급</h4>
-            <p>생육 단계별 필요한 영양분을 컴퓨터가 정밀하게 계산하여 공급합니다.</p>
+        <div class="story-item">
+            <div class="story-icon-wrapper">
+                <svg class="story-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4M17 9l-5 5-5-5M12 12.8V2.8"></path></svg>
+            </div>
+            <h3>GAP 인증 관리</h3>
+            <p>안전하고 위생적인 농산물 생산을 위해 엄격한 GAP 기준에 따라 관리됩니다.</p>
         </div>
-        <div class="tech-item">
-            <h4>☁️ CO2 농도 관리</h4>
-            <p>광합성 효율을 극대화하기 위해 실내 이산화탄소 농도를 실시간 조절합니다.</p>
+        <div class="story-item">
+            <div class="story-icon-wrapper">
+                <svg class="story-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 110-14h1.5M22 10l-2 2-2-2M20 12v6"></path></svg>
+            </div>
+            <h3>환경 친화 재배</h3>
+            <p>지속 가능한 농업을 목표로 자연과 작물 모두에게 건강한 재배 방식을 추구합니다.</p>
         </div>
-        <div class="tech-item">
-            <h4>📱 원격 모니터링</h4>
-            <p>언제 어디서든 모바일로 농장 상태를 확인하고 즉각 대응합니다.</p>
+    </div>
+</section>
+
+<section id="why-us" class="why-us-section reveal">
+    <div class="why-us-grid">
+        <div class="text-content">
+            <h2>왜 <b>생생농장</b>을 선택해야 할까요?</h2>
+            <p style="color:var(--light-text);">생생농장은 차별화된 방식으로 고객에게 최고의 신선함과 품질을 선사합니다.</p>
+            <ul>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <strong>정직한 농부의 손길</strong><br>
+                    작은 것 하나까지 직접 관리하며 정성을 다합니다.
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <strong>과학적인 재배 시스템</strong><br>
+                    데이터 기반으로 작물의 최적 생육 환경을 제공합니다.
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <strong>가장 신선한 상태로</strong><br>
+                    수확 당일 출고를 원칙으로 신선함을 지킵니다.
+                </li>
+            </ul>
+        </div>
+        <div class="why-us-image-wrapper">
+            <img class="why-us-image" src="https://via.placeholder.com/450x300/aab7c0/ffffff?text=Smart+Farm" alt="스마트팜 전경 이미지">
         </div>
     </div>
 </section>
 
 <section id="products" class="reveal">
-    <h2 class="title">생산 <b>품목</b></h2>
-    <div class="grid">
-        <div class="card premium">
-            <span class="badge red">주력상품</span>
+    <h2 class="section-title">생생농장의 <b>자부심, 생산 품목</b></h2>
+    <div class="product-grid">
+        <div class="product-card premium">
+            <svg class="product-icon" viewBox="0 0 100 100">
+                <path d="M50 20 Q65 10 80 30 Q85 60 50 85 Q15 60 20 30 Q35 10 50 20 Z" fill="#e83333"/>
+                <path d="M50 20 L50 85" stroke="#fff" stroke-width="2" opacity="0.7"/>
+                <circle cx="40" cy="45" r="3" fill="#fff" opacity="0.7"/>
+                <circle cx="60" cy="45" r="3" fill="#fff" opacity="0.7"/>
+                <circle cx="50" cy="60" r="3" fill="#fff" opacity="0.7"/>
+            </svg>
+            <span class="product-badge red">주력 상품</span>
             <h3>킹스베리 · 설향</h3>
-            <p>일반 딸기보다 크고 당도가 높은 프리미엄 품종입니다.</p>
+            <p>달콤한 향과 압도적인 크기, 풍부한 과즙의 프리미엄 딸기입니다.</p>
         </div>
-        <div class="card">
-            <span class="badge green">산지직송</span>
+        <div class="product-card">
+            <svg class="product-icon" viewBox="0 0 100 100">
+                <rect x="25" y="10" width="30" height="80" rx="15" fill="#2fb573" transform="rotate(-10 40 50)"/>
+                <rect x="45" y="10" width="30" height="80" rx="15" fill="#1e8d5a" transform="rotate(10 60 50)"/>
+                <circle cx="40" cy="30" r="3" fill="#fff" opacity="0.5"/>
+                <circle cx="60" cy="70" r="3" fill="#fff" opacity="0.5"/>
+            </svg>
+            <span class="product-badge green">산지 직송</span>
             <h3>취청오이</h3>
-            <p>아삭한 식감이 일품인 고품질 오이입니다.</p>
+            <p>아삭한 식감과 청량한 맛이 일품! 샐러드, 무침 등 다양하게 즐기세요.</p>
         </div>
-        <div class="card">
-            <span class="badge green">산지직송</span>
+        <div class="product-card">
+            <svg class="product-icon" viewBox="0 0 100 100">
+                <rect x="20" y="35" width="60" height="30" rx="15" fill="#ffc107"/>
+                <rect x="30" y="25" width="40" height="50" rx="10" fill="#f8d87a"/>
+                <circle cx="50" cy="50" r="5" fill="#fff" opacity="0.6"/>
+                <path d="M50 25 Q40 15 30 25" fill="#1e8d5a"/>
+            </svg>
+            <span class="product-badge green">산지 직송</span>
             <h3>인큐 애호박</h3>
-            <p>육질이 단단하고 고소한 풍미의 애호박입니다.</p>
+            <p>균일한 모양과 단단한 육질, 달큰한 맛으로 어떤 요리에도 잘 어울립니다.</p>
         </div>
-        <div class="card">
-            <span class="badge green">산지직송</span>
+        <div class="product-card">
+            <svg class="product-icon" viewBox="0 0 100 100">
+                <path d="M50 15 Q80 30 70 70 Q50 85 30 70 Q20 30 50 15 Z" fill="#2fb573" stroke="#1e8d5a" stroke-width="2"/>
+                <path d="M50 15 L50 85 M50 30 L35 55 M50 45 L65 70" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="50" cy="50" r="5" fill="#8d3a6d" opacity="0.7"/>
+            </svg>
+            <span class="product-badge green">산지 직송</span>
             <h3>신선 깻잎</h3>
-            <p>향이 진하고 신선도가 오래 유지되는 깻잎입니다.</p>
+            <p>특유의 진한 향과 선명한 색감으로 입맛을 돋우는 밥도둑입니다.</p>
         </div>
     </div>
 </section>
 
-<section class="reveal">
-    <h2 class="title">주요 <b>납품처</b></h2>
-    <div class="store-box">
+<section id="delivery" class="delivery-payment-section reveal">
+    <h2 class="section-title"><b>구매 및 배송</b> 안내</h2>
+    <div class="delivery-payment-grid">
+        <div class="delivery-payment-item">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>구매 방법</h3>
+            <ul>
+                <li><strong>온라인 주문:</strong> 현재 웹사이트 준비 중. 전화 문의 부탁드립니다.</li>
+                <li><strong>직거래:</strong> 농장 방문 또는 전화 예약 후 방문 수령 가능.</li>
+                <li><strong>납품처 구매:</strong> 아래 명시된 로컬푸드 직매장 및 하나로마트에서 구매 가능.</li>
+            </ul>
+        </div>
+        <div class="delivery-payment-item">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><line x1="10" y1="12" x2="10" y2="12"></line></svg>배송 안내</h3>
+            <ul>
+                <li><strong>당일 수확 & 당일 발송:</strong> 신선함을 위해 주문 후 바로 수확하여 발송합니다.</li>
+                <li><strong>택배사:</strong> 우체국 택배를 이용하여 안전하게 배송됩니다.</li>
+                <li><strong>배송비:</strong> 5만원 이상 구매 시 무료 배송 (이하 3,500원)</li>
+                <li><strong>배송 기간:</strong> 발송 후 1~2일 소요 (도서산간 지역 추가 소요)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="stores" class="store-section reveal">
+    <h2 class="section-title">생생농장 농산물을 만날 수 있는 <b>납품처</b></h2>
+    <div class="store-grid">
         <div class="store-list">
-            <h4>🟢 완주로컬푸드 직매장</h4>
-            <div class="tags">
+            <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>완주로컬푸드 직매장</h4>
+            <div class="store-tags">
                 <span>하가점</span> <span>효자점</span> <span>둔산점</span> 
                 <span>모악점</span> <span>혁신점</span> <span>삼천점</span>
             </div>
         </div>
         <div class="store-list">
-            <h4>🟡 농협 하나로마트</h4>
-            <div class="tags">
+            <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4M17 9l-5 5-5-5M12 12.8V2.8"></path></svg>농협 하나로마트</h4>
+            <div class="store-tags">
                 <span>봉동농협</span> <span>용진농협</span>
             </div>
         </div>
     </div>
 </section>
 
-<section style="text-align: center;" class="reveal">
-    <h2 class="title">생생농장 <b>문의</b></h2>
-    <p style="font-size: 26px; font-weight: 900; color: var(--green);">010-3945-1394</p>
-    <p style="color: #666; margin-top: 5px;">전북 완주군 봉동읍 장기리 1729</p>
+<section id="contact" class="contact-section reveal">
+    <h2 class="section-title">생생농장에 <b>문의하기</b></h2>
+    <p>궁금한 점이 있으시다면 언제든지 편하게 문의주세요.</p>
+    <p class="phone-number">010-3945-1394</p>
+    <p>전북 완주군 봉동읍 장기리 1729</p>
+    <a href="tel:01039451394" class="contact-btn">전화 문의하기</a>
 </section>
 
 <footer>
-    <p style="text-align: center; padding: 40px; color: #999; font-size: 14px; border-top: 1px solid #eee;">
-        © 생생농장. All Rights Reserved.
-    </p>
+    <p>© 생생농장. All Rights Reserved.</p>
 </footer>
 
 <script>
     const reveals = document.querySelectorAll(".reveal");
     function reveal(){
         reveals.forEach(el=>{
-            if(el.getBoundingClientRect().top < window.innerHeight - 100){
+            if(el.getBoundingClientRect().top < window.innerHeight - 150){
                 el.classList.add("active");
             }
         });
@@ -258,3 +538,5 @@ section{ max-width:1100px; margin:100px auto; padding:0 24px; }
 
 </body>
 </html>
+```http://googleusercontent.com/generated_image_content/0
+
