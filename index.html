@@ -1,419 +1,260 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생생농장</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생생농장 | THE REVOLUTION OF TASTE</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<style>
-:root{
-    --red:#e83333;
-    --red-dark:#c61f1f;
-    --green:#2fb573;
-    --green-dark:#1e8d5a;
-    --bg:#ffffff;
-    --soft:#f7fffb;
-    --text:#111;
-    --muted:#555;
-}
+    <style>
+        :root {
+            --primary: #FF0032; /* 강렬한 딸기 레드 */
+            --sub-green: #00FF85; /* 네온 그린 (스마트팜) */
+            --dark-bg: #0A0A0B;
+            --surface: #161618;
+            --text-pure: #FFFFFF;
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --gold: #D4AF37;
+        }
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-    font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-    background:var(--bg);
-    color:var(--text);
-}
+        /* 공학적 리셋 */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { 
+            background: var(--dark-bg); 
+            color: var(--text-pure); 
+            font-family: Pretendard, sans-serif; 
+            overflow-x: hidden;
+            word-break: keep-all;
+        }
 
-/* ================= HEADER ================= */
-header{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at top, rgba(232,51,51,.18), transparent 45%),
-        linear-gradient(180deg,var(--soft),#ffffff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-    overflow:hidden;
-}
+        /* 로딩 스크린 (1억 외주의 디테일) */
+        #loader {
+            position: fixed; inset: 0; background: #000; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+        }
 
-.logo-wrap{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:22px;
-    animation:fadeUp 1s ease forwards;
-}
+        /* 헤더/내비게이션 */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 30px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, rgba(10,10,11,0.8), transparent);
+            backdrop-filter: blur(10px);
+        }
+        .brand { font-size: 24px; font-weight: 900; letter-spacing: -1px; display: flex; align-items: center; gap: 10px; }
+        .brand span { color: var(--primary); }
 
-/* LOGO ICON */
-.logo-icon{
-    width:140px;
-    filter:drop-shadow(0 10px 20px rgba(0,0,0,.15));
-    animation:float 4s ease-in-out infinite;
-}
+        /* 히어로 섹션 - 압도적 첫인상 */
+        .hero {
+            height: 100vh; position: relative; display: flex; align-items: center; padding: 0 10%;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; right: -5%; top: 50%; transform: translateY(-50%);
+            width: 50%; opacity: 0.2; filter: blur(80px);
+            background: var(--primary); height: 60%; border-radius: 50%; z-index: 1;
+        }
+        .hero-content { z-index: 10; max-width: 900px; }
+        .hero-content h1 {
+            font-size: clamp(60px, 10vw, 150px); font-weight: 900; line-height: 0.9;
+            margin-bottom: 30px; letter-spacing: -4px;
+        }
+        .hero-content h1 b { color: var(--primary); position: relative; }
+        .hero-desc { font-size: 20px; color: var(--text-dim); line-height: 1.6; border-left: 2px solid var(--primary); padding-left: 30px; }
 
-/* LOGO TEXT */
-.logo-text{
-    font-size:clamp(54px,8vw,110px);
-    font-weight:900;
-    letter-spacing:8px;
-    background:linear-gradient(45deg,var(--red),var(--red-dark));
-    -webkit-background-clip:text;
-    color:transparent;
-}
+        /* 섹션 공통 스타일 */
+        section { padding: 180px 10%; position: relative; }
+        .section-label { font-size: 14px; font-weight: 800; color: var(--primary); letter-spacing: 4px; margin-bottom: 20px; display: block; }
+        .section-title { font-size: clamp(40px, 5vw, 80px); font-weight: 900; margin-bottom: 80px; letter-spacing: -2px; }
 
-.tagline{
-    font-size:20px;
-    color:#333;
-}
+        /* 품목 리스트 - 테크니컬 카드 디자인 */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .p-card {
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 40px; border-radius: 40px; position: relative; overflow: hidden;
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .p-card:hover { transform: translateY(-20px); border-color: var(--primary); box-shadow: 0 30px 60px rgba(255, 0, 50, 0.1); }
+        .p-card h3 { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
+        .p-card p { color: var(--text-dim); font-size: 16px; margin-bottom: 30px; }
+        .p-card .specs { font-size: 13px; font-weight: 700; color: var(--sub-green); text-transform: uppercase; }
 
-/* CTA */
-.cta{
-    margin-top:40px;
-    padding:18px 70px;
-    background:linear-gradient(45deg,var(--red),var(--red-dark));
-    color:#fff;
-    border-radius:80px;
-    text-decoration:none;
-    font-weight:900;
-    position:relative;
-    overflow:hidden;
-}
+        /* 스마트팜 데이터 시각화 느낌 */
+        .data-section { background: #000; border-radius: 80px; padding: 120px 10%; margin: 100px 20px; }
+        .data-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+        .data-visual { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; }
+        .circle-motion {
+            position: absolute; border: 1px solid var(--sub-green); border-radius: 50%;
+            animation: rotate 20s linear infinite; opacity: 0.2;
+        }
 
-.cta::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
-    transform:translateX(-100%);
-    animation:shine 3s infinite;
-}
+        /* 출하 매장 - 가로 흐르는 텍스트 (명품 사이트 방식) */
+        .marquee { overflow: hidden; padding: 100px 0; background: var(--surface); white-space: nowrap; }
+        .marquee-inner { display: inline-block; animation: marquee 30s linear infinite; }
+        .marquee span { font-size: 100px; font-weight: 900; -webkit-text-stroke: 1px rgba(255,255,255,0.1); color: transparent; margin-right: 50px; }
+        .marquee span:hover { color: var(--primary); -webkit-text-stroke: 1px var(--primary); }
 
-/* ================= NAV ================= */
-nav{
-    position:sticky;
-    top:0;
-    background:#ffffffee;
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid #eee;
-    z-index:999;
-}
+        /* 하단 컨택트 - 압도적 블랙앤화이트 */
+        .footer { padding: 150px 10% 80px; background: var(--dark-bg); }
+        .contact-large { font-size: clamp(40px, 8vw, 120px); font-weight: 900; line-height: 1; letter-spacing: -5px; }
+        .contact-large a { color: var(--text-pure); text-decoration: none; transition: 0.3s; }
+        .contact-large a:hover { color: var(--primary); }
 
-.nav-wrap{
-    max-width:1300px;
-    margin:auto;
-    padding:14px 24px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+        /* 애니메이션 키프레임 */
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-.logo-mini{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:900;
-    color:var(--red);
-}
-
-.logo-mini svg{width:28px;}
-
-.nav-links a{
-    margin-left:32px;
-    text-decoration:none;
-    color:#222;
-    font-weight:800;
-    position:relative;
-}
-
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0; bottom:-6px;
-    width:0; height:3px;
-    background:var(--red);
-    transition:.3s;
-}
-.nav-links a:hover::after{width:100%;}
-
-/* ================= SECTION ================= */
-section{
-    max-width:1300px;
-    margin:140px auto;
-    padding:0 24px;
-}
-
-.title{
-    font-size:clamp(34px,4vw,54px);
-    margin-bottom:50px;
-    color:var(--red);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:36px;
-}
-
-.card{
-    background:#fff;
-    padding:42px 38px;
-    border-radius:26px;
-    border:1px solid #f1f1f1;
-    transition:.35s;
-    position:relative;
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent,rgba(232,51,51,.08),transparent);
-    opacity:0;
-    transition:.3s;
-}
-.card:hover::before{opacity:1;}
-.card:hover{
-    transform:translateY(-8px);
-    border-color:var(--red);
-}
-
-.card h3{
-    color:var(--green);
-    margin-bottom:14px;
-    font-size:22px;
-}
-.card p{
-    color:var(--muted);
-    line-height:1.7;
-}
-
-/* PRODUCT */
-.product{
-    text-align:center;
-}
-.badge{
-    display:inline-block;
-    background:var(--green);
-    color:#fff;
-    padding:6px 16px;
-    border-radius:30px;
-    font-size:13px;
-    margin-bottom:14px;
-}
-
-/* SMART FARM */
-.smart{
-    background:linear-gradient(135deg,#ecfff7,#ffffff);
-    border-radius:40px;
-    padding:80px 60px;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
-}
-
-.smart ul{
-    margin-top:18px;
-    line-height:2;
-}
-
-/* FOOTER */
-footer{
-    background:var(--soft);
-    padding:120px 20px;
-    text-align:center;
-}
-
-/* FLOAT CALL */
-.call-float{
-    position:fixed;
-    bottom:22px;
-    right:22px;
-    background:linear-gradient(45deg,var(--green),var(--green-dark));
-    color:#fff;
-    padding:18px 26px;
-    border-radius:60px;
-    font-weight:900;
-    text-decoration:none;
-    box-shadow:0 10px 20px rgba(0,0,0,.25);
-    z-index:9999;
-    animation:pulse 1.5s infinite;
-}
-
-/* ANIMATION */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(30px);}
-    to{opacity:1;transform:none;}
-}
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-}
-@keyframes shine{
-    0%{transform:translateX(-100%);}
-    40%{transform:translateX(120%);}
-    100%{transform:translateX(120%);}
-}
-@keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(47,181,115,.7);}
-    70%{box-shadow:0 0 0 18px rgba(47,181,115,0);}
-    100%{box-shadow:0 0 0 0 rgba(47,181,115,0);}
-}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(40px);transition:.6s;}
-.reveal.active{opacity:1;transform:none;}
-
-@media(max-width:900px){
-    .smart{
-        grid-template-columns:1fr;
-        padding:50px 28px;
-    }
-}
-</style>
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .data-grid { grid-template-columns: 1fr; }
+            section { padding: 100px 5%; }
+            .hero-content h1 { font-size: 70px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <div class="logo-wrap">
-        <!-- 딸기 SVG 로고 -->
-        <svg class="logo-icon" viewBox="0 0 120 120">
-            <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#ff5a5a"/>
-                    <stop offset="100%" stop-color="#c61f1f"/>
-                </linearGradient>
-            </defs>
-            <circle cx="60" cy="70" r="40" fill="url(#g)"/>
-            <path d="M26 52 Q60 14 94 52" fill="#2fb573"/>
-            <g fill="#fff" opacity=".9">
-                <circle cx="44" cy="72" r="3"/>
-                <circle cx="60" cy="84" r="3"/>
-                <circle cx="75" cy="68" r="3"/>
-                <circle cx="55" cy="60" r="2.5"/>
-            </g>
-        </svg>
-
-        <div class="logo-text">생생농장</div>
-        <div class="tagline">설향 · 킹스베리 전문 스마트팜</div>
-        <a class="cta" href="#product">딸기 보러가기</a>
-    </div>
-</header>
+<div id="loader">
+    <div style="font-size: 14px; letter-spacing: 5px; font-weight: 900; color: var(--primary);">SENGSENG FARMING CO.</div>
+</div>
 
 <nav>
-<div class="nav-wrap">
-    <div class="logo-mini">
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="60" r="28" fill="#e83333"/>
-            <path d="M25 45 Q50 20 75 45" fill="#2fb573"/>
+    <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 100 100">
+            <path d="M50 10 L85 40 L85 80 Q50 100 15 80 L15 40 Z" fill="var(--primary)"/>
         </svg>
-        생생농장
+        생생<span>농장</span>
     </div>
-    <div class="nav-links">
-        <a href="#about">농장소개</a>
-        <a href="#smart">스마트팜</a>
-        <a href="#product">제품</a>
-        <a href="#contact">문의</a>
-    </div>
-</div>
+    <div style="font-weight: 800; font-size: 12px; letter-spacing: 2px;">SINCE 2026</div>
 </nav>
 
-<section id="about" class="reveal">
-<h2 class="title">농장 소개</h2>
-<div class="grid">
-    <div class="card">
-        <h3>고설 재배 시스템</h3>
-        <p>위생적이고 균일한 환경에서 딸기의 생육을 안정적으로 관리합니다.</p>
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <span class="section-label">ARTISAN TECHNOLOGY</span>
+        <h1>PERFECTION<br>IN <b>BERRIES</b></h1>
+        <div class="hero-desc">
+            전북 완주군 장기리 1729. 우리는 농업을 공학으로 정의합니다.<br>
+            가장 완벽한 온도와 데이터가 빚어낸 프리미엄 시설채소를 경험하십시오.
+        </div>
     </div>
-    <div class="card">
-        <h3>정밀 환경 제어</h3>
-        <p>온도·습도·양액을 자동 제어하여 연중 고품질 생산을 유지합니다.</p>
-    </div>
-    <div class="card">
-        <h3>직접 재배 · 직거래</h3>
-        <p>불필요한 유통을 줄여 신선함과 합리적인 가격을 제공합니다.</p>
-    </div>
-</div>
 </section>
 
-<section id="smart" class="reveal">
-<div class="smart">
-    <div>
-        <h2 class="title">스마트팜 운영</h2>
-        <p>센서 기반 자동화 시스템으로 작물 상태를 실시간 모니터링합니다.</p>
-        <ul>
-            <li>✔️ 온습도 자동 제어</li>
-            <li>✔️ 양액 정밀 공급</li>
-            <li>✔️ 생육 데이터 분석</li>
-            <li>✔️ 병해 예방 관리</li>
-        </ul>
+<section id="products">
+    <span class="section-label">01 / COLLECTION</span>
+    <h2 class="section-title">THE SIGNATURES</h2>
+    
+    <div class="product-grid">
+        <div class="p-card">
+            <div class="specs">Grade: Grand Master</div>
+            <h3>킹스베리</h3>
+            <p>복숭아 향을 머금은 압도적 크기. 선물용 그 이상의 가치를 증명합니다.</p>
+            <div style="font-size: 12px; opacity: 0.4;">최적 수확기: 12월 - 4월</div>
+        </div>
+        <div class="p-card">
+            <div class="specs">Grade: Essential</div>
+            <h3>설향 딸기</h3>
+            <p>당도와 산도의 완벽한 황금비율. 매일 아침 직매장으로 당일 출하됩니다.</p>
+        </div>
+        <div class="p-card">
+            <h3>취청오이</h3>
+            <p>스마트팜 제어로 완성된 극한의 아삭함. 조직감의 차이를 느껴보십시오.</p>
+        </div>
+        <div class="p-card">
+            <h3>프리미엄 채소</h3>
+            <p>깻잎, 애호박. 연중 균일한 품질을 유지하는 생생농장의 저력입니다.</p>
+        </div>
     </div>
-    <div>
-        <svg viewBox="0 0 200 200" width="100%">
-            <rect x="20" y="40" width="160" height="100" rx="16" fill="#e8fff4"/>
-            <circle cx="60" cy="90" r="14" fill="#2fb573"/>
-            <circle cx="100" cy="90" r="14" fill="#e83333"/>
-            <circle cx="140" cy="90" r="14" fill="#2fb573"/>
-        </svg>
-    </div>
-</div>
 </section>
 
-<section id="product" class="reveal">
-<h2 class="title">판매 품종</h2>
-<div class="grid">
-    <div class="card product">
-        <div class="badge">인기</div>
-        <h3>설향</h3>
-        <p>당도와 향이 뛰어나고 과즙이 풍부한 대표 품종.</p>
-    </div>
-    <div class="card product">
-        <div class="badge">프리미엄</div>
-        <h3>킹스베리</h3>
-        <p>대과형 프리미엄 품종으로 선물용으로 인기.</p>
-    </div>
-</div>
-</section>
-
-<section id="contact" class="reveal">
-<h2 class="title">문의 및 위치</h2>
-<div class="grid">
-    <div class="card">
-        <h3>전화 문의</h3>
-        <p>010-3945-1394</p>
-        <a class="call-btn" href="tel:01039451394">바로 전화하기</a>
-    </div>
-    <div class="card">
-        <h3>농장 주소</h3>
-        <p>전북 완주군 봉동읍 장기리 1729</p>
+<div class="marquee">
+    <div class="marquee-inner">
+        <span>완주로컬푸드 하가점</span>
+        <span>삼천점</span>
+        <span>효자점</span>
+        <span>모악점</span>
+        <span>둔산점</span>
+        <span>혁신점</span>
+        <span>농협하나로 봉동점</span>
+        <span>용진점</span>
+        <span>완주로컬푸드 하가점</span>
+        <span>삼천점</span>
+        <span>효자점</span>
+        <span>모악점</span>
+        <span>둔산점</span>
+        <span>혁신점</span>
+        <span>농협하나로 봉동점</span>
+        <span>용진점</span>
     </div>
 </div>
+
+<section class="data-section">
+    <div class="data-grid">
+        <div class="data-visual">
+            <div class="circle-motion" style="width: 300px; height: 300px;"></div>
+            <div class="circle-motion" style="width: 400px; height: 400px; animation-direction: reverse;"></div>
+            <div style="text-align: center;">
+                <div style="font-size: 60px; font-weight: 900; color: var(--sub-green);">99.8%</div>
+                <div style="font-size: 14px; letter-spacing: 2px;">PRECISE CONTROL</div>
+            </div>
+        </div>
+        <div>
+            <span class="section-label" style="color: var(--sub-green);">02 / TECHNOLOGY</span>
+            <h2 style="font-size: 40px; font-weight: 900; margin-bottom: 20px;">예술이 된 스마트팜</h2>
+            <p style="color: var(--text-dim); line-height: 1.8;">
+                우리는 단순한 재배를 넘어 데이터를 수집합니다. 실시간 온습도 감지, 자동 양액 시스템, 그리고 병해 관리 로직까지. 
+                장기리 1729번지의 하우스는 24시간 깨어있는 하나의 거대한 컴퓨터입니다.
+            </p>
+        </div>
+    </div>
 </section>
 
-<footer>
-<p>© 생생농장. All Rights Reserved.</p>
+<footer class="footer">
+    <span class="section-label">03 / INQUIRY</span>
+    <div class="contact-large">
+        <a href="tel:01020791119">010.2079.1119</a>
+    </div>
+    <div style="margin-top: 80px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 40px;">
+        <div>
+            <p style="font-weight: 800; font-size: 18px;">생생농장 ARCHIVE</p>
+            <p style="color: var(--text-dim); margin-top: 10px;">전북 완주군 봉동읍 장기리 1729</p>
+        </div>
+        <div style="color: var(--text-dim); font-size: 12px; letter-spacing: 1px;">
+            © 2026 SENGSENG FARMING OPERATIONS. ALL RIGHTS RESERVED.
+        </div>
+    </div>
 </footer>
 
-<a class="call-float" href="tel:01039451394">📞 전화</a>
-
 <script>
-const reveals = document.querySelectorAll(".reveal");
-function reveal(){
-    reveals.forEach(el=>{
-        if(el.getBoundingClientRect().top < window.innerHeight - 80){
-            el.classList.add("active");
-        }
+    // 로딩 화면 제거
+    window.onload = () => {
+        gsap.to("#loader", { opacity: 0, duration: 1, onComplete: () => document.getElementById("loader").remove() });
+        
+        // 메인 텍스트 애니메이션
+        gsap.from(".hero-content > *", {
+            y: 50, opacity: 0, duration: 1.5, stagger: 0.2, ease: "power4.out"
+        });
+    };
+
+    // 스크롤 시 나타나는 애니메이션 (GSAP ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(".p-card").forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: i * 0.1
+        });
     });
-}
-window.addEventListener("scroll", reveal);
-reveal();
+
+    // 가로 마퀴 애니메이션 속도 조절 등 추가 로직 가능
 </script>
 
 </body>
