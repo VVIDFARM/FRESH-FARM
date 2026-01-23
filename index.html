@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,86 +7,116 @@
 
 <style>
 :root{
-  --green:#1f6f4a;
-  --green-dark:#123d2b;
-  --red:#9b1c1c;
-  --bg:#ffffff;
-  --soft:#f2f7f4;
+  --green:#184d37;
+  --green-soft:#eaf3ee;
+  --red:#8f1515;
+  --red-soft:#f8eaea;
   --text:#111;
   --muted:#555;
 }
+
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  background:var(--bg);
   color:var(--text);
+  background:#fff;
 }
-header{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(180deg,#eef6f1,#fff);
-}
-.logo{
-  font-size:96px;
-  font-weight:900;
-  color:var(--green-dark);
-}
-.tagline{
-  margin-top:18px;
-  font-size:20px;
-  color:#333;
-}
+
+/* LAYOUT */
 section{
   max-width:1280px;
-  margin:120px auto;
+  margin:140px auto;
   padding:0 24px;
 }
 .title{
-  font-size:44px;
-  margin-bottom:60px;
-  color:var(--green-dark);
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:-1px;
+  margin-bottom:70px;
+  color:var(--green);
 }
+
+/* HERO */
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at top, var(--red-soft), transparent 45%),
+    linear-gradient(#f4faf7,#fff);
+  text-align:center;
+}
+.hero h1{
+  font-size:110px;
+  font-weight:900;
+  color:var(--green);
+}
+.hero p{
+  margin-top:24px;
+  font-size:22px;
+  color:#333;
+}
+
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:42px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:48px;
 }
+
+/* PRODUCT */
 .product{
   background:#fff;
-  padding:48px 40px;
-  border-radius:30px;
-  border:1px solid #e5e5e5;
-  text-align:center;
-  transition:.35s;
+  border-radius:34px;
+  padding:60px 46px;
+  border:1px solid #e6e6e6;
+  transition:.4s;
 }
 .product:hover{
-  transform:translateY(-10px);
+  transform:translateY(-12px);
   border-color:var(--green);
 }
-.product svg{margin-bottom:26px;}
+.product svg{
+  display:block;
+  margin:0 auto 28px;
+}
 .product h3{
-  font-size:23px;
-  margin-bottom:14px;
-  color:var(--green-dark);
+  font-size:26px;
+  text-align:center;
+  margin-bottom:18px;
+  color:var(--green);
 }
 .product p{
-  font-size:15px;
-  line-height:1.75;
+  font-size:15.5px;
+  line-height:1.85;
   color:var(--muted);
-}
-.map-box{
-  background:#fff;
-  border-radius:36px;
-  padding:64px;
-  border:1px solid #e5e5e5;
-}
-footer{
-  background:var(--soft);
-  padding:100px 20px;
   text-align:center;
+}
+
+/* KING BADGE */
+.king{
+  background:
+    linear-gradient(#fff,#fff),
+    linear-gradient(135deg,#7a1010,#c62828);
+  background-clip:padding-box,border-box;
+  border:2px solid transparent;
+}
+
+/* MAP */
+.map-wrap{
+  background:#fff;
+  border-radius:40px;
+  padding:80px;
+  border:1px solid #e6e6e6;
+}
+
+/* FOOTER */
+footer{
+  background:var(--green-soft);
+  padding:120px 20px;
+  text-align:center;
+  color:#444;
 }
 </style>
 </head>
@@ -95,107 +124,110 @@ footer{
 <body>
 
 <header>
-  <div>
-    <div class="logo">생생농장</div>
-    <div class="tagline">킹스베리 중심 딸기 · 시설채소 재배 농가</div>
+  <div class="hero">
+    <h1>생생농장</h1>
+    <p>킹스베리를 중심으로 제대로 키우는 농가</p>
   </div>
 </header>
 
 <section>
 <h2 class="title">재배 품목</h2>
+
 <div class="grid">
 
 <!-- 킹스베리 -->
-<div class="product">
-<svg viewBox="0 0 80 80" width="72">
+<div class="product king">
+<svg viewBox="0 0 100 100" width="90">
 <defs>
-<linearGradient id="king" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#c62828"/>
-<stop offset="100%" stop-color="#6d0f0f"/>
-</linearGradient>
+<radialGradient id="kingberry" cx="30%" cy="20%" r="70%">
+<stop offset="0%" stop-color="#ff8a80"/>
+<stop offset="60%" stop-color="#c62828"/>
+<stop offset="100%" stop-color="#6a0d0d"/>
+</radialGradient>
 </defs>
-<path d="M40 6
-C58 6 70 20 70 36
-C70 54 40 74 40 74
-C40 74 10 54 10 36
-C10 20 22 6 40 6Z"
-fill="url(#king)"/>
-<path d="M22 20 Q40 6 58 20" fill="#2e7d32"/>
-<circle cx="30" cy="38" r="2" fill="#ffd54f"/>
-<circle cx="42" cy="46" r="2" fill="#ffd54f"/>
-<circle cx="50" cy="34" r="2" fill="#ffd54f"/>
+<path d="M50 6
+C72 6 88 24 88 42
+C88 66 50 92 50 92
+C50 92 12 66 12 42
+C12 24 28 6 50 6Z"
+fill="url(#kingberry)"/>
+<path d="M28 24 Q50 8 72 24" fill="#2e7d32"/>
+<circle cx="38" cy="44" r="2.4" fill="#ffe082"/>
+<circle cx="52" cy="56" r="2.4" fill="#ffe082"/>
+<circle cx="62" cy="40" r="2.4" fill="#ffe082"/>
 </svg>
 <h3>킹스베리</h3>
 <p>
-알 크기부터 확실히 차이 납니다.<br>
-단맛이 먼저 오고 끝맛이 깔끔해 먹고 나서 질리지 않습니다.<br>
-선물·직거래용으로 가장 많이 나가는 생생농장 주력 품목입니다.
+이 딸기 하나 때문에 농장을 운영한다고 해도 과장이 아닙니다.<br>
+알 크기, 색감, 단맛까지 전부 기준을 높여 관리합니다.<br>
+선물용·직거래용으로 가장 많이 찾는 생생농장의 대표 품목입니다.
 </p>
 </div>
 
 <!-- 설향 -->
 <div class="product">
-<svg viewBox="0 0 80 80" width="72">
+<svg viewBox="0 0 90 90" width="82">
 <defs>
-<linearGradient id="seol" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#ff6f6f"/>
-<stop offset="100%" stop-color="#c62828"/>
-</linearGradient>
+<radialGradient id="seolhyang" cx="30%" cy="25%" r="70%">
+<stop offset="0%" stop-color="#ff9e9e"/>
+<stop offset="70%" stop-color="#e53935"/>
+<stop offset="100%" stop-color="#b71c1c"/>
+</radialGradient>
 </defs>
-<path d="M40 12
-C54 12 64 22 64 34
-C64 48 40 66 40 66
-C40 66 16 48 16 34
-C16 22 26 12 40 12Z"
-fill="url(#seol)"/>
-<path d="M26 24 Q40 12 54 24" fill="#388e3c"/>
-<circle cx="34" cy="36" r="1.8" fill="#ffe082"/>
-<circle cx="46" cy="40" r="1.8" fill="#ffe082"/>
+<path d="M45 12
+C62 12 74 24 74 38
+C74 58 45 78 45 78
+C45 78 16 58 16 38
+C16 24 28 12 45 12Z"
+fill="url(#seolhyang)"/>
+<path d="M30 26 Q45 12 60 26" fill="#388e3c"/>
+<circle cx="38" cy="40" r="2" fill="#ffe082"/>
+<circle cx="50" cy="46" r="2" fill="#ffe082"/>
 </svg>
 <h3>설향</h3>
 <p>
 향이 좋고 과즙이 많아 부담 없이 먹기 좋은 딸기입니다.<br>
-가정용으로 꾸준히 찾는 품종입니다.
+가정용으로 꾸준히 나가는 기본이 되는 품목입니다.
 </p>
 </div>
 
 <!-- 취청 오이 -->
 <div class="product">
-<svg viewBox="0 0 64 64" width="60">
+<svg viewBox="0 0 64 64" width="64">
 <rect x="8" y="22" width="48" height="20" rx="10" fill="#2e7d32"/>
 <circle cx="22" cy="32" r="2" fill="#1b5e20"/>
 <circle cx="42" cy="36" r="2" fill="#1b5e20"/>
 </svg>
 <h3>취청 오이</h3>
 <p>
-아삭한 식감이 오래가고 쓴맛 없이 깔끔합니다.<br>
-수확 타이밍을 맞춰 일정한 품질로 출하합니다.
+시설 재배로 굵기와 길이를 일정하게 맞춥니다.<br>
+아삭함이 오래가 쓴맛 없이 드실 수 있습니다.
 </p>
 </div>
 
 <!-- 깻잎 -->
 <div class="product">
-<svg viewBox="0 0 64 64" width="60">
+<svg viewBox="0 0 64 64" width="64">
 <path d="M32 6c10 8 18 18 14 30-4 10-14 18-14 18S22 46 18 36C14 24 22 14 32 6z" fill="#2f8f46"/>
 <path d="M32 10v40" stroke="#1b5e20" stroke-width="2"/>
 </svg>
 <h3>깻잎</h3>
 <p>
-잎 두께와 향 위주로 관리합니다.<br>
-쌈으로 바로 써도 질기지 않습니다.
+잎 두께와 향을 기준으로 관리합니다.<br>
+쌈으로 바로 사용해도 질기지 않습니다.
 </p>
 </div>
 
 <!-- 애호박 -->
 <div class="product">
-<svg viewBox="0 0 64 64" width="60">
+<svg viewBox="0 0 64 64" width="64">
 <rect x="6" y="26" width="52" height="16" rx="8" fill="#9ccc65"/>
 <rect x="4" y="30" width="4" height="8" fill="#558b2f"/>
 </svg>
 <h3>애호박</h3>
 <p>
-어린 시기에 수확해 살이 연합니다.<br>
-볶음·찌개용으로 많이 찾습니다.
+어린 시기에 수확해 살이 연하고 물러지지 않습니다.<br>
+찌개·볶음용으로 많이 찾습니다.
 </p>
 </div>
 
@@ -204,36 +236,35 @@ fill="url(#seol)"/>
 
 <section>
 <h2 class="title">오시는 길</h2>
-<div class="map-box">
 
-<svg viewBox="0 0 600 260" width="100%">
+<div class="map-wrap">
+<svg viewBox="0 0 700 260" width="100%">
 <!-- 서정길 -->
-<line x1="360" y1="0" x2="360" y2="260" stroke="#9e9e9e" stroke-width="6"/>
-<text x="372" y="26" font-size="14">서정길</text>
+<line x1="420" y1="0" x2="420" y2="260" stroke="#9e9e9e" stroke-width="6"/>
+<text x="432" y="28" font-size="14">서정길</text>
 
 <!-- 수로 -->
-<rect x="0" y="170" width="600" height="26" fill="#cfe9f6"/>
+<rect x="0" y="170" width="700" height="26" fill="#cfe9f6"/>
 <text x="20" y="188" font-size="13">수로</text>
 
 <!-- 농노길 -->
-<line x1="360" y1="170" x2="460" y2="170" stroke="#b0b0b0" stroke-width="5"/>
-<text x="372" y="158" font-size="13">농노길</text>
+<line x1="420" y1="170" x2="520" y2="170" stroke="#b0b0b0" stroke-width="5"/>
+<text x="432" y="158" font-size="13">농노길</text>
 
 <!-- 농장 -->
-<circle cx="490" cy="150" r="10" fill="#9b1c1c"/>
-<text x="508" y="155" font-size="14">생생농장</text>
+<circle cx="560" cy="148" r="11" fill="#8f1515"/>
+<text x="580" y="153" font-size="14">생생농장</text>
 </svg>
 
-<p style="margin-top:28px;color:#555;line-height:1.7;">
+<p style="margin-top:32px;color:#555;line-height:1.8;">
 전북 완주군 봉동읍 장기리 1729<br>
 서정길 진입 → 수로 건넌 후 바로 우측 농노길
 </p>
-
 </div>
 </section>
 
 <footer>
-<p>© 생생농장</p>
+© 생생농장
 </footer>
 
 </body>
